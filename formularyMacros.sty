@@ -1,0 +1,142 @@
+\NeedsTeXFormat{LaTeX2e}
+% ==============================================================================
+% Formulary Macros
+% ==============================================================================
+% ------------------------------------------------------------------------------
+\newcommand{\Zw}[1][Z]{\mc[6]{#1}} 
+\newcommand{\gz}[1][g]{\mc[6]{#1}} 
+\newcommand*\widefbox[1]{\fbox{\hspace{2em}#1\hspace{2em}}}
+\newcommand{\Sv}{\rd{\vec{S}}} 
+\newcommand{\qv}{\vec{q}} 
+\newcommand{\qvi}[1][\idxi]{\vec{q}_{#1}} 
+\newcommand{\qdv}{\dot{\vec{q}}} 
+\newcommand{\qdvi}[1][\idxi]{\dot{\vec{q}}_{#1}} 
+\newcommand{\pv}{\vec{p}} 
+\newcommand{\pvi}[1][\idxi]{\vec{p}_{#1}} 
+\newcommand{\pdv}{\dot{\vec{p}}} 
+\newcommand{\pdvi}[1][\idxi]{\dot{\vec{p}}_{#1}} 
+\newcommand{\var}{\textcolor{variation}{v}} 
+
+\newcommand{\dimens}[1]{\mathrm{#1}} 
+\newcommand{\zdim}[1]{\dimens{#1}} 
+\newcommand{\pdim}[1]{\dimens{#1}} 
+\newcommand{\potential}[1]{\mathrm{\textcolor{Green}{#1}}}
+\newcommand{\m}{\dimens{m}} 
+% Zustandsgrössen
+% ------------------------------------------------------------------------------ 
+\newcommand{\pz}{\zdim{p}} 
+\newcommand{\pzp}{\zdim{p}^{\text{phen.}}} 
+\newcommand{\pzs}{\zdim{p}^{\text{stat.}}} 
+\newcommand{\Vz}{\zdim{V}} 
+\newcommand{\Tz}{\zdim{T}} 
+\newcommand{\Ez}{\zdim{E}} 
+\newcommand{\Ekin}{\zdim{E}_{\text{kin}}} 
+\newcommand{\Ezr}{\zdim{E}_{\idxr}} 
+\newcommand{\EzrN}{\zdim{E}_{\idxr}^{N}} 
+\newcommand{\Wpot}{\tc{blue}{\dimens{W}}}
+\newcommand{\nz}{\zdim{n}} 
+\newcommand{\Nz}{\zdim{N}} 
+\newcommand{\muz}{\zdim{\mu}} 
+\newcommand{\muzp}{\zdim{\mu}^{\text{phen.}}} 
+\newcommand{\muzs}{\zdim{\mu}^{\text{stat.}}} 
+\newcommand{\Rc}{R} 
+% Zustandssummer
+\newcommand{\Zz}{\tc{Fuchsia}{\zdim{Z}}}
+\newcommand{\Qz}{\tc{Fuchsia}{\zdim{Q}}}
+\newcommand{\zz}{\tc{Fuchsia}{\textcolor{SpringGreen}{\zdim{z}}}}
+\newcommand{\zztrans}{\tc{Fuchsia}{\textcolor{SpringGreen}{\zdim{z}}}^{\text{tr.}}}
+\newcommand{\zzrot}{\tc{Fuchsia}{\textcolor{SpringGreen}{\zdim{z}}}^{\text{rot.}}}
+\newcommand{\zzvib}{\tc{Fuchsia}{\textcolor{SpringGreen}{\zdim{z}}}^{\text{vib.}}}
+\newcommand{\zzelek}{\tc{Fuchsia}{\textcolor{SpringGreen}{\zdim{z}}}^{\text{el.}}}
+\newcommand{\Zzm}{\tc{Fuchsia}{\zdim{Z}}(\Nz,\Vz,\Ez)}
+\newcommand{\Zzk}{\tc{Fuchsia}{\zdim{Z}}(\Nz,\Vz,\Tz)}
+\newcommand{\Qzk}{\tc{Fuchsia}{\zdim{Q}}(\Nz,\Vz,\Tz)}
+\newcommand{\Zzg}{\tc{Fuchsia}{\zdim{Z}}(\muz,\Vz,\Tz)}
+% Prozessgrössen
+% ------------------------------------------------------------------------------ 
+\newcommand{\Wp}{\pdim{W}} 
+\newcommand{\Qp}{\pdim{Q}} 
+\newcommand{\Qps}{\pdim{Q}^{\text{stat.}}} 
+\newcommand{\Qpp}{\pdim{Q}^{\text{phn.}}} 
+\newcommand{\qp}{\pdim{q}} 
+% Wärmekapazitäten
+% ------------------------------------------------------------------------------ 
+\newcommand{\cv}{\textcolor{heat}{\dimens{c}}_{\Vz}} 
+\newcommand{\cvm}{\textcolor{heat}{\dimens{C}}_{\Vz,\dimens{m}}} 
+\newcommand{\Cv}{\textcolor{heat}{\dimens{C}}_{\Vz}}  % same as cvm
+\newcommand{\cvn}{\textcolor{heat}{\dimens{C}}_{\Vz,\nz}} 
+\newcommand{\cp}{\textcolor{heat}{\dimens{c}}_{\pz}} 
+\newcommand{\cpm}{\textcolor{heat}{\dimens{C}}_{\pz,\dimens{m}}} 
+\newcommand{\cpn}{\textcolor{heat}{\dimens{C}}_{\pz,\nz}} 
+% Thermodynamische Potential
+% ------------------------------------------------------------------------------ 
+\newcommand{\Spot}{\potential{S}} 
+\newcommand{\Spotp}{\potential{S}^{\text{phn.}}} 
+\newcommand{\Spots}{\potential{S}^{\text{stat.}}} 
+\newcommand{\Upot}{\potential{U}} 
+\newcommand{\Upotp}{\potential{U}^{\text{phn.}}} 
+\newcommand{\Upots}{\potential{U}^{\text{stat.}}} 
+\newcommand{\Hpot}{\potential{H}} 
+\newcommand{\Apot}{\potential{A}} 
+\newcommand{\Fpot}{\potential{F}} 
+\newcommand{\Gpot}{\potential{G}} 
+\newcommand{\Opot}{\potential{\Omega}} 
+
+\newcommand{\spot}{\potential{s}} 
+\newcommand{\upot}{\potential{u}} 
+\newcommand{\hpot}{\potential{h}} 
+\newcommand{\apot}{\potential{a}} 
+\newcommand{\gpot}{\potential{g}} 
+\newcommand{\opot}{\potential{\Omega}} 
+\newcommand{\mupot}{\potential{\mu}} 
+% QM Grössen
+% ------------------------------------------------------------------------------ 
+\newcommand{\qz}[1][q]{\textcolor{Mulberry}{\mathrm{#1}}}
+\newcommand{\Ham}{\widehat{\mathrm{H}}}
+\newcommand{\Hamkl}{\mathrm{H}}
+\newcommand{\nqz}{\qz{n}} 
+\newcommand{\vqz}{\qz{v}} 
+\newcommand{\Jqz}{\qz{J}} 
+\newcommand{\Aqz}{\qz{A}} 
+\newcommand{\Eztrans}{\Ez_{\text{trans.}}^{\nqz(\idxK)}} 
+\newcommand{\Ezrot}{\Ez_{\text{rot.}}^{\Jqz(\idxK)}} 
+\newcommand{\Ezvib}{\Ez_{\text{vib.}}^{\vqz(\idxK)}} 
+\newcommand{\Ezelek}{\Ez_{\text{elek.}}^{\Aqz(\idxK)}} 
+\newcommand{\hp}{\textcolor{brown}{h}}  % Plack constant
+\newcommand{\hpr}{\textcolor{Brown}{\hbar}}  % Plack constant reduced 
+\newcommand{\gfact}{\textcolor{Fuchsia}{g}}  % Entartungsfaktr
+% Andere Grössen
+% ------------------------------------------------------------------------------ 
+\newcommand{\pvec}{\vec{p}}  % Impuls
+\newcommand{\rvec}{\vec{r}}  % Impuls
+\newcommand{\vvec}{\vec{v}}  % Impuls
+\newcommand{\avec}{\vec{a}}  % Impuls
+\newcommand{\Fvec}{\vec{F}}  % Impuls
+\newcommand{\Fvecst}{\vec{F}^{\text{st}}}  % Impuls
+\newcommand{\rveci}[1][\idxi]{\vec{r}_{#1}}  % Impuls
+\newcommand{\vveci}[1][\idxi]{\vec{v}_{#1}}  % Impuls
+\newcommand{\pveci}[1][\idxi]{\vec{p}_{#1}}  % Impuls
+\newcommand{\aveci}[1][\idxi]{\vec{a}_{#1}}  % Impuls
+\newcommand{\tn}{t_{\idxn}}  % 
+\newcommand{\tnp}{t_{\idxn}'}  % 
+\newcommand{\pimp}[1][p]{p}  % Impuls
+\newcommand{\kb}[1][k]{\tc{black}{\mathrm{#1_{B}}}} 
+% Probability
+\newcommand{\pb}[1][p]{\tc{CarnationPink}{#1}} 
+\newcommand{\pbr}[1][p]{\tc{CarnationPink}{#1}_{\idxr}} 
+\newcommand{\pbrN}[1][p]{\tc{CarnationPink}{#1}_{\idxr,N}} 
+\newcommand{\Pb}[1][P]{\tc{CarnationPink}{#1}} 
+\newcommand{\Pbr}[1][P]{\tc{CarnationPink}{#1}_{\idxr}} 
+% Gewicht
+\newcommand{\Wg}[1][W]{\tc{CarnationPink}{#1}} 
+% Observable
+\newcommand{\obs}[1]{\left\langle#1\right\rangle} 
+% Colors
+% ------------------------------------------------------------------------------
+\colorlet{variation}{SpringGreen}
+\colorlet{zstd}{Fuchsia}
+\colorlet{heat}{WildStrawberry}
+
+% Math
+% ------------------------------------------------------------------------------
+\newcommand{\rv}{\vec{r}} 

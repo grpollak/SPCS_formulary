@@ -1,0 +1,350 @@
+\begin{sectionbox}[Überblick]\nospacing
+ \begin{circlelist}
+    \item Strukturelle Eigenschaften:
+    \begin{numberlist}
+        \item Teilchenposition
+        \item Radiale Verteilungsposition
+        \item Orientierungskorrelationsfunktion
+        \item Lösungsmittelzugängliche Flächen\\ (z.B. wohin fliesst das Wasser)
+        \item Gyrationradius=Trägheitsradius\\ (radius of gyration)
+    \end{numberlist}
+    \item Thermodynamische Eigenschaften:
+    \begin{numberlist}
+        \item Energie/Freie Energie
+        \item Wärmekapazität
+        \item Entropie
+        \item Kompressibilität
+        \item Thermodynamischer Ausdehenungskoeffizient
+        \item \ldots
+    \end{numberlist}
+    \item Dynamische Eigenschaften:
+    \begin{numberlist}
+        \item Diffusion
+        \item Viskosität
+    \end{numberlist}
+    \item Elektrodmagnnetisch Eigenschaften:
+    \begin{numberlist}
+        \item Dielektrische Permitivität
+        \item Spektrokopische Eigenschaften (NMR, IR,\ldots)
+    \end{numberlist}
+ \end{circlelist}
+\end{sectionbox}
+\begin{sectionbox}[\subsubsection{Mittlere Atomposition}]\nospacing
+  \begin{align}
+    \obs{\rveci}=&\frac{1}{t}\int\limits_{0}^t\rveci(t')\diff t'\bda{\approx}{\normalfont{Diskret.}}\frac{1}{N_{t}}\sum_{\idxn=0}^{N_{t}}\rveci(t_{\idxn})\nalign\nonumber
+    N_{t}:&\text{Anzahl der Zeitschritte}
+  \end{align}
+\end{sectionbox}
+\begin{notebox}[Nützlichkeit]\nospacing
+  Zum Beispiel zur Berechnung von Fluktuationen in Atompositionen:
+  \begin{align*}
+    \sqrt{\Big\langle\left(\rveci-\obs{\rveci}\right)^2\Big\rangle}=\sqrt{\frac{1}{N_t}\sum_{\idxn=0}^{N_t}\left[\rveci-\obs{\rveci}\right]^2}
+  \end{align*}
+  $\Rightarrow$ Experimentelle Messgrösse um die Fluktuation zu berechnen.\\
+  (Kristallographie: $\betac$-Faktor von Atom $\idxi$)
+  \todo[inline]{Was ist hier gemeint?}
+\end{notebox}
+\begin{sectionbox}[\subsubsection{Radius of Gyration}]\nospacing
+  \begin{align*}
+    \vec{R}_{\text{Gyr}}=\sqrt{\frac{1}{N_{\mca}}\sum_{\idxn=0}^{N_{\mca}}\left[\rveci(t_{\idxn})-\vec{R}_{\text{CM}}(t_{\idxn})\right]^2}
+  \end{align*}
+  \begin{align*}
+  &\vec{R}_{\text{CM}}(t_{\idxn})=\frac{1}{M}\sum_{\idxn=0}^{N_{\mca}}m_{\idxn}\rveci(t_{\idxn}) &&\text{(Massenschwerpunkt)}\nalign
+                                                                      &M=\sum_{\idxn=0}^{N_{\mca}}=m_{\idxn}&&\text{(Massenschwerpunkt)}\nalign
+    &N_{\mca}:&&\text{\# Atome im Molekül}
+  \end{align*}
+\end{sectionbox}
+\begin{sectionbox}[\subsubsection{Root Mean Square Atom Positon (RMSD)}]\nospacing
+  Ist ein Mass für die Ähnlichkeit zweier Konfigurationen $m$ und $n$:
+  \begin{align*}
+    \text{RMSD}(m,n)=\sqrt{\frac{1}{N_{\mca}}\sum_{\idxi=1}^{N_{\mca}}\left[\rveci(m)-\rveci(n)\right]^2}
+  \end{align*}
+\end{sectionbox}
+\begin{sectionbox}[\subsubsection{Diffusionskoeffizient}]\nospacing
+  \begin{align*}
+    \mcc[D]=\lim_{t\to\infty}\frac{\obs{\left[\rvec(t)-\rvec(t_0)\right]^2}}{6t}
+  \end{align*}
+\end{sectionbox}
+\begin{sectionbox}[\subsubsection{Radiale Verteilungsfunktion}]\nospacing
+  \imp{Gegeben}: System von $\idxN$ Teilchen in einem Volumen mit Partikelkoordinaten $\rveci,\quad\idxi=1,\ldots,\idxN$. Die potentielle Energie als Resultat
+  von Teilchen-Teilchen W.W. ist $\Wpot_{\idxN}(\rvec_1,\ldots,\rvec_{\idxN})$.\\
+  Die Wahrscheinlichkeit einer elementaren Konfiguration, also das Auffinden von Partikel 1 in $\diff\rvec_1$, Partikel 2 in $\diff\rvec_2$ usw. ist gegeben durch:
+  \begin{align}
+    \Pb^{(\idxN)}(\rvec_1,\ldots,\rvec_{\idxN})\diff\rvec_1\cdots\diff\rvec_{\idxN}=\frac{\e^{-\betac\Wpot_{\idxN}}}{\Qzk}\diff\rvec_1\cdots\diff\rvec_{\idxN}
+  \end{align}
+  Die totale Nummer der Teilchen ist riesig, so dass $\Pb^{(\idxN)}$ nicht sehr nützllich ist. Es ist aber auch möglich die Wahrscheinlichkeit einer
+  \rd{reduzierten Konfiguration} zu berechnen, bei der die Position von legdiglich $\idxn<\idxN$ Teilchen $\rvec_1,\ldots,\rvec_{\idxn}$ fixiert ist. Die
+  restlichen $\idxN-\idxn$ Teilchen können sich dann frei bewegen. $\Rightarrow$ damit müssen wir dann noch über die restlichen Koordinaten
+  $\rvec_{\idxn+1},\ldots,\rvec_{\idxN}$ integrieren:
+  \begin{align}
+    &\Rightarrow& \ul{\Pb^{(\idxn)}(\rvec_1,\ldots,\rvec_{\idxn})}=\nalign
+                  &&=\frac{1}{\Qzk}\int\ldots\int\e^{-\betac\Wpot}\diff_{\idxn+1}\cdots\diff\rvec_{\idxN}\label{eq:Prob}
+  \end{align}
+  Falls es identische Partikel gibt, ist es von grösserer Interesse die Wahrscheinlichkeit zu berechnen das $\idxn$ gleiche Teilchen die Positionen
+  $\rvec_1,\ldots,\rvec_{\idxn}$, (in beliebigen Permutationen) besetzen.
+  \begin{align}
+    \Rightarrow& \rho^{(\idxn)}(\rvec_1,\ldots,\rvec_{\idxn})=\frac{N!}{(N-n)!}\ul{\Pb^{(\idxn)}(\rvec_1,\ldots,\rvec_{\idxn})}\label{eq:nProb}
+  \end{align}
+\end{sectionbox}
+\begin{defnbox}\nospacing
+  \begin{defn}[Korrelations Funktion $\rd{g}^{(\idxn)}$]
+    \begin{align}
+      \rho^{(\idxn)}(\rvec_1,\ldots,\rvec_{\idxn})=&\rho^{\idxn}\rd{g}^{(\idxn)}(\rvec_1,\ldots,\rvec_{\idxn})
+    \end{align}
+    \begin{align}
+      \rd{g}^{(\idxn)}(\rvec_1,\ldots,\rvec_{\idxn})&=\frac{\idxN!}{(\idxN-\idxn)!}\label{eq:Korrelationsfunktion}\nalign
+                                                      &\cdot\frac{1}{\Qzk}\int\ldots\int\e^{-\betac\Wpot}\diff_{\idxn+1}\cdots\diff\rvec_{\idxN}\nonumber
+    \end{align}
+  \end{defn}
+\end{defnbox}
+\begin{notebox}[Formale Eigenschaften]
+  \begin{numberlist}
+      \item Kurz vs. Langreichweitig
+        \begin{align}
+          &\rd{\text{Kurzreichweitig}}&\lim_{\rvec\to0}\rd{g}(\rvec)=0\nalign
+          &\rd{\text{Langreichweitig}}&\lim_{\rvec\to\infty}\rd{g}(\rvec)=1
+        \end{align}
+      \item 
+        \begin{align}
+          \iiint_{0}^{\infty}\rd{g}(\rvec)\rho\diff x\diff y\diff
+          z=\int_{0}^{\infty}\rd{g}(\rvec)\rho\underbrace{\overbrace{4\pi}^{\mathclap{\int\limits_{0}^{\pi}\int\limits_{0}^{2\pi}\sin\theta\diff\theta\diff\phi}}\rvec^2}_{\mathclap{\diff x\diff y\diff z=r^2\diff r\sin\theta\diff\theta\diff\phi}}\diff\rvec=\idxN-1
+        \end{align}
+  \end{numberlist}
+\end{notebox}
+\begin{notebox}[Bemerkungen]
+  \begin{numberlist}
+      \item $\rho=\frac{V}{N}$ durchschnittliche Dichte.
+      \item Falls das System aus sphärischen Koordinaten besteht dann hängt Korrelationfunktion zwischen zwei Partikeln $\rho^{(2)}(\rvec_1,\rvec_{\idxn})$ nur
+    von deren Distanz $\rvec_{12}=\abs{\rvec_2-\rvec_1}$ ab.\\
+    Sei nun Partikel 1 das Zentrum des Koordinatensystems, so entspricht $\rho\cdot\rd{g}(\rvec)\diff\rvec$ der Durchschnittlichen Zahl der Teilchen (unter den
+    verbleibenden $(\idxN-1)$ die im Volumen $\diff\rvec$ um das Zentum $\rvec$ gefunden werden.
+      \item Dies ist z.B. wichtig um zu bestimmen wieviel Wasserstoffbrücken im Mittel zu einem $O$-Atom in wässiriger Lösung gebildet werden.
+  \end{numberlist}
+\end{notebox}
+\begin{sectionbox}[Beispiel Wasserstoffbrücken]\nospacing
+  \hspace{-1em}\begin{figure}[H]	
+    \centering{
+      \def\svgwidth{100pt}
+      \resizebox{0.6\linewidth}{!}{\input{figures/SMD/Wasserstoffbruecken.pdf_tex}}
+    }
+  \end{figure}
+  1. Hügel/\rd{1. Koordinatenschale} entspricht den normalen zwei H-Atomen. Die weitern Extrema entsprechen weitern schwächeren H-Brücken.\\
+  $\Rightarrow$ $\rd{g}(\rvec)\corresponds$ Anzahl an Wasserstoffbrücken.
+  \begin{notebox}[Spezialfall]
+    Bei $1000^{\circ}$ gibt es gar keine H-Brücken mehr.
+  \end{notebox}
+\end{sectionbox}
+\begin{notebox}[Bemerkung]
+\end{notebox}
+\subsection{Thermodynamische Randbedingungen}
+\begin{sectionbox}\nospacing
+  Das gewählte Ensemble gibt konstante \imp{intensive} Grössen vor z.B. $\Tz,\pz,\muz,\ldots$, diese müssen von der MD-Simulation beachtet/beibehalten werden.\\
+  Methoden um dies zu verwirklichen sind:
+  \begin{circlelist}
+      \item Constraint Methods
+      \item Weak-Coupliong Methods (z.B. Berendson Thermostat)
+      \item Extended System Methoden (z.B. extended-Lagrangian-Method)
+      \item Stochastische Methoden (Lagrangian Dynamik)
+  \end{circlelist}
+\end{sectionbox}
+	\vfill\columnbreak
+\subsection*{Bsp. Thermostat: $T=$konst}
+\begin{sectionbox}[\subsubsection{Constraint-Method}]\nospacing
+  \imp{Idee}: Modifiziere die Netwon Bewegungsgleichung so, dass $\Tz=$konst.
+  \begin{align}
+    m\frac{\diff\vveci}{\diff t}=\ul{\frac{\diff\vec{p}_{\idxi}}{\diff t}}=\Fvec_{\idxi}-\underbrace{\rd{\mcc[\xi]\pveci}}_{\mathclap{\text{Zwangskraft}}}
+  \end{align}
+  \imp{Frage}: wie kann $\mcc[\xi]$ gewählt werden?
+  \begin{align*}
+    &\text{Wir wissen
+      das:}&\Ez_{\text{kin}}^{\text{tot}}=\sum_{\idxi=1}^{\idxN}\frac{\pveci(t)^2)}{2m_{\idxi}}\eqs{\cref{eq:GasFreiheitsgrade}}\Nz\overbrace{\frac{3}{2}\kb\Tz(t)}^{\mathllap{\text{pro. Teilchen}}}
+  \end{align*}
+  Dies würde aber implizieren das $\Tz$ varien kann, was nicht sein darf.\\
+  \imp{Idee}: sollten fordern das sich $\Tz$ nicht ändern darf.
+  \begin{align}
+    \Tz=\text{konst}&&\Longleftrightarrow&&\frac{\diff\Tz}{\diff t}=0
+  \end{align}
+  \begin{align*}
+    \Longleftrightarrow 0&\eqs{!}\frac{\diff}{\diff
+                          t}\left[\sum_{\idxi=1}^{\idxN}\frac{\pveci(t)^2)}{2m_{\idxi}}\right]
+                          \eqs{\text{\rd{C.R.}}}\sum_{\idxi=1}^{\idxN}\frac{\pveci}{m_{\idxi}}\ul{\frac{\diff\pveci}{\diff t}}\nalign
+    &=\sum_{\idxi=1}^{\idxN}\frac{\pveci}{m_{\idxi}}\Fvec_{\idxi}-\mcc[\xi]\sum_{\idxi=1}^{\idxN}\frac{\pveci}{m_{\idxi}}\rd{\pveci}=\sum_{\idxi=1}^{\idxN}\frac{\pveci}{m_{\idxi}}\Fvec_{\idxi}-\mcc[\xi]\sum_{\idxi=1}^{\idxN}\frac{\pveci^2}{m_{\idxi}}
+  \end{align*}
+  \begin{empheq}[box=\widefbox]{align}
+    &\Rightarrow&\mcc[\xi](t)=\frac{\sum_{\idxi=1}^{\idxN}\vveci(t)\cdot\Fvec_{\idxi}(t)}{2\Ez_{\text{kin}}(t)}
+  \end{empheq}
+\end{sectionbox}
+\begin{notebox}[Probleme]\nospacing
+  \begin{numberlist}
+      \item 
+        $\Tz(t_0)$ kommt in diesem Verfahren nicht vor und $\Tz(t)=$konst. ist nicht notwendigerweise $\Tz(t)=\Tz(t_0)$\\
+        $\Rightarrow$ nicht so leicht die Anfangstermperatur ein zu stellen.
+      \item Einfaches scalen der Geschwindigkeit lässt keine Temperaturfluktuation \rd{einzlener} Teilchen zu, die im kanonischen Ensemble aber vorhanden sind:
+        \begin{align*}
+          \vveci^{\text{new}}=\lambdac\vveci^{\text{old}}
+        \end{align*}
+        \begin{align*}
+          \lambdac=\sqrt{\frac{\Tz}{\Tz_0}}&&\text{mit}&&\obs{\Tz}\eqs{\cref{eq:GasFreiheitsgrade}}\frac{2}{3\Nz\kb\Ez_{\text{kin}}^{\text{tot}}} 
+        \end{align*}
+        $\Rightarrow$ Wenn wir nun jeden Zeitschritt die Temperatur anpassen, wird die kinetische Energie aller Teilchen einen konstanten Wert Annehmen, dies entspricht nicht dem
+        kanonischen Ensemble.
+  \end{numberlist}
+\end{notebox}
+\begin{sectionbox}[\subsubsection{Weak-Coupeling/Berendson-Thermostat}]\nospacing
+  \rdb{Thermostate}/\rdb{Temperaturregler}: helfen dabei korrekte Proben von bestimmten Ensembles $(\Nz,\Vz,Tz),(\Nz,\pz,\Tz)$ zu erhalten.
+  Dies verwicklichen sie durch Anpassung der $\Tz$ Temperatur des Systems in einer bestimmmten Art und Weise.\\
+  Meist wird in MD-Simulatonen mittels Äquipartitionstheorem \cref{eq:Aquipartitionstheorem} die Temperatur $\Tz$, über die kinetische (gesamt) Energie des Systems
+  berechnet.\\
+  MD-Simulationen sind meistens relativ klein und weisen daher eher grössere Fluktuationen auf.\\
+  Ohne Fluktationen der Temperatur $\Longleftrightarrow$ kin. Energie einzelner Teilchen können MD-Simulationen jedoch nicht die Korrekten Bewgungsgleichugen,
+  die z.B. mit dem Kanonischen Ensemble übereinstimmen beschreiben.
+  Das Ziel des Thermostat ist es daher dafür zu sorgen das:
+  \begin{numberlist}
+      \item Die korrekte gemittelte Temperatur des Systems konstant bleibt.
+      \item Die Fluktuationen die korrekte Grösse aufweisen.
+  \end{numberlist}
+  Im Beredson Thermostat wird die Temperatur des Systems, über die Geschwindiglkeiten so skaliert, dass die Fluktuationen exponentiell mit einer Zeitkonstante
+  $\lambdac$ abhnehmen.\\
+  \imp{In anderen Worten}: versucht das Beredson Thermostat die Abweichung der aktuellen Temperatur $\Tz$ von der vorgegebenen $\Tz_0$ zu korregieren in dem es
+  die Geschwindigkeiten mit einem Faktor $\lambdac$ multipliziert $\Longleftrightarrow$ Übertrangungsrate der Wärme, so das sich die Systemdynamik an $\Tz_0$ anpasst.
+  \begin{align}
+    \frac{\diff\Tz}{\diff t}=\frac{1}{\tauc}\left[\Tz_0-Tz(t)\right]&&\Longleftrightarrow&&\Tz=\Tz_0-\mcc\e^{-\frac{t}{\tauc}}\label{eq:berendsonFaktor}
+  \end{align}
+\end{sectionbox}
+\begin{notebox}[Vorteil]
+  Erlaubt Temperaturfluktuationen einzlner Teilchen und damit korrete Bewegungsgleichungen.
+\end{notebox}
+\begin{sectionbox}[Herleitung]\nospacing
+  \begin{align*}
+    &\imp{\text{Idee}:}&\vveci^{\text{new}}=\lambdac\vveci^{\text{old}},\qquad\forall\idxi=1,\ldots,\idxN
+  \end{align*}
+  \begin{align*}
+    &\Rightarrow&\ul{\Delta\Ekin}=&\sum_{\idxi=1}^{N}\frac{1}{2}m_{\idxi}\lambdac^2\vveci^2(t)-\sum_{\idxi=1}^{N}\frac{1}{2}m_{\idxi}\vveci^2(t)\nalign
+    &&=&(\lambdac^2-1)\sum_{\idxi=1}^{N}\frac{1}{2}m_{\idxi}\vveci^2(t)\nalign
+    &&\eqs{\substack{\cref{eq:Aquipartitionstheorem}\\f=3}}&(\lambdac^2-1)\Nz\frac{3}{2}\kb\Tz(t)
+  \end{align*}
+  Für das kanonische Ensemble gilt aber auch:
+  \begin{align*}
+    \uldotted{\Delta\Ekin}\eqs{f=3}\Cv\Delta\Tz^{\text{tot}}=\Nz\underbrace{3\Cv^{\text{dof}}\Delta\Tz}_{\mathclap{\text{pro. Teilchen}}}
+  \end{align*}
+  \begin{notebox}[Nebenbemerkung]
+    $\Tz$ ist die aktuelle Temperatur und $\Delta\Tz$ ist Temperaturänderung pro. Zeitschritt.
+  \end{notebox}
+  \begin{align*}
+    \ul{\Delta\Ekin}=\uldotted{\Delta\Ekin}
+  \end{align*}
+  \begin{align*}
+    &\Rightarrow& \Delta\Tz=&(\lambdac^2-1)\frac{1}{2}\frac{\kb\Tz(t)}{\Cv^{\text{dof}}}\nalign
+    &&\lambdac^2=\ul[ulc2]{\frac{\Delta\Tz}{\Tz(t)}}\frac{2\Cv^{\text{dof}}}{\kb}+1
+  \end{align*}
+  \imp{Frage}: wie wählen wir nun $\lambdac$, so das $\Tz$ und $\Delta\Tz$ an die Zieltemperatur $\Tz_0$ angepasst werden?\\
+  Mit der Diskretisierung von \cref{eq:berendsonFaktor} folgt:
+  \begin{align*}
+    \frac{\Delta\Tz}{\Delta t}=\frac{1}{\tauc}\left[\Tz_0-\Tz(t)\right]&&\Rightarrow&&\ul[ulc2]{\frac{\Delta\Tz}{\Tz(t)}}=\frac{\Delta t}{\tauc}\left[\frac{\Tz_0}{Tz(t)}-1\right]
+  \end{align*}
+  \begin{align*}
+    \lambdac=\sqrt{\ul[ulc2]{\frac{\Delta t}{\tauc}\left[\frac{\Tz_0}{\Tz(t)}-1\right]}\frac{2\Cv^{\normalfont{d}}}{\kb}+1}\bua{\approx}{\normalfont{\rd{Taylor}}}\frac{\Delta t}{\tauc}\left[\frac{\Tz_0}{\Tz(t)}-1\right]\frac{2\Cv^{\text{d}}}{\kb}+1
+  \end{align*}
+\end{sectionbox}
+\begin{sectionbox}[Einsetzen in die Bewegungsgleichung]\nospacing
+  \begin{align*}
+    m_{\idxi}\aveci=m_{\idxi}\frac{\diff (\lambdac\vveci)}{\diff t}\eqs{\text{P.R.}}m_{\idxi}\frac{\diff\lambdac}{\diff
+    t}\vveci+m_{\idxi}\frac{\diff\vveci}{\diff t}\lambdac=\Fvec_{\idxi}\nalign
+    \Rightarrow\quad m_{\idxi}\frac{\diff\vveci}{\diff t}=\frac{1}{\lambdac}\left[\Fvec_{\idxi}-m_{\idxi}\ul[ulc3]{\frac{\diff\lambdac}{\diff t}}\vveci\right]
+  \end{align*}
+  \begin{align*}
+    &\imp{\text{Mit}: }&\ul[ulc3]{\frac{\diff\lambdac}{\diff t}}\approx\ul[ulc3]{\frac{\Delta\lambdac}{\Delta t}}=\frac{1}{\Tz(t)}=\frac{\Delta t}{\tauc}\left[\frac{\Tz_0}{Tz(t)}-1\right]
+  \end{align*}
+  \begin{align}
+    &\text{Folgt dann}: &\boxed{m_{\idxi}\frac{\diff\vveci}{\diff t}=\Fvec_{\idxi}-m_{\idxi}\frac{\Cv^{\text{dof}}}{\kb}\left[\frac{\Tz_0}{\Tz(t)}-1\right]\vveci}
+  \end{align}
+\end{sectionbox}
+\begin{notebox}[Probleme]
+  \begin{numberlist}
+      \item Auch der Berendson Thermostat kann die Fluktuationen nicht
+    akkurat darstellen.
+      \item Funktioniert schlecht in Systemen mit wenigen Freiheitsgraden z.B. zur Berechnung der freien Energie eines Systems mit Komponenten die im Glg. sehr
+    wenig Freiheitsgrade besitzen (kleine nicht interagierende Moleküle).
+  \end{numberlist}
+\end{notebox}
+\begin{sectionbox}[\subsubsection{Extended-Lagrangian-Method}]\nospacing
+  \imp{Idee}: Regulierung der Temperatur durch Einführung eines zusätzlichen Freiheitsgrades.
+  \begin{align*}
+    \vveci:=\mca[s]\frac{\diff\rveci}{\diff t}&&\Rightarrow&&\text{Konjugierter Impuls: }\vec{p}_{\mca[s]}=m_{\idxi}\vveci
+  \end{align*}
+  \begin{align*}
+    &\Rightarrow& \Ekin=\frac{1}{2}m_{\mca[s]}\left(\frac{\diff\mca[s]}{\diff t}\right)^2
+  \end{align*}
+  Ankoppelung an die Temperatur durch Wahl der pot. Energie:
+  \begin{align*}
+    \Wpot_{\mca[s]}=\underbrace{3N+1}_{\mathclap{\text{\# aller Dofs}}}\kb\Tz_0\cdot\overbrace{\ln(\mca[s])}^{\mathclap{\text{Wichtig für harm. Ensemble}}}
+  \end{align*}
+  \begin{flalign*}
+    &\Rightarrow \text{\rd{Lagrange Fkt.}}:&\LT=\Ekin^{\text{tot}}-\Wpot^{\text{tot}}=
+  \end{flalign*}
+  \begin{align}
+    &=\sum_{\idxi=1}^{N}\frac{1}{2}m_{\idxi}\vveci^2-\Wpot+\left[\frac{1}{2}m_{\mca[s]}\left(\frac{\diff\mca[s]}{\diff t}\right)^2-(3N-1)\kb\Tz_0\ln(\mca[s])\right]
+  \end{align}
+  \begin{figure}[H]
+    \vspace{-3em}
+    \centering
+    \begin{tikzpicture}[node distance=1cm, every node/.style={fill=sectionbox, font=\sffamily}]
+      \node (start)   {};
+      \node (end)[rectangle, draw, below of=start]          {Euler-Lagrange Bewegungsgleichungen};
+      % Draw edges
+      \draw [line width=1pt,->] (start) -- node {\rd{Hamilton Prinzip}} (end);
+    \end{tikzpicture}
+  \end{figure}
+\end{sectionbox}
+\begin{sectionbox}[\subsubsection{Langerin-Method}]\nospacing
+  \imp{Idee}: Benutze Langerin-Dynamik ($\corresponds$Stochastische Methode) $\rightarrow$ Einführung eines Reibungsterms:
+  \begin{align}
+    m_{\idxi}\frac{\diff\vveci}{\diff t}=\Fvec_{\idxi}-\rd{m_{\idxi}\gammac_{\idxi}\vveci+\Fvecst_{\idxi}}\Rightarrow\obs{\Tz}=\frac{\obs{\Fvec_{\idxi}^{2(st)}}}{6m_{\idxi}\gammac_{\idxi}\kb}\equiv\Tz_0
+  \end{align}
+\end{sectionbox}
+\subsection*{Berechnung der Freien Energie}
+\begin{sectionbox}[Vorgehen]\nospacing
+  \imp{Eigentlich}: benötigt man $\Zz$ um daraus dann $\Spot$ und daraus dann $\Apot$ (oder auch $\Gpot$) zu berechnen.
+  \begin{align*}
+    \Apot&(\Nz,\Vz,\Tz)=\nalign
+    &-\kb\Tz\ln \underbrace{\left[\frac{1}{h^{3N}N!}\iint\exp{\left\{-\frac{\Hamkl(\vec{p}^N,\rvec^N)}{\kb\Tz}\right\}\diff\rvec^N\diff\vec{p}^N}\right]}_{\Zz}
+  \end{align*}
+  Allerdings interessieten wir uns nur für die Änderung der freien Energie und nicht deren exakten Wert.
+\end{sectionbox}
+\begin{sectionbox}[Partielle Integration]\nospacing
+  \begin{align}
+    \Apot&(\Nz+1,\Vz,\Tz)-\Apot(\Nz,\Vz,\Tz)=\nalign
+    &-\kb\Tz\ln\int\obs{\exp\left(-\frac{\Delta\Wpot}{\kb\Tz}\right)}_{\rvec_1,\ldots,\rvec_N}\diff^3\rvec^{N+1}
+  \end{align}
+  \begin{align*}
+    &\text{Mit}:&\Delta\Wpot=\Wpot(\rvec_1,\ldots,\rvec_{N+1})-\Wpot(\rvec_1,\ldots,\rvec_N)
+  \end{align*}
+\end{sectionbox}
+\begin{sectionbox}[Temperatur Integration]\nospacing
+  \begin{align}
+    &\frac{\Apot(\Tz_{\mcb})}{\Tz_{\mcb}}-\frac{\Apot(\Tz_{\mca})}{\Tz_{\mca}}=
+    \int\limits_{\frac{1}{\Tz_{\mca}}}^{\frac{1}{\Tz_{\mcb}}}\underbrace{\obs{\Hamkl}_{\Tz}}_{=\Upot^{\text{phän.}}}\diff \frac{1}{\Tz}
+  \end{align}
+  \begin{align*}
+    &\text{Mit}:&\Apot=\Upot-\Tz\Spot&&\Rightarrow&&\frac{\Apot}{\Tz}=\frac{\Upot}{\Tz}-\Spot
+  \end{align*}
+  \begin{align*}
+    \obs{\Hamkl}=\Upot=\frac{\diff \frac{\Apot}{\Tz}}{\diff \Tz^{-1}}
+  \end{align*}
+\end{sectionbox}
+\begin{sectionbox}[Druck Integration]\nospacing
+  \begin{align}
+    &\Apot(\Vz_{\mcb})-\Apot(\Vz_{\mca})=
+      \int\limits_{\Vz_{\mca}}^{\Vz_{\mcb}}\pz\diff\Vz
+  \end{align}
+\end{sectionbox}
+\begin{sectionbox}[Verallgemeinerte Integration]\nospacing
+  \begin{align}
+    &\Apot(\lambdac_{\mcb})-\Apot(\lambdac_{\mca})=
+      \int\limits_{\lambdac_{\mca}}^{\lambdac_{\mcb}}\obs{\pfrac{\Hamkl(\lambdac)}{\lambdac}}_{\lambdac}\diff\lambdac
+  \end{align}
+\end{sectionbox}
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../formularySPCS"
+%%% End:

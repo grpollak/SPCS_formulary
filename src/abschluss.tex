@@ -1,0 +1,60 @@
+\begin{sectionbox}\nospacing
+  In der MM ist $\Wpot$ zu wählen, dies ist unschön. Die Lösung dafür ist Quantenmchanisch zu arbeiten.\\
+  $\Rightarrow$ Propagation der Zeitunabhängigen Schrödingergleichung (Quantendynamik).\\
+  \imp{Problem}: Nur machbar für wenige Atome $\sim5$.
+  \imp{Lösung}: Spperiere das Problem $\Rightarrow$ \rd{Ab-inito
+    Moleküldynamik}$\Rightarrow$Born Oppenheimer Molekül Dynamik.
+  \begin{itemize}
+    \item Klassische Beschreibug (Newton) der Kerne.
+    \item QM. Beschreibung (stationäre S. GL.) der Elektronen.
+  \end{itemize}
+\end{sectionbox}
+\begin{sectionbox}[\subsubsection{Born Oppenheimer Näherung (BOMD)}]\nospacing
+  \begin{align}
+    m_{\idxi}\aveci=\Fvec_{\idxi}=-\nabla_{\idxi}\Ez_{\text{el}}
+  \end{align}
+  \begin{flalign*}
+    \text{\imp{Mit}}:&\qquad\Ez_{\text{el}}\corresponds  \text{Eigenwerte von}:&\Ham_{\text{el}}\Psi_{\text{el}}=\Ez_{\text{el}}\Psi_{\text{el}}
+  \end{flalign*}
+  Damit muss für jeden Zeitschritt $\Longleftrightarrow$ fixe Konfiguration, die stationäre Schrödingergleichung gelöst werden.
+\end{sectionbox}
+\begin{sectionbox}[\subsubsection{Car-Parrinello MD (CPMD)}]\nospacing
+  \imp{Idee}: Kombiniere $\underbrace{\text{klassisches}}_{\text{Kern}}$ und $\underbrace{\text{quantenmechanisches}}_{\text{Elektronen}}$ System per
+  \rd{extended Lagrangian}.
+  \begin{align}
+    \LT=\underbrace{\sum_{\idxi=1}^{\idxM}\frac{1}{2}m_{\idxi}\vveci^2}_{\mathclap{\text{kin. Energie d. Kerne}}}
+    +\underbrace{\frac{\mu}{2}\sum_{\idxi=1}^{N}\int\diff^3\rvec\abs{\dot{\Psi}_{\idxi}(\rvec,t)}^2}_{\mathrlap{\text{kin. Energie d. Elektronen}}}-\Ez_{\text{el}}
+  \end{align}
+  \begin{align*}
+    &\idxN:&\text{Gesamtzahl der Elektronen$\corresponds$ Gesamtzahl der Orbitale}\nalign
+    &\idxN:&\text{Gesamtzahl der Kerne}\nalign
+    &\mu:&\text{Kopplungskosntante}\corresponds\text{fiktiver Masse}
+  \end{align*}
+\end{sectionbox}
+\begin{notebox}[Nebenbemerkung]
+  \begin{align*}
+    \Psi_{\text{el}}\stackrel{\rd{\text{Pauli P.}}}{\approx}\det{(\turla{\Phi_1(\rvec_1)}{\normalfont{Einelektronenfunktion=Orbital}}\cdot\Phi_2(\rvec_2)\cdots\Phi(\rvec_N))}
+  \end{align*}
+\end{notebox}
+\begin{sectionbox}\nospacing
+  \imp{Frage}: was ist die quantenmechanische kinetische Energie von \rd{N} Elektronen für $\Psi_{\text{el}}$?
+  \begin{align}
+    \Ez_{\text{kin}}=\sum_{\idxi=1}^{N}\left\langle\Phi_{\idxi}\Big|-\frac{\hpr^2}{2m_{\text{e}}}\Delta\Big|\Phi_{\idxi}\right\rangle
+    \eqs{\text{\rd{P.I.}}}-\frac{\hpr^2}{2m_{\text{e}}}\sum_{\idxi=1}^{N}\left\langle\nabla\Phi_{\idxi}\big|\nabla\Phi_{\idxi}\right\rangle
+  \end{align}
+  \begin{figure}[H]
+    \vspace{-3em}
+    \centering
+    \begin{tikzpicture}[node distance=1cm, every node/.style={fill=sectionbox, font=\sffamily}]
+      \node (start)   {};
+      \node (end)[rectangle, draw, below of=start]          {Euler-Lagrange Bewegungsgleichungen};
+      % Draw edges
+      \draw [line width=1pt,->] (start) -- node {\rd{Hamilton Prinzip}} (end);
+    \end{tikzpicture}
+  \end{figure}
+  \imp{Damit}: Newton Bewegungsgleichung für die Atomkerne + Bewegungsgleichung für die Orbitale.
+\end{sectionbox}
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../formularySPCS"
+%%% End:

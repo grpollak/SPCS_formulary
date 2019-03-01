@@ -1,0 +1,59 @@
+%% Creator: Inkscape inkscape 0.91, www.inkscape.org
+%% PDF/EPS/PS + LaTeX output extension by Johan Engelen, 2010
+%% Accompanies image file 'potTopf.pdf' (pdf, eps, ps)
+%%
+%% To include the image in your LaTeX document, write
+%%   \input{<filename>.pdf_tex}
+%%  instead of
+%%   \includegraphics{<filename>.pdf}
+%% To scale the image, write
+%%   \def\svgwidth{<desired width>}
+%%   \input{<filename>.pdf_tex}
+%%  instead of
+%%   \includegraphics[width=<desired width>]{<filename>.pdf}
+%%
+%% Images with a different path to the parent latex file can
+%% be accessed with the `import' package (which may need to be
+%% installed) using
+%%   \usepackage{import}
+%% in the preamble, and then including the image with
+%%   \import{<path to file>}{<filename>.pdf_tex}
+%% Alternatively, one can specify
+%%   \graphicspath{{<path to file>/}}
+%% 
+%% For more information, please see info/svg-inkscape on CTAN:
+%%   http://tug.ctan.org/tex-archive/info/svg-inkscape
+%%
+\begingroup%
+  \makeatletter%
+  \providecommand\color[2][]{%
+    \errmessage{(Inkscape) Color is used for the text in Inkscape, but the package 'color.sty' is not loaded}%
+    \renewcommand\color[2][]{}%
+  }%
+  \providecommand\transparent[1]{%
+    \errmessage{(Inkscape) Transparency is used (non-zero) for the text in Inkscape, but the package 'transparent.sty' is not loaded}%
+    \renewcommand\transparent[1]{}%
+  }%
+  \providecommand\rotatebox[2]{#2}%
+  \ifx\svgwidth\undefined%
+    \setlength{\unitlength}{380.78972283bp}%
+    \ifx\svgscale\undefined%
+      \relax%
+    \else%
+      \setlength{\unitlength}{\unitlength * \real{\svgscale}}%
+    \fi%
+  \else%
+    \setlength{\unitlength}{\svgwidth}%
+  \fi%
+  \global\let\svgwidth\undefined%
+  \global\let\svgscale\undefined%
+  \makeatother%
+  \begin{picture}(1,0.51247864)%
+    \put(0,0){\includegraphics[width=\unitlength,page=1]{potTopf.pdf}}%
+    \put(0.48876204,0.08995566){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{$\epsilon_{\idxi\idxj}$}}}%
+    \put(0.44621894,0.41923908){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{$-\left(\frac{1}{r_{\idxi\idxj}}\right)^6$}}}%
+    \put(0.1858553,0.45752788){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{$\left(\frac{1}{r_{\idxi\idxj}}\right)^{12}$}}}%
+    \put(-0.06036948,0.42094093){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{$\Wpot_{\idxi\idxj}$}}}%
+    \put(0.76018687,0.16227888){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{$r_{\idxi\idxj}$}}}%
+  \end{picture}%
+\endgroup%

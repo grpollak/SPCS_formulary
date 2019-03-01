@@ -1,0 +1,205 @@
+\begin{sectionbox}\nospacing
+  \imp{Idee}: Beprobung des Konfigurationsraumes durch Verflogung
+  einer Trajektorie, unter Verwendung einer adequaten
+  Bewegungsgleichung.\\
+  \imp{In anderen Worten}: Beprobung durch explizite zeitliche Propagation des Systems per Newton Bewegungsgleichung.
+\end{sectionbox}
+\begin{notebox}[MD-Simulation und andere Ensemble]
+  Die Lösung der Bewegungsgleichung konserviert die Energie $\Rightarrow$ \rd{Mikrokanonisches Ensemble}!\\
+  \imp{Frage}: wie kommen wir zurück zum \rd{kanonische Ensemble}?\\
+  Stochastische Beprobung unter Verwendung des Boltzmann-Gewichts $\Longleftrightarrow$ MMC.
+\end{notebox}
+\begin{sectionbox}[Zu lösen]\nospacing
+  \begin{align}
+    m_{\idxi}\frac{\diff^2\rveci}{\diff t^2}=-\nabla_{\idxi}\Wpot\left(\rvec^N(t)\right)&&
+           \nabla_{\idxi}=\vect{\frac{\partial}{\partial x_{\idxi}} \\ \frac{\partial}{\partial y_{\idxi}} \\ \frac{\partial}{\partial z_{\idxi}}}\label{eq:eqOfMotion}
+  \end{align}
+  Diese Dgl 2. Ordnung kann zu zwei Dgls 1. Ordnung reduziert werden:
+  \begin{align}
+    &\dot{\rvec}(t)=\vvec(t)&&\text{und}&&\dot{\vvec}(t)=\frac{F(\rvec(t))}{m}\label{eq:eqOfMotion2}
+  \end{align}
+\end{sectionbox}
+\begin{notebox}[Problem]
+  Analytische Lösung auf Grund der Form des Kraftfeldes $\Wpot$ nicht möglich $\Rightarrow$ Diskretisierung.
+\end{notebox}
+\subsection{Leap Frog Algorithmus}
+\label{subsec:LeapFrogAlgorithmus}
+\begin{sectionbox}\nospacing
+  \begin{numberlist}
+    \item Gitter von äquidistanten Punkten $\left\{t_{\idxn}\right\}_{\idxn=1}^{M}$.
+    \item Maschenweite (Stepsize): $\Delta \frac{t}{2}$.
+    \item $\Delta t$ wird in abhängig von der Dynamik des Systems gewählt, damit die komplette Dynamik erfasst wird. $\Delta t$ typischerweise $\approx10\femto\second$.
+  \end{numberlist}
+  \imp{Notation}:\hfil$\rvec^N\hfil\Longleftrightarrow\hfil\rveci\quad\forall\idxi$\\
+  \imp{Gegeben}: $\rveci(\tnp)$ zum Zeitpunkt $\tnp\eqs{\text{e.g.}}t_0$.\\
+  \imp{Gesucht}: $\rveci(\tnp+\Delta t)\quad\forall\idxi\Rightarrow$ Taylor Entwickelung.
+  \begin{alignat*}{3}
+    &\rveci(\tnp+\Delta t)&&=\nalign
+                            &&&\rveci(\tnp)+\Delta t\left.\difrac{\rveci}{t}\right\rvert_{\tnp}+\frac{1}{2}\Delta t^2\left.\frac{\diff^2\rveci}{\diff t^2}\right\rvert_{\tnp}+\bigO{\Delta t^3}
+  \end{alignat*}
+  \imp{Problem}: $\frac{\diff^2\rveci}{\diff t^2}$ ist nicht explizit bekannt.\\
+  \imp{Idee}: wähle den Zeitschritt geschickt um $\frac{\diff^2\rveci}{\diff t^2}$ zu eliminieren.
+  \begin{alignat}{2}
+    &\rveci\left(\tnp+\frac{\Delta t}{2}\right)=\label{eq:lf1}\nalign
+                            &\quad=\rveci(\tnp)+\frac{\Delta t}{2}\left.\difrac{\rveci}{t}\right\rvert_{\tnp}+\frac{1}{2}\left(\frac{\Delta t}{2}\right)^2\left.\frac{\diff^2\rveci}{\diff t^2}\right\rvert_{\tnp}+\bigO{\Delta t^3}\nonumber\nalign
+    &\rveci\left(\tnp-\frac{\Delta t}{2}\right)=\label{eq:lf2}\nalign
+                            &\quad=\rveci(\tnp)-\frac{\Delta t}{2}\left.\difrac{\rveci}{t}\right\rvert_{\tnp}+\frac{1}{2}\left(\frac{\Delta t}{2}\right)^2\left.\frac{\diff^2\rveci}{\diff t^2}\right\rvert_{\tnp}+\bigO{\Delta t^3}\nonumber
+  \end{alignat}
+  \begin{alignat*}{2}
+    &\cref{eq:lf1}-\cref{eq:lf2}=\cancel{2}\cdot\frac{\Delta t}{\cancel{2}}\uldotted{\left.\difrac{\rveci}{t}\right\rvert_{\tnp}}+\bigO{2\cdot\Delta t^3}\nalign
+    &\Rightarrow\rveci\left(\tnp+\frac{\Delta t}{2}\right)=\rveci\left(\tnp-\frac{\Delta t}{2}\right)+\Delta t\cdot\uldotted{\vveci(\tnp)}+\bigO{\Delta t^3}
+  \end{alignat*}
+  \imp{Kosmetik}: um dies nun wieder zu ganzen Zeitschritten umzuwandeln setzen wir einfach: $\tnp=\tn+\frac{\Delta t}{2}$:
+    \begin{align*}
+      &\Rightarrow\rveci\left(\tn+\Delta t\right)=\rveci\left(\tn\right)+\Delta t\cdot\vveci\left(\tn+\frac{\Delta t}{2}\right)+\bigO{\Delta t^3}
+    \end{align*}
+    \imp{Problem}: $\vveci\left(\tn+\frac{\Delta t}{2}\right)$ ist auch unbekannt $\Rightarrow$ Taylor entwickelung.
+  \begin{alignat}{2}
+    &\vveci\left(\tn+\frac{\Delta t}{2}\right)=\label{eq:lf3}\nalign
+                            &\quad=\vveci(\tn)+\frac{\Delta t}{2}\left.\difrac{\vveci}{t}\right\rvert_{\tn}+\frac{1}{2}\left(\frac{\Delta t}{2}\right)^2\left.\frac{\diff^2\vveci}{\diff t^2}\right\rvert_{\tn}+\bigO{\Delta t^3}\nonumber\nalign
+    &\vveci\left(\tn-\frac{\Delta t}{2}\right)=\label{eq:lf4}\nalign &\quad=\vveci(\tn)-\frac{\Delta t}{2}\left.\difrac{\vveci}{t}\right\rvert_{\tn}+\frac{1}{2}\left(\frac{\Delta t}{2}\right)^2\left.\frac{\diff^2\vveci}{\diff t^2}\right\rvert_{\tn}+\bigO{\Delta t^3}\nonumber
+  \end{alignat}
+  \begin{alignat*}{2}
+    \cref{eq:lf3}-\cref{eq:lf4}&=\cancel{2}\cdot\frac{\Delta t}{\cancel{2}}\uldotted[ulc2]{\left.\difrac{\vveci}{t}\right\rvert_{\tn}}+\bigO{2\cdot\Delta t^3}\nalign
+    \Rightarrow\vveci\left(\tn+\frac{\Delta t}{2}\right)&=\vveci\left(\tn-\frac{\Delta t}{2}\right)+\uldotted[ulc2]{\aveci(\tn)}\Delta t+\bigO{\Delta t^3}\nalign
+  \end{alignat*}
+  Mit Newton $F_{\idxi}=m_{\idxi}\aveci$ und $-\nabla_{\idxi}\Wpot\left(\rvec^N(t)\right)$ folgt:
+\end{sectionbox}
+\begin{defnbox}\nospacing
+  \begin{defn}[Leap-Frog Algorithm]
+    \begin{alignat}{2}
+      \vveci\left(\tn+\frac{\Delta t}{2}\right)&=\vveci\left(\tn-\frac{\Delta t}{2}\right)-\frac{\Delta t}{m_{\idxi}}\nabla_{\idxi}\Wpot\left(\rvec^N(\tn)\right)\nonumber\nalign
+      \rveci\left(\tn+\Delta t\right)&=\rveci\left(\tn\right)+\Delta t\cdot\vveci\left(\tn+\frac{\Delta t}{2}\right)\nalign
+                                                 \text{\imp{Error}}&=\bigO{\Delta t^3}\nonumber
+    \end{alignat}
+    \begin{figure}[H]	
+      \centering{
+        \vspace{-1em}
+        \def\svgwidth{180pt}
+        \resizebox{0.8\linewidth}{!}{\input{figures/MD/leapFrog.pdf_tex}}
+      }
+    \end{figure}
+  \end{defn}
+\end{defnbox}
+\begin{notebox}[$\rveci\left(\tn+\Delta t\right)$ wird berechnet aus:]
+  \begin{numberlist}
+      \item Ort zum Zeitpunkt $\tn$.
+      \item Geschwindikeit zu den Zeiten: $\tn-\frac{\Delta t}{2}$ und $\tn+\frac{\Delta t}{2}$.
+      \item Der Kraft zum Zeitpunkt $\tn$.
+  \end{numberlist}
+\end{notebox}
+\begin{notebox}[Initalisierung des Algorithmus]
+  \begin{circlelist}
+      \item Lege Position aller ``Teilchen'' vernüftig fest.\\
+    Leicht machbar: chem. vernüftige Struktur.
+      \item Bestimme Anfangsgeschwindikeiten anand von stat. Überlegungen:
+    \begin{numberlist}
+        \item Maxwell-Boltzmann Geschwindigkeitsverteilung \imp{oder}
+        \item Mittler gleichverteilte Geschwindigkeitsverteilung.
+    \end{numberlist}
+  \end{circlelist}
+\end{notebox}
+\subsection*{Geschwindkeitsverteilungen}
+\todo[inline]{Add Parts}
+\begin{sectionbox}[\subsubsection{Maxwell-Boltzmann-Geschwindikeitsverteilung}]\nospacing
+  
+\end{sectionbox}
+\begin{sectionbox}[\subsubsection{Gleichverteilung}]\nospacing
+  
+\end{sectionbox}
+\begin{sectionbox}[\subsection{Verlet-Algorithmus}]\nospacing
+   Entwickle um $\rvec(t\pm\Delta t)$:
+  \imp{Nebenbemerkung}: indices der einfachheithalber weggelassen.
+    \begin{alignat}{3}
+    &\ul{\rvec(t+\Delta t)}=&&\rvec(t)+\Delta t\left.\difrac{\rvec}{t}\right\rvert_{t}+\frac{1}{2}\Delta t^2\left.\frac{\diff^2\rvec}{\diff t^2}\right\rvert_{t}+&&\nonumber\nalign
+    &&&+\frac{1}{6}\Delta t^3\left.\frac{\diff^3\rvec}{\diff t^3}\right\rvert_{t}+\bigO{\Delta t^4}\label{eq:verlet1}&&\nalign
+    &\uldotted{\rvec(t-\Delta t)}=&&\rvec(t)-\Delta t\left.\difrac{\rvec}{t}\right\rvert_{t}+\frac{1}{2}\Delta t^2\left.\frac{\diff^2\rvec}{\diff t^2}\right\rvert_{t}-&&\nonumber\nalign
+    &&&-\frac{1}{6}\Delta t^3\left.\frac{\diff^3\rvec}{\diff t^3}\right\rvert_{t}+\bigO{\Delta t^4}&&\label{eq:verlet2}
+  \end{alignat}
+  Mit \cref{eq:verlet1}-\cref{eq:verlet2} folgt:
+  \begin{alignat*}{2}
+    &\rvec(t+\Delta t)=2\rvec(t)+\rvec(t-\Delta t)+\avec(t)\Delta t^2+\bigO{\Delta t^4}
+  \end{alignat*}
+\end{sectionbox}
+  \begin{notebox}[Problem]
+    \begin{numberlist}
+        \item $\avec(t)$ unbekannt $\Rightarrow$ benutze \rd{Differenzquotient}.
+        \item Bei MD-simulationen wird die Energie nicht automatische erhalten $\Rightarrow$ sollten darauf achten das
+      $\Ez=\Ez_{\text{kin.}}+\Wpot=$konstant.\\
+      \imp{Problem}: $\vvec$ in $\Ez_{kin.}=\frac{1}{2}m\vvec^2$ ist hier nicht bekannt, aber mit Taylor folgt auch:
+        \begin{align*}
+          \vvec(t)=\frac{\ul{\rvec(t+\Delta t)}-\uldotted{\rvec(t-\Delta t)}}{2\Delta t}+\rd{\bigO{\Delta t^2}}
+        \end{align*}
+        \imp{Problem}: Fehler nicht mehr $\bigO{\Delta t^4}$ sondern $\bigO{\Delta t^2}$.  
+    \end{numberlist}
+  \end{notebox}
+\begin{defnbox}\nospacing
+  \begin{defn}[Störmer/Verlet-Algorithmus]
+    \begin{align}
+      \rvec(t+\Delta t)&=2\rvec(t)+\rvec(t-\Delta t)+\mcc[\avec(t)]\Delta t^2+\bigO{\Delta t^4}\nalign
+      \mcc[\avec(t)]&\bdrla{=}{\normalfont{\rd{3-Punkte-Zentraldifferenzenquotient}}}\frac{\diff^2\rvec(t)}{\diff t^2}=\frac{\rvec(t+\Delta t)-2\rvec(t)+\rvec(t-\Delta t)}{\Delta t^2}\nonumber\nalign
+                                                 \text{\imp{Error}}&=\bigO{\Delta t^4}\nonumber
+    \end{align}
+    \begin{align}
+      &\Ez=K+\Wpot\quad\text{mit}\quad\vvec(t)=\frac{\rvec(t+\Delta t)-\rvec(t-\Delta t)}{2\Delta t}+\bigO{\Delta t^2}
+    \end{align}
+  \end{defn}
+\end{defnbox}
+\begin{proofbox}\nospacing
+    \begin{proof}
+      \begin{align*}
+        \mcc[\avec(t)]=\frac{\diff^2\rvec(t)}{\diff t^2}&=\frac{\frac{\rvec(t+\Delta t)-\rvec(t)}{\Delta t}-\frac{\rvec(t)-\rvec(t-\Delta t)}{\Delta t}}{\Delta t}\nalign
+                                                          &=\frac{\rvec(t+\Delta t)-2\rvec(t)+\rvec(t-\Delta t)}{\Delta t^2}
+      \end{align*}
+    \end{proof}
+\end{proofbox}
+\begin{notebox}[Vorteil]
+  \begin{numberlist}
+      \item Kommt ohne halbe Zeitschritte aus.
+      \item Kommt ohne Geschwindigkeit aus.
+  \end{numberlist}
+\end{notebox}
+\begin{sectionbox}[\subsection{Velocity-Verlet-Algorithmus}]\nospacing
+  \begin{flalign*}
+    &\text{Recall \cref{eq:eqOfMotion2}:} &\mca[\dot{\rvec}](t)=\vvec(t)&&\text{und}&&\mcb[\dot{\vvec}](t)=\frac{F(\rvec(t))}{m}
+  \end{flalign*}
+  Mit Taylor folgt dann wieder:
+  \begin{align*}
+    \mca[\rvec(t+\Delta t)]=&\rvec(t)+\Delta t\left.\difrac{\rvec}{t}\right\rvert_{t}+\frac{1}{2}\Delta t^2\left.\frac{\diff^2\rvec}{\diff t^2}\right\rvert_{t}+\bigO{\Delta t^3}
+  \end{align*}
+  Für $\frac{\diff^2\rvec}{\diff t^2}$ benutzen wir $\avec(t)=-\frac{\nabla\Wpot(t)}{m}$ und für $\difrac{\rvec}{t}=\vvec(t)$.
+  Für $\mcb[\dot{\vvec}](t)$ folgt dann analog:
+  \begin{align*}
+    \mcb[\vvec(t+\Delta t)]=&\vvec(t)+\Delta t\left.\difrac{\vvec}{t}\right\rvert_{t}+\ul[ulc2]{\frac{1}{2}\Delta t^2\left.\mcc[\frac{\diff^2\vvec}{\diff t^2}]\right\rvert_{t}}+\bigO{\Delta t^3}
+  \end{align*}
+  Für $\difrac{\vvec}{t}$ benutzen wir wieder
+  $\avec(t)=-\frac{\nabla\Wpot(t)}{m}$ und für $\mcc[\frac{\diff\avec}{\diff t}]=\frac{\diff^2\vvec}{\diff t^2}$ benutzen wir wieder Taylor:
+  \begin{align}
+   \avec(t+\Delta t)=&\avec(t)+\Delta t\mcc[\left.\difrac{\avec}{t}\right\rvert_{t}]+\bigO{\Delta t^2}\label{eq:velocityv1}
+  \end{align}
+  Es ist ausreichen bis zur Ordnung $\bigO{\Delta t^2}$ zu entwickeln da wir einen Ausdruck für
+  $\frac{\Delta t^2}{2}\left.\mcc[\frac{\diff^2\vvec}{\diff t^2}]\right\rvert_{t}$ suchen: \cref{eq:velocityv1}$\cdot\frac{\Delta t}{2}$:
+  \begin{align*}
+    &\ul[ulc2]{\frac{\Delta t^2}{2} \left.\difrac{\avec}{t}\right\rvert_{t}}=\frac{\Delta t}{2}\left(\mcc[\avec(t+\Delta t)]-\avec(t)\right)+\bigO{\Delta t^{\rd{3}}}
+  \end{align*}
+\end{sectionbox}
+\begin{defnbox}\nospacing
+  \begin{defn}[Velocity-Verlet]
+    \begin{align}
+      &\circledItem{1}& \rvec(t+\Delta t)=&\rvec(t)+\Delta t\left.\difrac{\rvec}{t}\right\rvert_{t}+\frac{1}{2}\Delta t^2\left.\frac{\diff^2\rvec}{\diff t^2}\right\rvert_{t}+\bigO{\Delta t^3}\nonumber\nalign
+      &\circledItem{2}& \avec(t+\Delta t)&=-\frac{\nabla\Wpot(t+\Delta t)}{m}\nonumber\nalign
+      &\circledItem{3}& \vvec(t+\Delta t)&=\vvec(t)+\frac{\avec(t)+\avec(t+\Delta t)}{2}\Delta t\nonumber\nalign
+                                                 &&\text{\imp{Error}}&=\bigO{\Delta t^3}
+    \end{align}
+  \end{defn}
+\end{defnbox}
+\begin{notebox}[Nebenbemerkungen]
+  \begin{numberlist}
+      \item Für den Velocity-Verlet Algorithmus müssen wir zur Initalisierung auch einmal $\vvec(t)$ bestimmen/setzen.
+      \item Alle drei Algorithmen sind Zeitinvariant, sind also symetrisch bezüglich der Zeit.
+  \end{numberlist}
+\end{notebox}
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../formularySPCS"
+%%% End:

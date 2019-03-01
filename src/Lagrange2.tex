@@ -1,0 +1,115 @@
+\begin{sectionbox}\nospacing
+  Ist man an den Zwangskräften nicht explizit interessiert ist es bequemer eine Formulierung zu wählen, bei der die
+  Zwangskräfte $\Zw$ aus den Bewegungsgleichungen eleminiert werden.\\
+  \imp{Idee}: Bei $R$ Zwangsbedingungen $\gz$ sind nur $f=3N-R$ der $3N$ kartesischen Koordinaten voneinander
+  unabhängig.\\
+  $\Rightarrow$ wir können $f$ verallgemeinerte koordinaten wählen.
+  \begin{empheq}[box=\fbox]{flalign*}
+    &\text{\rdb{Generalisierte Koordinaten}}&q_1,q_2,\ldots,q_f 
+  \end{empheq}
+  \begin{numberlist}
+      \item Diese müssen alle andern Koordinaten festlegen:
+      \begin{align*}
+        &x_{\idxn}=x_{\idxn}(q_1,q_2,\ldots,q_f,t) &\idxn=1,2,\ldots,3N
+      \end{align*}
+      \item Die Zwangsbed. für beliebige Werte der $q_i$ erfüllen.
+      \begin{align*}
+        \gz_{\alphac}(x_1(q_1,\ldots,q_f,t),\ldots,x_{3N}(q_1,\ldots,q_f,t),t)\equiv0
+      \end{align*}
+  \end{numberlist}
+\end{sectionbox}
+\begin{defnbox}\nospacing
+  \begin{defn}[Lagrangefunktion]
+    \begin{align}
+      \LT(\vec{q},\dot{\vec{q}},t)=\vec{K}(\vec{q},\dot{\vec{q}},t)-\vec{W}(\vec{q},\dot{\vec{q}},t)\label{eq:LagrangeFkt}
+    \end{align}
+  \end{defn}
+\end{defnbox}
+\begin{defnbox}\nospacing
+  \begin{defn}[Lagrange Gleichungen 1. Art]
+    \begin{align}
+      &\frac{\diff}{\diff t}\frac{\partial\LT}{\partial\dot{\vec{x}}_{\idxk}}=\frac{\partial\LT}{\partial
+        \vec{x}_{\idxk}}+\sum_{\alphac=1}^R\lambdac_{\alphac}\frac{\partial\gz_{\alphac}}{\partial \vec{x}_{\idxk}}&&
+      &&&&\idxk=1,\ldots,f \label{eq:LagrangeGl1art2}
+    \end{align}
+  \end{defn}
+\end{defnbox}
+\begin{defnbox}\nospacing
+  \begin{defn}[Euler-Lagrange Gleichungen (2. Art)]
+    \begin{align}
+      &\frac{\diff}{\diff t}\underbrace{\frac{\partial\LT}{\partial\dot{\vec{q}}_{\idxk}}}_{\text{Kan. Imp.}}=\underbrace{\frac{\partial\LT}{\partial
+        \vec{q}_{\idxk}}}_{\text{Kan. Kraft}}&\Leftrightarrow&&\underbrace{\frac{\diff}{\diff t}p=F}_{2. \text{Newt. Axiom}}\nonumber\nalign
+      &&&&\idxk=1,\ldots,f \label{eq:EulerLagrangeGl}
+    \end{align}
+  \end{defn}
+\end{defnbox}
+\begin{notebox}[Bemerkungen]
+  \begin{numberlist}
+      \item Nur $f=3N-R$ anstatt $3N+R$-Gleichungen für die Lagrange
+    Gleichung 1. Art.
+      \item System von $f$ Dgl.s 2. Ordnung für die Bahnkurven $\vec{q}_{\idxk}(t)$.
+      \item Benötigt $2f$ Anfangsbendingungen für $\vec{q}_{\idxk}(0)$ und $\dot{\vec{q}}_{\idxk}(0)$.
+      \item Aufstellung für komplexe Systeme viel einfacher als dass
+    Aufstellen der Bewegungsgleichungen selbst, da die L.G. 2. Art eine skalare Grösse ist.\\
+    $\Rightarrow$ Obwohl die Newton Gleichung nur 3N gekoppelte Dgl. 2. Ord. \big($m \ddot{\vec{r}}=\vec{F}(\vec{r})$\big) hat
+    wird häufig die L.G. 2. Art bevorzugt.
+      \item Nicht nur für \rd{Inertialsysteme} gültig.
+      \item Für konservative Kräfte gilt $\vec{W}(\vec{q},\dot{\vec{q}},t)=\vec{W}(\vec{q},t)$, da $W$ wegunabhänig/eine Zustandsgrösse
+    sein muss (=eine Grösse die nur vom Ort und der Zeit abhängt).
+      \item Euler-Lagrange Formulierung ist gleichbedeutend mit Newtons zweitem Gesetz.
+    \[\frac{\diff}{\diff t}\frac{\partial\LT}{\partial\dot{r}_{\idxk}}-\frac{\partial\LT}{\partial
+        r_{\idxk}}=m_{\idxk}\ddot{\vec{r}}-\vec{F}_{\idxk}=0\]
+  \end{numberlist}
+\end{notebox}
+\begin{proofbox}\nospacing
+  \imp{Newtonsche Herleitung}\\
+    Die Zwangsbed. müssen für beliebige $q_i$ gelten und sind damit unabhängig von den verallg. Koordinaten.
+    \begin{align*}
+      \frac{\diff \gz_{\alphac}}{\diff q_{\idxk}}=0 &\overset{\text{Chain R.}}{\Leftrightarrow}&
+                                                                                                 \sum_{\idxn}^{3N}\frac{\partial\gz_{\alphac}}{\partial x_{\idxn}}\frac{\partial x_{\idxn}}{\partial q_{\idxk}}=0
+      &&\idxk=1,\ldots,f
+    \end{align*} 
+    \Cref{eq:Lagrange1}$\big/\cdot\partial x_{\idxn}/\partial q_{\idxk}$
+    \begin{empheq}[box=\fbox]{align*}
+      &\sum_{\idxn=1}^{3N}m_{\idxn}\ddot{\vec{x}}_{\idxn}\ul[ulc4]{\frac{\partial x_{\idxn}}{\partial q_{\idxk}}}=
+      \sum_{\idxn=1}^{3N}\ul[ulc3]{\vec{F}_{\idxn}\frac{\partial x_{\idxn}}{\partial q_{\idxk}}}+0&\idxk=1,\ldots,f
+    \end{empheq}
+    \begin{flalign*}
+      &\imp{1.} &&\ul[ulc2]{\frac{\diff}{\diff t}x_{\idxn}(\vec{q}(t),t)}=\sum_{\idxk}^f\frac{\partial x_{\idxn}}{\partial q_{\idxk}}\dot{q}_{\idxk}+\frac{\partial x_{\idxn}}{\partial t}\nalign
+      &\imp{2.} &&\frac{\partial\ul[ulc2]{\dot{x}_{\idxn}}(\vec{q},\dot{\vec{q}},t)}{\partial\dot{\vec{q}}_{\idxk}}=\ul[ulc4]{\frac{\partial x_{\idxn}(\vec{q},t)}{\partial q_{\idxk}}}\nalign
+      &\imp{3.} &&\text{Für konservative Kräfte gilt}:\nalign
+      &&&F_{\idxn}=-\grad \vec{W}(q_i(t),t)=-\frac{\partial \vec{W}}{\partial x_{\idxn}}\nalign
+      &\Rightarrow &&\ul[ulc3]{\frac{\partial x_{\idxn}}{\partial q_{\idxk}}F}=-\frac{\partial x_{\idxn}}{\partial q_{\idxk}}\frac{\partial
+                     W}{\partial x_{\idxn}}=-\frac{\partial W}{\partial q_{\idxk}}\nalign
+      &\Rightarrow &&\sum_{\idxn=1}^{3N}\ul[ulc5]{m_{\idxn}\ddot{\vec{x}}_{\idxn}\ul[ulc4]{\frac{\partial\vec{v}_{\idxn}}{\partial\dot{\vec{q}}_{\idxk}}}}=
+      \sum_{\idxn=1}^{3N}\ul[ulc3]{-\frac{\partial W}{\partial q_{\idxk}}}\qquad\idxk=1,\ldots,f
+    \end{flalign*}
+  \end{proofbox}
+\begin{proofbox}
+  \begin{proof} 
+  \imp{Sei}: $\vec{K}=\frac{1}{2}m\vec{v}^2$ und \imp{bemerke}:
+    \begin{flalign*}
+      &\imp{1.} &&\ul{\difft \frac{\partial}{\partial \dot{\vec{q}}_{\idxk}}\vec{K}}\stackrel{\text{\rd{C.R.}}}{=}\difft
+      m\vec{v}\frac{\partial\vec{v}}{\partial\dot{\vec{q}}_{\idxk}}\stackrel{\text{\rd{P.R.}}}{=}\ul[ulc5]{m\frac{\diff\vec{v}}{\diff
+                  t}\frac{\partial\vec{v}}{\partial\dot{\vec{q}}_{\idxk}}}+m\vec{v}\ul[ulc6]{\difft \frac{\partial\vec{v}}{\partial\dot{\vec{q}}_{\idxk}}}\nalign
+              &\imp{2.} && \frac{\partial\ul[ulc2]{\vec{v}}}{\partial\dot{\vec{q}}_{\idxk}}=\frac{\partial\vec{x}}{\partial\vec{q}_{\idxk}}
+              \quad \text{and}\quad
+              \difft
+              \frac{\partial\vec{x}(\vec{q}_{\idxk}(t),t)}{\partial\vec{q}_{\idxk}}\stackrel{\text{Schwartz}}{=}\ul[ulc6]{\frac{\partial}{\partial\vec{q}_{\idxk}}\frac{\diff\vec{x}}{\diff
+        t}}\nalign
+    &\Rightarrow&& \sum_{\idxn=1}^{3N}\ul[ulc1]{\difft \frac{\partial\vec{K}}{\partial \dot{\vec{q}}_{\idxk}}}-\uldotted{m\vec{v}_{\idxn}\ul[ulc6]{\frac{\partial}{\partial\dot{\vec{q}}_{\idxk}}}\vec{v}_{\idxn}}=
+      \sum_{\idxn=1}^{3N}\ul[ulc3]{-\frac{\partial W}{\partial q_{\idxk}}}\nalign
+      &\imp{3.}&&\frac{\partial\vec{K}}{\partial\vec{q}_{\idxk}}\stackrel{\text{\rd{P.R.}}}{=}\uldotted{m\vec{v}\frac{\partial\vec{v}}{\vec{q}_{\idxk}}}\quad\text{and}\quad
+      \difft \uldotted[ulc2]{\frac{\partial\vec{W}(q_i(t),t)}{\partial \dot{\vec{q}}_{\idxk}}}=0\nalign
+      &\Rightarrow&&\difft \frac{\partial(\ul[ulc1]{\vec{K}}-\uldotted[ulc2]{\vec{W}})}{\partial \dot{\vec{q}}_{\idxk}}=
+      \frac{\partial(\uldotted{\vec{K}}-\ul[ulc3]{\vec{W}})}{\partial q_{\idxk}}
+    \end{flalign*}
+  \end{proof}
+\end{proofbox}
+\begin{sectionbox}[Beispiel: freie Kreisbewegung]\nospacing
+  
+\end{sectionbox}
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../formularySPCS"
+%%% End:

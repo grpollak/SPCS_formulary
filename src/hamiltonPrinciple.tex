@@ -1,0 +1,58 @@
+\begin{defnbox}
+  \begin{defn}[Wirkunsfunktional]
+    \begin{equation*}
+      \Sv[\vec{q}]:=\int_{t_1}^{t_2}\LT(\vec{q},\dot{\vec{q}},t)\diff
+      t=\int_{t_1}^{t_2}\ul{\vec{K}(q,\dot{q},t)}-\ul[ulc2]{\vec{W}(q,\dot{q},t)}\diff t
+    \end{equation*}
+  \end{defn}
+\end{defnbox}
+\begin{princpbox}
+  \begin{princip}[Hamilton Prinzip]
+    Die Wahre entwickelung $\vec{q}$ eines Systems beschrieben durch $N$ generalisierten Koordinaten $\vec{q}=(\vec{q}_1,\ldots,\vec{q}_N)$, im Konfigurationsraum $\R^f$, zwischen zwei Zuständen $\vec{q}(t_1)$ und $\vec{q}(t_2)$ is ein
+    \rd{stationärer Punkt}(=Pkt. an dem die Variation Null ist).
+    \begin{equation}
+      \boxed{\delta\Sv\stackrel{!}{=}0}
+    \end{equation}
+  \end{princip}
+\end{princpbox}
+\begin{notebox}[Bemerkung]
+  Dies ist einläuchtend wenn man sich überlegt dass man für den Weg des geringsten Widerstandes eine möglichst kleine
+  \ul{kinetische Energie} und grosse \ul[ulc2]{pot. Energie} möchte.
+\end{notebox}
+\begin{proofbox}\nospacing
+   \begin{proof} Herleitung der E.L. Gl. mittels Hamiltonprinzip
+     \begin{flalign*}
+       &\text{\imp{Sei}:}
+       &&\vec{y}_{\epsilon}(\vec{\var}):=\qv(t)+\epsilon\var(t)&\text{mit}&&
+       \var\in C^{\infty}_0
+     \end{flalign*}
+     \begin{flalign*}
+     &\text{\imp{Sei}:} &&\Phi_{\epsilon}:=\int_{t_1}^{t_2}\LT(\vec{y}(t),\dot{\vec{y}}(t),t)\diff t=\int_{t_1}^{t_2}\LT_{\epsilon}\diff t
+     \end{flalign*}
+     Wir wissen das $\Sv[\vec{x}]$ ein Minimum für $\vec{x}=\vec{q}$ hat $\Rightarrow$ $\Phi(\epsilon)$ muss ein Minimum
+     für $\epsilon=0$ haben.
+     \begin{align*}
+       \Phi'(\epsilon)&=\frac{\diff\LT_{\epsilon}}{\diff\epsilon}=\frac{\diff}{\diff\epsilon}\int_{t_1}^{t_2}\LT_{\epsilon}\diff
+       t=\int_{t_1}^{t_2}\frac{\diff\LT_{\epsilon}}{\diff\epsilon}\diff t\nalign
+                 \frac{\diff\LT_{\epsilon}}{\diff\epsilon}&=\frac{\partial\LT_{\epsilon}}{\partial t}\frac{\diff t}{\diff\epsilon}+
+                                                            \frac{\partial\LT_{\epsilon}}{\partial\vec{y}_{\epsilon}}\frac{\diff\vec{y}_{\epsilon}}{\diff\epsilon}+
+                                                            \frac{\partial\LT_{\epsilon}}{\partial\dot{\vec{y}}_{\epsilon}}\frac{\diff\dot{\vec{y}}_{\epsilon}}{\diff\epsilon}\nalign
+                                                            &=\frac{\partial\LT_{\epsilon}}{\partial\vec{y}_{\epsilon}}\var(t)+
+                                                            \frac{\partial\LT_{\epsilon}}{\partial\dot{\vec{y}}_{\epsilon}}\dot{\var}(t)
+     \end{align*}
+     Wenn $\epsilon=0$ gilt $\vec{y}_{\epsilon}=\vec{q}(t)$ und $\LT_{\epsilon}=\LT(\vec{q},\dot{\vec{q}},t)$
+     \begin{align*}
+       \Phi'(0)&=\left.\frac{\diff\Phi}{\diff\epsilon}\right\vert_{\var=0}=
+                 \int_{t_1}^{t_2}\left[\frac{\partial\LT}{\partial\vec{q}}\var(t)+
+                                                            \frac{\partial\LT}{\partial\dot{\vec{q}}}\dot{\var}(t)\right]\nalign
+               &\stackrel{\text{\rd{I.B.P.}}}{=}\int_{t_1}^{t_2}\left[\frac{\partial\LT}{\partial\vec{q}}-
+                 \frac{\diff}{\diff t}\frac{\partial\LT}{\partial\dot{\vec{q}}}\right]\var(t)+\underbrace{\left.\left[\var(t)\frac{\partial\LT}{\partial\dot{\vec{q}}}\right]\right\vert^{t_2}_{t_1}}_{=0}\nalign
+               0&\stackrel{\text{\rd{F.L.C.V}}}{=}\frac{\partial\LT}{\partial\vec{q}}-
+                 \frac{\diff}{\diff t}\frac{\partial\LT}{\partial\dot{\vec{q}}}
+     \end{align*}
+   \end{proof} 
+\end{proofbox}
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../formularySPCS"
+%%% End:

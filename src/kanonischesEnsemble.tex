@@ -1,0 +1,160 @@
+% Krokanonisches Ensemble
+% ------------------------------------------------------------------------------ 
+\subsection{Das kanonische Ensemble $(\Nz,\Vz,\Tz)$}
+\label{subsec:kanonischeEnsemble}
+\begin{sectionbox}[Problem]\nospacing
+  \begin{wrapfigure}{r}{0.4\linewidth}	
+    \centering{
+      \inkscape[110pt]{figures/statPhysik/kanonischesEnsemble.pdf_tex}
+    }
+  \end{wrapfigure}
+  \imp{Problem}: das mikrokanonische Ensemble ist experimentel nicht
+  wirklich realisierbar.\\
+    \imp{Idee}: Die Temperatur ist jedoch im Vergleich zur Energie
+    leicht einstellbar $\Rightarrow (\Nz,\Vz,\Tz)$ Ensemble.\\
+    \imp{Problem}: da das System Wärme mit seienr Umgebnung austauschen kann handelt es sich nicht länger um ein abgeschlossenes
+    System und wir können nicht länger \cref{post:aPriori} benutzen.
+    \imp{Ziel}: Berechnen der inneren Enerie $\Upot$ aus den $\idxr$ Mikrozuständen, die \imp{unterschiedliche} Energien $\Ezr$
+    haben können.
+    \[\Upot_{\text{Syst}}=\obs{\Ez}=\sum_{\idxr}\pbr\Ezr\]
+\end{sectionbox}
+\begin{notebox}[Nebenbemerkung]
+  Spezialfall: System = 1 Gasmolekül und Bad = Alle restlichen Gasmoleküle.
+\end{notebox}
+\begin{sectionbox}[\imp{Frage}: \normalfont{Wie bekommen wir nun einen Ausdruck für die $\pbr$?}]\nospacing
+    \imp{Idee}: Für das Gesamtystem=\tc{Red}{System}+Bad gilt noch immer das mikrokanonische Ensemble$\Rightarrow$ alle $\Zz(\Ez)$
+    Mikrozustände sind gleichwahrscheinlich.\\
+    \imp{Annahme}: System befindet sich im $\idxr$-ten Mikrozustand$\Rightarrow$ dann gibt es noch
+    $\Zz_{\text{Bad}}\left(\Ez-\Ezr\right):=\Zz_{\text{Bad}}\left(\Nz,\Vz,\Ez-\Ezr\right)$ Zustände für das Gesamtszstem.\\
+    Die Wahrscheinlichkeit unter den $\Zz(\Ez)$ Mikrozuständen des Gesamtsystems einen der
+    $\Zz_{\text{B}}\left(\Nz,\Vz,\Ez-\Ezr\right)$ Zustände zu finden ist dann nach \cref{cor:Gleichverteilung} gleich: $\pbr=\frac{\Zz_B(\Ez-\Ezr)}{\Zz(\Ez)}$\\
+    \imp{Tool}: Da $\Ezr\ll\Ez$ können wir Taylorentwickeln:
+    \begin{align*}
+      &\Zz_{\text{B}}\left(\Ez-\Ezr\right)\stackrel{\text{\rd{Taylor}}}{=}\Zz_B(\Ez)+\left.\pfrac{\Zz_B(\epsilon)}{\epsilon}\right\vert_{\epsilon=\Ez}\diff\epsilon+\bigO{\diff\epsilon^2}\nalign
+      &\diff\epsilon=(\Ez-\Ezr)-\Ez=-\Ezr\nalign
+      &\bigO{\diff\epsilon^2}=0 \text{ aufgrund der Definition des Bades } \Ezr\ll\Ez
+    \end{align*}
+    \imp{Problem} Konvergenz und Partielle Ableitung wird für Taylorentwickelnungen für grosse Zahlen problematisch
+    $\Rightarrow$ wechsele auf gutartige Funktion mit änlichen Eigenschaften $\Rightarrow$ Logarithmus.
+\end{sectionbox}
+\begin{sectionbox}\nospacing
+  \begin{align*}
+      \ln\Zz_{\text{B}}\left(\Ez-\Ezr\right)=\ln\Zz_B(\Ez)\rd{-}\underbrace{\left.\pfrac{\ln\Zz_B(\epsilon)}{\epsilon}\right\vert_{\epsilon=\Ez}}_{:=\betac}\Ezr+\underbrace{\bigO{\Ezr^2}}_{=0}
+  \end{align*}
+  \begin{alignat*}{2}
+        &\Rightarrow&\ul{\Zz_{\text{B}}\left(\Ez-\Ezr\right)}=\Zz_{\text{B}}\cdot\e^{-\betac\cdot\Ezr}\text{ mit }\pbr=\frac{\ul{\Zz_B(\Ez-\Ezr)}}{\Zz(\Ez)}\nalign
+                     &\Rightarrow&\pbr=\frac{\Zz_{\text{B}}(\Ez)}{\Zz(\Ez)}\cdot\e^{-\betac\Ezr}\eqs{\text{def.}}\ul[ulc6]{\frac{1}{\Zzk}\cdot\e^{-\betac\Ezr}}\nalign
+                      &\text{Mit}&\sum_{\idxr}\pbr=1\Rightarrow\sum_{\idxr}\frac{1}{\Zzk}\e^{-\betac\Ezr}\eqs{!}1
+  \end{alignat*}
+\end{sectionbox}
+\begin{emphbox}\nospacing
+  \begin{law}[Diskrete Kanonische Zustandssumme]
+    \begin{align}
+      \hspace{-2em}\Zzk=\frac{\Zz(\Ez)}{\Zz_{\text{B}}(\Ez)}=\sum_{\idxj}\bdra{\e^{-\betac\Ez_{\idxj}}}{\normalfont{\rd{Boltzmann Faktor}}}\label{eq:kanonischeZustandssumme}
+    \end{align}
+    \begin{flalign}
+      &\text{\imp{Bemerkung}}:\qquad\pbr=\ul[ulc6]{\frac{1}{\Zzk}\cdot\e^{-\betac\Ezr}}&\label{eq:probKanonisch}
+    \end{flalign}
+  \end{law}
+\end{emphbox}
+\begin{emphbox}\nospacing
+  \begin{law}[Stetige Kanonische Zustandssumme]
+    \begin{align}
+          &\Zzk=\frac{1}{\Nz!\hp^{3\Nz}}\int_{-\infty}^{\infty}\int_{-\infty}^{\infty}\e^{-\betac\Ham(\vec{r}^{\Nz},\vec{p}^{\Nz})}\diff^{3\Nz}\vec{r}\diff^{3\Nz}\vec{p}
+    \end{align}
+  \end{law}
+\end{emphbox}
+\begin{sectionbox}[\subsubsection{Bezug zur inneren Energie}]\nospacing
+  \begin{align*}
+    &\hspace{-1mm}\Upot=\sum_{\idxr}\pbr\Ezr=\sum_{\idxr}\frac{\e^{-\betac\Ezr}}{\Zzk}\Ezr=\frac{1}{\Zzk}\sum_{\idxr}\e^{-\betac\Ezr}\Ezr\nalign
+    &\hspace{-1mm}=\frac{1}{\Zzk}\left[-\pfrac{}{\betac}\sum_{\idxr}\e^{-\betac\Ezr}\right]=-\frac{1}{\Zzk}\pfrac{\Zzk}{\betac}\nalign
+    &\hspace{1.5cm}\left[\text{Mit}:\quad \frac{\diff\ln u(\betac)}{\diff u}\eqs{\text{\rd{C.R.}}}\frac{1}{u}\frac{\partial u(\betac)}{\partial\betac}\right]\nalign
+    &=-\pfrac{\ln\Zzk}{\betac}\qquad \text{Meist einfacher für berechnungen}\nalign
+    &\left[\text{Mit}:\quad \difrac{\betac}{\Tz}=\difrac{}{\Tz}(\kb\Tz)^{-1}=-\kb(\kb\Tz)^{-2}=-\frac{1}{\kb\Tz^2}\right]\nalign
+    &=\kb\Tz^2 \pfrac{\ln\Zzk}{\Tz}
+  \end{align*}
+\end{sectionbox}
+\begin{defnbox}\nospacing
+  \begin{defn}[\\Statistische Energie \tc{black}{(kanonisch)}]\label{defn:EntropieKanonisch}
+    \begin{equation}
+      \Upot(\Zzk)=-\pfrac{\ln\Zzk}{\betac}=\kb\Tz^2 \pfrac{\ln\Zzk}{\Tz}
+    \end{equation}
+  \end{defn}
+\end{defnbox}
+\begin{notebox}[Bemerkung $\qz$]\nospacing
+  Wenn wir mit $\qz$ anstelle von $\Zz$ rechnen, dann berechen wir das Mittel eines Mikrozustandes als die Summe über alle Mikrozustände geiteilt durch die Anzahl:
+  \begin{align*}
+    \obs{A}_{\qz}=\frac{A}{N}=\frac{\sum_{\idxr}\pbr A_{\idxr}}{\Nz}=\frac{1}{\Nz}\sum_{\idxr}A_{\idxr}\pbr
+  \end{align*}
+  Das bedeutet aber das wir für $A_{\text{tot}}$ dann auch mit $\Nz$ multiplizieren müssen:
+  \begin{align*}
+    A_{\text{tot}}=\Nz\obs{A}_{\qz}
+  \end{align*}
+\end{notebox}
+\begin{sectionbox}[\subsubsection{Bezug zur Entropie}]\nospacing
+  \begin{align*}
+    &\text{Mit: }&\pbr\eqs{\cref{eq:probKanonisch}}\frac{1}{\Zzk}\cdot\e^{-\betac\Ezr}\nalign
+    &&\Zzk\eqs{\cref{eq:kanonischeZustandssumme}}\sum_{\idxj}\e^{-\betac\Ez_{\idxj}}\nalign
+    &&\Spots\eqs{\text{\Cref{defn:allgemeineEntropie}}}-\frac{1}{\betac\Tz}\sum_{\idxr}\left(\pbr\ln\pbr\right)&&\text{folgt:}
+  \end{align*}
+\end{sectionbox}
+\begin{sectionbox}\nospacing
+  \begin{align*}
+    \Spots=&-\kb\sum_{\idxr}\frac{1}{\Zz}\e^{-\betac\Ezr}\ln \left[\frac{1}{\Zz}\e^{-\betac\Ezr}\right]\nalign
+    =&-\kb\frac{1}{\Zz}\sum_{\idxr}\e^{-\betac\Ezr}\left[-\ln\Zz-\betac\Ezr\right]\nalign
+    =&\kb\frac{1}{\Zz}\underbrace{\sum_{\idxr}\e^{-\betac\Ezr}\ln\Zz}_{=\Zzk}+\kb\betac\underbrace{\sum_{\idxr}\frac{1}{\Zz}\e^{-\betac\Ezr}\Ezr}_{\eqs{\cref{eq:ensembelDurchschnitt}}\obs{E}}
+  \end{align*}
+\end{sectionbox}
+\begin{defnbox}\nospacing
+  \begin{defn}[\\Statistische Entropie \tc{black}{(kanonisch)}]\label{defn:EntropieKanonisch}
+    \begin{equation}
+      \Spots=\bdra{\kb}{\normalfont{Proportionalitätskonstante}}\ln\Zzm+\frac{\obs{\Ez}}{\Tz}
+    \end{equation}
+  \end{defn}
+\end{defnbox}
+\begin{sectionbox}[\subsubsection{Bezug zum Druck}]\label{subsec:BezugDruck}\nospacing
+  \begin{align*}
+    &\text{Mit: }&-\pz^{\text{phn.}}\diff\Vz\eqs{\cref{eq:bezugZuDruck}}\sum_{\idxr}\pbr\diff\Ezr&&\text{folgt:}
+  \end{align*}
+  \begin{align*}
+    &&-\pzp\diff\Vz=&\sum_{\idxr}\pbr\diff\Ezr=\sum_{\idxr}\pbr\left(\pfrac{\Ezr}{\Vz}\right)\diff\Vz\nalign
+    &\Rightarrow&\pzp=&-\sum_{\idxr}\pbr\left(\pfrac{\Ezr}{\Vz}\right)
+  \end{align*}
+\end{sectionbox}
+\begin{sectionbox}\nospacing
+  Fordert man nun das $\pzp=\obs{\pz}$, wobei $\obs{\pz}$ der mittlere Durck ist, so folgt:
+  \begin{align*}
+    \pzp=&\obs{\pz}=\sum_{\idxr}\pbr\pz_{\idxr}=\sum_{\idxr}\frac{1}{\Zz}\e^{-\betac\Ezr}\pz_{\idxr}\nalign
+           =&\frac{1}{\Zz}\sum_{\idxr}\left[\left(\pfrac{\Ezr(\Nz,\Vz,\Tz)}{\Vz}\right)\e^{-\betac\Ezr(\Nz,\Vz,\Tz)}\right]\nalign
+    \noalign{\centering 
+    $\left[\text{Mit: } -\frac{1}{\betac}\frac{\partial}{\partial\Vz}\e^{-\betac\Ezr}=-\frac{\betac}{\betac}\e^{-\betac\Ezr}\frac{\partial}{\partial\Vz}\e^{\Ezr\betac}\right]$
+    }
+    \eqs{\text{rev. \rd{C.R.}}}&\frac{1}{\Zz}\frac{1}{\betac}\frac{\partial}{\partial\Vz}\underbrace{\left(\sum_{\idxr}\e^{-\betac\Ezr}\right)}_{\Zzk}=\frac{1}{\betac}\frac{1}{\Zzk}\pfrac{\Zzk}{\Vz}\nalign
+                                 \eqs{\text{rev. \rd{C.R.}}}&\frac{1}{\betac}\pfrac{\ln\Zzk}{\Vz}
+  \end{align*}
+\end{sectionbox}
+\begin{defnbox}\nospacing
+  \begin{defn}[Statistischer Druck \tc{black}{(kanonisch)}]
+    \begin{equation}
+      \pzs=\frac{1}{\betac}\pfrac{\ln\Zzk}{\Vz}
+    \end{equation}
+  \end{defn}
+\end{defnbox}
+\begin{sectionbox}[\subsubsection{Bezug zur freien Energie $\Fpot$}]\nospacing
+  Im kanonischen Ensemble filt $\Upot=\obs{\Ez}$, also folgt mit \Cref{defn:EntropieKanonisch}:
+  \begin{align*}
+    \Fpot=&\Upot-\Tz\Spot=\obs{\Ez}-\Tz \left[kb\ln\Zzk+\frac{\obs{\Ez}}{\Tz}\right]\nalign
+            =&-\kb\Tz\ln\Zzk
+  \end{align*}
+\end{sectionbox}
+\begin{defnbox}\nospacing
+  \begin{defn}[Statistische freie Energie \\\tc{black}{(kanonisch)}]
+    \begin{equation}
+      \Fpot^{\text{stat.}}=-\kb\Tz\ln\Zzk
+    \end{equation}
+  \end{defn}
+\end{defnbox}
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../formularySPCS"
+%%% End:

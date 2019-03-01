@@ -1,0 +1,99 @@
+\subsection{Die Boltzmann-Verteilung}
+\begin{sectionbox}\nospacing
+  Es stellt sich nun die Frage wie sich diese dominanten Konfiguration identifizieren lässt. \\
+  Wir wissen das die dominante Konfiguration das grösste Gewicht hat
+  $\Rightarrow$ Um die dominate Konfiguration $\{\mca_{\idxi}^{\max}\}_{\idxi=1}^n$ zu berechnen suchen wir das Maximum des
+  Gewichts \cref{defn:Gewicht}.\\
+  Da $\Wg$ bei molekularen Systemen sehr gross ist, und es zu vereinfachungen führt erweist es sich als einfacher $\ln\Wg$ zu maximieren.
+  \begin{align*}
+    \diff\Wg&&\Leftrightarrow&&\diff\ln\Wg
+  \end{align*}
+  Dabei verlangen wir zwei Einschränkungen:
+  \begin{align}
+    \Nz=\sum_{\idxi}^n\mca_{\idxi}&&\Leftrightarrow&&\text{Anzahl der Teichen ist konstant}
+  \end{align}
+  \begin{align}
+  \Ez_{\text{tot}}\eqs{\cref{eq:ensembelDurchschnitt}}\sum_{\idxi}^n\mca_{\idxi}\Ez_{\idxi}&&\Leftrightarrow&&
+    \text{Energie ist konstant}
+  \end{align}
+  \begin{notebox}[Bemerkung]\nospacing
+    Dies Einschränkungen entsprechen gleich dem kanonischem Ensemble, wie wir im
+    nächsten Abschnitt sehen werden.\\
+    Achtung: die Energien der einzelnen Mikrozustände $\Ez_{\idxi}$ sind nich
+    konstant, die Temperatur aber schon $\Rightarrow$ nicht mit dem mikrokanonischen Ensemble verwechseln.
+  \end{notebox}
+  \imp{Problem}: die $\mca_{\idxi}$ sind nicht länger unabhängig voneinander $\Rightarrow$ können nicht einfach partiell nach allen $\mca_{\idxi}$
+  ableiten.\\
+  \imp{Lösung}: Lagrange Multiplikator Methode \cref{subsec:LMM}.
+\end{sectionbox}
+\begin{sectionbox}[Zwangsbedingungen]\nospacing
+  \begin{align}
+    C_1=&\sum_{\idxi}^n\mca_{\idxi}-\Nz\eqs{!}0\nalign
+    C_2=&\sum_{\idxi}^n\mca_{\idxi}\Ez_{\idxi}-\Ez_{\text{tot}}\eqs{!}0
+  \end{align}
+\end{sectionbox}
+\begin{sectionbox}[Lagrange Funktion]\nospacing
+  \begin{align*}
+    \LT=&\ln\Wg-\alphac C_1-\betac C_2=\ln\left(\frac{\Nz!}{\prod_{\idxi}^n\mca_{\idxi}!}\right)-\alphac C_1-\betac C_2\nalign
+          =&\ul{\ln(\Nz!)}-\sum_{\idxi}^n\ul{\ln(\mca_{\idxi}!)}-\alphac C_1-\betac C_2\nalign
+             &\eqs{\ul{\cref{eq:Stirling}}}\Nz\ln\Nz-\Nz-\sum_{\idxi}^n\uldotted{(\mca_{\idxi}\ln\mca_{\idxi}-\mca_{\idxi})}-\alphac C_1-\betac C_2
+  \end{align*}
+\end{sectionbox}
+\begin{sectionbox}[Maximum]\nospacing
+ \begin{align*}
+   \text{Mit: }&&\pfrac{\Nz}{\mca_{\idxj}}=0&&\text{und}&&\pfrac{\sum_{\idxi}^n\mca_{\idxi}}{\mca_{\idxj}}=1&&\text{folgt:}
+ \end{align*}
+ \begin{align*}
+   \pfrac{\LT}{\mca_{\idxj}}\eqs{\uldotted{\cref{eq:xlnx}}}\ln\mca_{\idxj}-\alpha-\beta\Ez_{\idxj}\eqs{!}0
+ \end{align*}
+ \begin{align}
+   \mca_{\idxj}=\e^{-\alphac}\e^{-\betac\Ez_{\idxj}}
+ \end{align}
+ Damit haben wir einen Ausdruck für die Besetzungszahlen der dominanten Konfiguration gefunden.
+\end{sectionbox}
+\begin{sectionbox}[Wahrscheinlichkeiten]
+  Für die Wahrscheinlichkeiten der Bestungszahlen der Dominanten Konfiguration $\iff$ Wahrscheinlichekiten der Mikrozustände, erhalten wir:
+  \begin{align*}
+    \pb_{\idxj}=\frac{\mca_{\idxj}}{\Nz}=\frac{\e^{-\alphac}\e^{-\betac\Ez_{\idxj}}}{\sum_{\idxk}^n\mca_{\idxk}}=\frac{\e^{-\alphac}\e^{-\betac\Ez_{\idxj}}}{\sum_{\idxk}^n\e^{-\alphac}\e^{-\betac\Ez_{\idxk}}}=
+    \frac{\e^{-\betac\Ez_{\idxj}}}{\sum_{\idxk}^n\e^{-\betac\Ez_{\idxk}}}\nalign
+    \Rightarrow\mca_{\idxj}=\e^{-\betac\Ez_{\idxj}}
+  \end{align*}
+\end{sectionbox}
+\begin{sectionbox}[Wahrscheinlichkeiten]
+  Für den Mittelwert einer Observablen $O$ folgt dann mit \cref{eq:ensembelDurchschnitt}:
+  \begin{align*}
+    \overline{O}=\frac{1}{\Nz}\sum_{\idxi}^n\mca_{\idxi}O_{\idxi}\eqs{\cref{eq:BoltzMannProb}}\sum_{\idxi}^n\pb_{\idxi}O_{\idxi}=
+    \frac{\sum_{\idxi}^n O_{\idxi}\e^{-\betac\Ez_{\idxj}}}{\sum_{\idxk}^n\e^{-\betac\Ez_{\idxk}}}
+  \end{align*}
+\end{sectionbox}
+\begin{emphbox}\nospacing
+  \begin{align}
+      \mca_{\idxj}=\e^{-\betac\Ez_{\idxj}}
+    \end{align}
+    \begin{align}
+      \pb_{\idxr}=\frac{\mca_{\idxr}}{\Nz}=\frac{\e^{-\betac\Ez_{\idxr}}}{\sum_{\idxk}^n\e^{-\betac\Ez_{\idxk}}}:=\frac{\e^{-\betac\Ez_{\idxr}}}{\Zz(\Nz,\Vz,\Tz)}\label{eq:BoltzMannProb}
+    \end{align}
+    \begin{align}
+      \Zz(\Nz,\Vz,\Tz)=\sum_{\idxk}^n\e^{-\betac\Ez_{\idxk}}
+    \end{align}
+    \begin{align}
+      \overline{O}=\frac{1}{\Zz(\Nz,\Vz,\Tz)}\sum_{\idxi}^n O_{\idxi}\e^{-\betac\Ez_{\idxi}}
+    \end{align}
+    \begin{align}
+      \frac{\pb_{\idxr}}{\pb_{\idxj}}=\frac{\mca_{\idxr}}{\mca_{\idxj}}=\exp\left[-\betac(\Ez_{\idxr}-\Ez_{\idxj})\right]
+    \end{align}
+\end{emphbox}
+\begin{defnbox}\nospacing
+  \begin{defn}[Boltzmann Verteilung]
+    Die Boltzmann Verteilung ist eine Wahrscheinlichkeitserteilung von verschiedenen Teilchen in einem System über verschiedene Zustände.\\
+    Sie besagt das die Wahrscheinlichkeit eines Teilchens $X$, bei konstanter Temperatur $\Tz$ im Zustand $x$ zu sein mit steigender Energie
+    exponentiell abnimmt.
+    \begin{align}
+      \Pb(X=x)\propto\e^{-\betac\Ez(x)}=\mcc(\betac)\cdot\frac{1}{\exp(-\betac\Ez(x))}
+    \end{align}
+  \end{defn}
+\end{defnbox}
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../formularySPCS"
+%%% End:

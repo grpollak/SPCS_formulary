@@ -1,0 +1,335 @@
+\subsection{SMD/Langerin-Dynamik}
+\label{subsec:SMD/LangerinDynamik}
+\begin{sectionbox}[Einführung]\nospacing
+  Ist eine stochastische Variante der MD zur Beschreibung komplexer Systeme.\\
+  \imp{Aufgabenstellung}: simulation von ``Teilchen'' die einer schneller fluktuierenden Umgebung ausgestzt sind Bsp.:
+  \begin{numberlist}
+    \item Fettblasen in Suppe.
+    \item Polymere in Lösung.
+    \item Pollen in einem Wassertropfen.
+    \item   Gefragt sind nicht die exakten Werte von $\vvec(t)$ und $\rvec(t)$ sondern deren Wahrscheinlichkeitsverteilung.
+  \end{numberlist}
+  Die (Lösungsmittel-)Teilchen verursachen rasch variierende stochastische Kräfte und Dämpfung.
+  \imp{Idee}: Wenn die explizite Dynamik dieser Umgebung nicht von Interesse ist, dann ist die Dynamik des Systems mittels zusätzlichen
+    Reibungsterms und einer flukturierenden Stochastischen Kraft $\Fvecst$ modelierbar. 
+\end{sectionbox}
+\begin{notebox}[Nebenbemerkung]
+  Ist ein Spezialfall der Brownschen Dynamik (Brownian MD).
+\end{notebox}
+\begin{lawbox}\nospacing
+  \begin{law}[Langerin-Geleichung \tc{black}{(pro. Teilchen)}]
+    \begin{align}
+      &m\dot{\vvec}+\underbrace{\rd{m\gammac\vvec}}_{\mathclap{\text{ratio}}}=\Fvec+\underbrace{\rd{\Fvecst}}_{\mathclap{\text{actio}}}\nalign
+      &\gammac:\quad \text{\rdb{Atomarer Reibungskoeffizient}}\label{eq:atomarerReibungskoeffizient}
+    \end{align}
+  \end{law}
+\end{lawbox}
+\begin{notebox}[Bemerkungen]
+  \begin{numberlist}
+      \item Die Langevin Gleichung ist eine stochastische Differentialgleichung.
+      \item Da $\Fvec(t)$ eine Zufallsvariabel ist, muss auch $\vvec(t)$ eine Zufallsvariabel sein.
+  \end{numberlist}
+\end{notebox}
+\begin{sectionbox}[Formale analytische Lösung für $F\equiv0$]\nospacing
+  \begin{align}
+    \Fvec=0&&\Longleftrightarrow&&\Wpot=0&&\Longleftrightarrow&&\text{freies Teilchen}
+  \end{align}
+  \begin{align*}
+    &\gammac&\text{Materialkonstante/Reibungskoeffizient}
+  \end{align*}
+  \begin{align}
+    &\imp{Ansatz}&\ul{\vvec}(t)=\vvec_{0}\cdot\e^{-\gammac t}+\frac{\e^{-\gammac t}}{m}\int_{0}^{t}\e^{\gammac t'}\Fvecst(t)\diff t'\label{eq:AnsatzWO}
+  \end{align}
+\end{sectionbox}
+\begin{proofbox}\nospacing
+   \begin{proof}
+      \begin{align*}
+        \ul[ulc2]{\frac{\diff\ul{\vvec(t)}}{\diff t}\eqs{\rd{P.R.}}}&-\ul{\gammac\left[\vvec_{0}\e^{-\gammac t}+\frac{\e^{-\gammac t}}{m}\int_{0}^{t}\e^{-\gammac t'}\Fvecst(t')\diff t'\right]}\nalign
+                                                    &+\frac{\e^{-\gammac t}}{m}\e^{\gammac t}\Fvecst(t)=-\gammac\vvec(t)+\frac{\Fvecst(t)}{m}
+      \end{align*}
+      \begin{align*}
+        &\Rightarrow&m\ul[ulc2]{\difrac{\vvec(t)}{t}}+m\gammac\vvec(t)=\Fvecst
+      \end{align*}
+   \end{proof} 
+\end{proofbox}
+\subsection{Mittlere Grössen}
+\begin{sectionbox}\nospacing
+  Sind besonders wichtig/nützlich für die Langerindynamik, da $\Fvecst$ eine Stochstische Kraft ist.
+  \begin{flalign*}
+    &\text{\imp{Recall} :}\cref{eq:ergodenHypothese}&\underbrace{\overline{{\vvec}}(t)}_{\text{Zeitmittel}}=\lim_{t\to\infty}\underbrace{\obs{\vvec(t)}}_{\text{Scharmittel}}
+  \end{flalign*}
+  \imp{Annahmen}:
+  \begin{circlelist}
+      \item Die Fluktuationen zeigen keine Tendenz und geben im Mittel 0.
+        \begin{align}
+          \boxed{\obs{\Fvecst(t)}=0}
+        \end{align}
+          \item Es gibt keine Korrelation zwischen Stössen der Teilchen d.h. Stösse der Teilchen zwischen $t_1$ und $t_2$ sind unkorreliert
+        und werden als unabhängige Zufallsvariablen betrachtet.
+        \begin{align}
+          \text{\rdb{Autokorrelationsfunktion/Gleitender Mittelwert}}\nonumber\nalign
+          \boxed{\obs{\Fvecst(t_1)\cdot\Fvecst(t_2)}\propto\delta(t_1-t_2):=\begin{cases}
+              1 & \text{für }t_1=t_2\\
+              0 & \text{für }t_1\neq t_2
+            \end{cases}}
+        \end{align}
+  \end{circlelist}
+\end{sectionbox}
+\begin{sectionbox}[\subsubsection{Mittlere Geschwindigkeit für ein Teilchen}]\nospacing
+  \begin{align*}
+    \obs{\ul{\vvec(t)}}=&\obs{\vvec_0\e^{-\gammac t}+\frac{\e^{-\gammac t}}{m}\int_{0}^t\e^{\gammac t'}\Fvecst(t')\diff t'}\nalign
+                          =&\vvec_{0}\e^{-\gammac t}+\frac{\e^{-\gammac t}}{m}\int_{0}^t\e^{\gammac t'}\underbrace{\obs{\Fvecst(t')}}_{\eqs{\scalebox{0.7}{\circledItem{1}}}0}\diff t'
+  \end{align*}
+  \begin{align}
+    &\Rightarrow&\obs{\vvec(t)}=\vvec_0\e^{-\gammac t}&&\Rightarrow&&\boxed{\bar{\vvec}(t)=\lim_{t\to\infty}\left(\vvec_0\e^{-\gammac t}\right)=0}
+  \end{align}
+\end{sectionbox}
+\begin{notebox}[Bemerkung]
+  Die mittlere Geschwindikeit verschwindet also, dies macht Sinn, da $\Fvec=-\nabla\Wpot=0$.
+  $\Longleftrightarrow$ nur $\Fvecst$ bewegt das Teilchen und diese Kraft verschwindet im Mittel $\Rightarrow$ auch $\vvec^{\text{st}}$
+  sollte im mittel Verschwinden.
+\end{notebox}
+\begin{theorembox}
+  \begin{theorem}[Satz von Fubini]\nospacing
+    \todo[inline]{Add}
+   \end{theorem} 
+\end{theorembox}
+\begin{corbox}\nospacing
+  \begin{cor}[Quadrat von Integrallen]
+    \begin{equation}\label{eq:QuadratVonIntegralen}
+      \left(\int\limits_{\mca}^{\mcb}f(\vec{x})\diff \vec{x}\right)^2=\int\limits_{\mca}^{\mcb}\int\limits_{\mca}^{\mcb}f(\vec{x})f(\vec{y})\diff \vec{x}\diff\vec{y}
+    \end{equation}
+  \end{cor}  
+  \todo[inline]{Add proof}
+\end{corbox}
+\begin{sectionbox}[\subsubsection{Mittlere kinetische Energie \tc{black}{$\Ez_{\text{kin}}\eqs{}\frac{1}{2}m\vvec^2$}}]\nospacing
+  Um die kinetische Energie zu berechnen benötigen wir $\vvec(t)^2$.
+  \begin{align*}
+        \obs{\ul{\vvec(t)}^2}=&\obs{\left(\vvec_0\e^{-\gammac t}+\frac{\e^{-\gammac t}}{m}\int_{0}^t\e^{\gammac t'}\Fvecst(t')\diff t'\right)^2}\nalign
+                                =&\vvec_{0}^2\e^{-2\gammac t}+2\vvec_0\frac{\e^{-2\gammac t}}{m}\int_{0}^t\e^{\gammac
+                             t'}\underbrace{\obs{\Fvecst(t')}}_{\eqs{\scalebox{0.7}{\circledItem{1}}}0}\diff t'\nalign
+    &+\left(\frac{\e^{-\gammac t}}{m}\int_{0}^t\e^{\gammac t'}\Fvecst(t')\diff t'\right)^2 \eqs{\text{\rd{Fub.Thr.}}}\vvec_{0}^2\e^{-2\gammac t}\nalign
+    &+\frac{\e^{-\gammac t}}{m^2}\int\limits_{0}^t\int\limits_{0}^t\e^{\gammac (t'+t'')}\underbrace{\obs{\Fvecst(t')\cdot\Fvecst(t'')}}_{\eqs{\scalebox{0.7}{\circledItem{2}}}:\mcc\delta(t'-t')}\diff t'\diff t''\nalign
+      \eqs{t'=t''}&\vvec_{0}^2\e^{-2\gammac t}+\frac{\e^{-\gammac t}}{m^2}\mcc\int\limits_{0}^t\e^{2\gammac t'}\diff t'\nalign
+                    =&\vvec_{0}^2\e^{-2\gammac t}+\frac{\mcc\e^{-\gammac t}}{m^2}\left.\left[\frac{1}{2\gammac}\e^{\gammac 2t'}\right]\right\rvert_{0}^t\nalign
+                       =&\ul[ulc2]{\vvec_{0}^2\e^{-2\gammac t}-\frac{\mcc\e^{-2\gammac t}}{2\gammac m^2}+\frac{\mcc}{2\gammac m^2}}
+  \end{align*}
+  Damit folgt:
+  \begin{align*}
+    \overline{\vvec(t)^2}=\lim_{t\to\infty}\obs{\ul[ulc2]{\vvec(t)^2}}=\frac{\mcc}{2\gammac m^2}
+  \end{align*}
+\end{sectionbox}
+\begin{theorembox}\nospacing
+   \begin{theorem}[Äquipartitionstheorem]
+     Im thermischen Gleichgewicht bei der Temperatur $\Tz$ besitzt jeder Freiheitsgrad $f$ die gleiche mittlere Energie $\obs{\Ez}=\frac{1}{2}\kb T$:
+     \begin{align}
+       \obs{\Ez}=\frac{f}{2}\kb\Tz&f: \text{ Anzahl an Freiheitsgraden}\label{eq:Aquipartitionstheorem}
+     \end{align}
+   \end{theorem} 
+\end{theorembox}
+\begin{notebox}[Bemerkung]\nospacing
+  Ein punktförmiges Teilchen hat drei\\ Translationsfreiheitsgrade
+  \begin{align}
+      \obs{\Ez}=\frac{3}{2}\kb\Tz\label{eq:GasFreiheitsgrade}
+  \end{align}
+\end{notebox}
+\begin{sectionbox}[Bestimmung von $\mcc$]\nospacing
+  Mit dem Äquipartitionstheorem \cref{eq:Aquipartitionstheorem} und dem Fakt das die Energie eins Gases durch die kinetische Energie der
+  Atome gegeben ist $\Ez_{kin}=\frac{1}{2}m\vvec^2$ (pro. Teilchen), folgt:
+  \begin{align*}
+    \overline{\vvec(t)^2}=\lim_{t\to\infty}\obs{\ul[ulc2]{\vvec(t)^2}}=\frac{\mcc}{2\gammac
+    m^2}\eqs{!}\frac{2\overline{\Ez_{\text{kin}}}}{m}\eqs{\cref{eq:Aquipartitionstheorem}}\frac{3\kb\Tz}{m}
+  \end{align*}
+  \begin{align*}
+    \Rightarrow \mcc=6\gammac m\kb\Tz
+  \end{align*}
+\end{sectionbox}
+\begin{defnbox}
+  \begin{defn}[Autokorrelationsfunktion]
+    \begin{equation}
+      \obs{\Fvecst(t_1)\cdot\Fvecst(t_2)}=\mcc[6\gammac m\kb\Tz]\delta(t'-t'')\label{eq:autokorrelationsfunktion}
+    \end{equation}
+  \end{defn}
+\end{defnbox}
+\begin{theorembox}\nospacing
+    \begin{theorem}[\\Second Fundamental Theorem of Calculus]
+      \begin{equation}
+        \difrac{}{x}\int_{\mca}^{x}f(t)\diff t=f(x)\label{eq:SFTC}
+      \end{equation}
+    \end{theorem}
+\end{theorembox}
+\begin{notebox}[Einleitung:\\ Diffusion und mittleres Verschiebungsquadrat]
+  Unter Diffusion versteht man die Durchmischung von zwei oder mehreren verschiedenen, miteinander in Berührung stehenden Stoffen.\\
+  Diese Durchmischung entsteht durch die thermische Bewegung (Brown'sche Molekularbewegung) der Teilchen und verläuft gleichmäßig in alle
+  Richtungen.\\
+  Die treibende Kraft der Diffusion ist der lokale Konzentrationsunterschied der diffundierenden Teilchen. Die Diffusion führt ohne
+  Einwirkung von äußeren Kräften zum Abbau des Konzentrationsgradienten.\\
+  Die Geschwindigkeit der Diffusion wird über das mittlere Verschiebungsquadrat $\obs{\rvec^2}$ beschrieben.
+  \end{notebox}
+\begin{sectionbox}[\subsubsection{Das Mittlere Verschiebungsquadrat}]\nospacing
+  Ist ein Maß für die Strecke, die ein Teilchen im Mittel, von einem gewissen Refernzpunkt $\rvec(t_0)=\rvec_{0}$ in einer gewissen Zeit zurücklegt.
+  Das mitteler Auslenkungs/Verschiebungsquadrat ist definiert durch:
+  \begin{align*}
+    &\obs{\abs{\rvec(t)-\rvec_0}^2}\eqs{\rvec_0=0}\obs{\rvec(t)^2}\text{   mit   }\rvec(t)=\rvec_0+\int_{0}^t\vvec(\mca[t'])\diff t'
+  \end{align*}
+  \begin{align*}
+    \rvec(t)-&\rvec_0=\int_{0}^t\ul{\vvec(t')}\diff t'\nalign
+                       \eqs{\cref{eq:AnsatzWO}}&\int_{0}^t\left[\vvec_{0}\cdot\e^{-\gammac t'}+\frac{\e^{-\gammac t'}}{m}\int_{0}^{t'}\e^{\gammac t''}\Fvecst(t'')\diff t''\right]\diff t'
+  \end{align*}
+  \begin{align*}
+    \hspace{2em}=&\vvec_0 \left.\left[-\frac{1}{\gammac}\e^{-\gammac t'}\right]\right\rvert_0^t+\rd{\int\limits_{0}^{t}}\underbrace{\frac{\e^{-\gammac \rd{t'}}}{m}}_{\mca[u']}
+                   \underbrace{\int_{0}^{\rd{t'}}\e^{\gammac t''}\Fvecst\diff t''}_{\mcb[v]}\rd{\diff}\rd{t'}\nalign
+    \eqs{\text{\rd{P.I.}}}&\frac{\vvec_0}{\gammac}\left(1-\e^{-\gammac t}\right)+
+                                           \frac{1}{m}\left.\left[\underbrace{-\frac{\e^{-\gammac \rd{t'}}}{\gammac}}_{\mca[u]}\underbrace{\int_{0}^{\rd{t'}}\e^{\gammac t''}\Fvecst\diff t''}_{\mcb[v]}\right]\right\rvert_{\tc{green}{0}}^{\tc{green}{t}}\nalign
+    &\underbrace{-\frac{1}{m}\rd{\int\limits_0^{t}}\left[\underbrace{-\frac{\e^{-\gammac \rd{t'}}}{\gammac}}_{\mca[u]}
+      \cdot\underbrace{\frac{\diff}{\diff \rd{t'}}\int_{0}^{\rd{t'}}\e^{\gammac t''}\Fvecst\diff t''}_{\mcb[v']}\right]\diff\rd{t'}}_{
+      \eqs{\cref{eq:SFTC}}-\frac{1}{\gammac m}\rd{\int\limits_0^{t}}\underbrace{-\e^{-\gammac \rd{t'}}}_{\mca[u]}\underbrace{\e^{\gammac\rd{t'}}\Fvecst}_{\mcb[v']}\diff\rd{t'}
+      =\frac{1}{\gammac m}\rd{\int\limits_0^{t}}\Fvecst\diff\rd{t'}}\nalign
+      =\frac{\vvec_0}{\gammac}&\left(1-\e^{-\gammac t}\right)+
+         \left[-\frac{1}{\gammac m}\e^{-\gammac\tc{green}{t}}\int_{0}^{\rd{\tc{green}{t}}}\e^{\gammac t''}\Fvecst\diff t''-(-\tc{green}{0})\right]\nalign
+    &+\frac{1}{\gammac m}\rd{\int\limits_0^{t}}\Fvecst\diff\rd{t'}\nalign
+      =&\ul[ulc3]{\frac{\vvec_0}{\gammac}\left(1-\e^{-\gammac t}\right)+\frac{1}{\gammac m}\int_{0}^{t}\left(1-\e^{-\gammac(t-t')}\right)\Fvecst\diff t'}
+  \end{align*}
+\end{sectionbox}
+\begin{sectionbox}[\ctr{\scalebox{0.7}{$\obs{\abs{\rvec(t)-\rvec_0}^2}$}}]\nospacing
+  \begin{align*}
+    &\obs{\abs{\ul[ulc3]{\rvec(t)-\rvec_0}}^2}\eqs{\cref{eq:QuadratVonIntegralen}}\frac{\vvec_0^2}{\gammac^2}\left(1-\e^{-\gammac t}\right)^2+\frac{1}{\gammac^2 m^2}\int\limits_{0}^{t}\int\limits_{0}^{t}
+    \left[\phantom{\obs{\left(1-\e^{-\gammac(t-t')}\right)\Fvecst\cdot\left(1-\e^{-\gammac(t-t')}\right)\Fvecst}}\right.\nalign
+    &\left.\obs{\left(1-\e^{-\gammac(t-t')}\right)\Fvecst_{'}\cdot\left(1-\e^{-\gammac(t-t'')}\right)\Fvecst_{''}}\right]\diff t'\diff t''\nalign
+    &\eqs{\cref{eq:Aquipartitionstheorem}}\ldots+\frac{1}{\gammac^2 m^2}\int\limits_{0}^{t}\int\limits_{0}^{t}
+      \big[\ldots\underbrace{\obs{\Fvecst(t')\cdot\Fvecst(t'')}}_{\mathclap{\eqs{\cref{eq:autokorrelationsfunktion}}6\gammac m\kb\Tz\delta(t'-t'')}}\big]\diff t'\diff t''\nalign
+    &\eqs{t'=t''}\frac{\vvec_0^2}{\gammac^2}\left(1-\e^{-\gammac t}\right)^2
+      +\frac{6\gammac m\kb\Tz}{\gammac^2 m^2}\int\limits_{0}^{t}\left(1-\e^{-\gammac(t-t')}\right)^2\diff t'\nalign
+    &=\ldots+\frac{6\kb\Tz}{\gammac m}\int\limits_{0}^{t}\left[1-2\e^{-\gammac(t-t')}+\e^{-2\gammac(t-t')}\right]\diff t'\nalign
+    &=\ldots+\frac{6\kb\Tz}{\gammac m}\left.\left[t'+\frac{2}{\gammac}\e^{-\gammac(t-t')}-\frac{1}{2\gammac}\e^{-2\gammac(t-t')}\right]\right\rvert_{0}^t\nalign
+    &=\ldots+\frac{6\kb\Tz}{\gammac m}\left[t+\frac{2}{\gammac}-\frac{1}{2\gammac}-\frac{2}{\gammac}-\e^{-\gammac t}+\frac{1}{2\gammac}\e^{-2\gammac t}\right]\nalign
+    &=\frac{\vvec_0^2}{\gammac^2}\left(1-\e^{-\gammac t}\right)^2+\frac{3\kb\Tz}{\gammac^2 m}\left[2\gammac t+3-4\e^{-\gammac t}+\e^{-2\gammac t}\right]
+  \end{align*}
+  Damit folgt dann:
+  \begin{empheq}[box=\fbox]{align}\nospacing
+    &\overline{\obs{\left(\rvec(t)-\rvec_0\right)^2}}=\lim_{t\to\infty}\obs{\left(\rvec(t)-\rvec_0\right)^2}=\frac{6\kb\Tz}{m\gammac}t\bdlla{=}{\normalfont{phänomenologische Thr.}}6\mcc[D]t\nalign
+    &\mcc[D]\equiv\frac{\kb\Tz}{m\gammac}\qquad \rdb{\text{Diffusionskoeffizient}}\nonumber
+  \end{empheq}
+  \vspace{-1cm}
+\end{sectionbox}
+\begin{sectionbox}[Phänomenologische Diffusionstheorie]\nospacing
+  \begin{numberlist}
+      \item \rdb{1. Ficksches Gesetz}:\\ Flussdichte durch Konzentrationsgradienten.
+        \begin{align}
+          \bdla{\vec{J}}{\textnormal{FLussdichte}}(\rvec,t)=-\mcc[D]\underbrace{\nabla\tura{\mcc}{\textnormal{Konzentration}}(\rvec,t)}_{\mathclap{\text{Konzentrationsgadietn}}}
+        \end{align}
+      \item \rdb{Kontinuitätsgleichung}:\\ Differentielle Massen/Stofferhaltung.
+        \begin{align}
+          \difrac{\mcc(\rvec,t)}{t}=-\divg\vec{J}=-\nabla\cdot\vec{J}
+        \end{align}
+      \item \rdb{2. Ficksches Gesetz/Diffusionsgleichung}:\\ Flussdichte durch Konzentrationsgradienten.
+        \begin{align}
+          \pfrac{\mcc(\rvec,t)}{t}=-\nabla\cdot \left(-\mcc[D]\nabla\mcc\right)=\mcc[D]\Delta\mcc
+        \end{align}
+  \end{numberlist}
+\end{sectionbox}
+\begin{notebox}[Nebenbemerkung]
+  Damit kann der atomare Reibungskoeffizient $\gammac$ \cref{eq:atomarerReibungskoeffizient} also entweder experimentel bestimmt werden oder berechnet werden.
+\end{notebox}
+\subsection{Algorithmus der Langerindynamik $\Wpot\ne0$}
+\begin{sectionbox}\nospacing
+  Bisher wurde $\Fvec=-\nabla\Wpot=0$ also Null betrachtet um eine analytische Lösung zu finden.\\
+  Nun betrachten wir den Fall $\Fvec=-\nabla\Wpot\neq0$. Eine Lösung kann hier nur noch nummerisch gefunden werden.
+  \begin{align*}
+    m\dot{\vvec}+\underbrace{m\gammac\vvec}_{\mathclap{\text{ratio}}}=\rd{\Fvec}+\underbrace{\Fvecst}_{\mathclap{\text{actio}}} 
+  \end{align*}
+  Anpassen des Ansatzes \cref{eq:AnsatzWO} mit $t_0<t$ liefrt dann:
+  \todo[inline]{Wie genau?}
+  \begin{align}
+    &\circledItem{1}\nalign
+    &\vvec(t)=\vvec_{0}\e^{-\gammac (t-t_0)}+\frac{\e^{-\gammac t}}{m}\int_{t_0}^{t}\e^{\gammac t'}\left(\Fvec(t')+\Fvecst(t')\right)\diff t'\nonumber\nalign
+    &\circledItem{2}\quad \rvec(t)=\rvec(t_0)+\int_{t_0}^{t}\vvec(t')\diff t'
+  \end{align}
+\end{sectionbox}
+\begin{sectionbox}[Solution via Leap Frog]\nospacing
+  \todo[inline]{Add and understand pluging in}
+\end{sectionbox}
+\subsection{Fluktuationen}
+\begin{defnbox}\nospacing
+  \begin{defn}[Varianz]
+    Ist der Mittelwert der quadrierten Abweichung einer Observablen $O$ von ihrem Mittelwert $\obs{O}$:
+    \begin{align}
+      \obs{\left(O-\obs{O}\right)^2}&=\obs{O^2-2O\obs{O}+\obs{O}^2}\nalign
+                                      &=\obs{O}^2-2\obs{O}\obs{O}+\obs{O}^2=\boxed{\obs{O^2}-\obs{O}^2}\nonumber
+    \end{align}
+  \end{defn}
+\end{defnbox}
+\begin{defnbox}\nospacing
+  \begin{defn}[Fluktuationen]
+    Sind Zufällige Abweichungen von Systemeingenschaften vom Durchnschnitt, eines Systems im Gleichgewicht.\\
+    Als Mass für die Fluktuation einer Observable $O$ kann die Varianz dienen.
+    \begin{align}
+      \text{\rdb{Fluktuation}}\equiv\obs{O^2}-\obs{O}^2
+    \end{align}
+  \end{defn}
+\end{defnbox}
+\begin{sectionbox}[Kanonisches Ensemble]\nospacing
+  $(\Nz,\Vz,\Tz)=$konstant$\Rightarrow \Ez$ darf flukturieren.
+  \begin{notebox}[Recall]\nospacing
+    \begin{align*}
+      &\ul[ulc2]{\Zzk}=\sum_{\idxr}e^{-\betac\Ezr}&&\text{\imp{und}}&&\pbr=\frac{1}{\Zzk}\cdot\e^{-\betac\Ezr}\nalign
+    \end{align*}
+    \begin{flalign}
+      &\text{\imp{Mit}}&\ul{\Upot(\Zzk)}=\sum_{\idxr}\pbr\Ezr=-\pfrac{\ln\Zzk}{\betac}\label{eq:kuH3}
+    \end{flalign}
+  \end{notebox}
+  \imp{Studiere}: die Änderung der inneren Energie mit der Temperatur $\Tz\propto\betac$:
+  \begin{align*}
+    \uldotted{\pfrac{(-\ul{\Upot})}{\betac}}=&\frac{\partial^2\ln\Zz}{\partial\betac^2}=\frac{\partial}{\partial\betac}\left(\pfrac{\ln\Zz}{\betac}\right)\nalign
+    \eqs{\text{\rd{C.R.}}}&\frac{\partial}{\partial\betac}\left(\frac{1}{\Zz}\pfrac{\Zz}{\betac}\right)\eqs{\text{\rd{P.R.}}}\left(\frac{\partial}{\partial\betac}\frac{1}{\Zz}\right)\pfrac{\Zz}{\betac}+\frac{1}{\Zz}\frac{\partial^2\Zz}{\partial\betac^2}\nalign
+    \eqs{\substack{\cref{eq:kuH1}\\\cref{eq:kuH2}}}&-\frac{1}{\Zz^2}\left(\pfrac{\Zz}{\betac}\right)^2+\frac{1}{\Zz}\sum_{\idxr}\Ezr^2\e^{-\betac\Ezr}\nalign
+    \eqs{\cref{eq:kuH3}}&-\frac{1}{\Zz^2}\left(\pfrac{\Zz}{\betac}\right)^2+\sum_{\idxr}\pbr\Ezr^{\rd{2}}\nalign
+    \eqs{\substack{\text{Revers
+    \rd{C.R.}}\\\cref{eq:ensembelDurchschnitt}}}&-\left(\frac{\partial\ln\Zz}{\partial\betac}\right)^2+\obs{\Ez^{\rd{2}}}\\
+    \eqs{\substack{\cref{eq:kuH3}\\\cref{eq:ensembelDurchschnitt}}}&-\left(-\obs{\Ez}\right)^2+\obs{\Ez^2}=\obs{\Ez^2}-\obs{\Ez}^2
+  \end{align*}
+  Wir können allerdings auch einen anderen Ausdruck ableiten:
+  \begin{align*}
+    \pfrac{}{\betac}\left(-\obs{\Ez}\right)=&\uldotted{\pfrac{(-\ul{\Upot})}{\betac}}=-\pfrac{\Upot}{\frac{1}{\kb\Tz}}=-\kb\pfrac{\Upot}{\Tz}\pfrac{\Tz}{\Tz^{-1}}\nalign
+    =&-\kb\pfrac{\Upot}{\Tz}\pfrac{\Tz}{\Tz^{-1}}=-\kb\pfrac{\Upot}{\Tz}\pfrac{(\Tz^{-1})^{-1}}{\Tz^{-1}}\nalign
+       \eqs{\text{\rd{C.R.}}}&\frac{\kb}{\Tz^{-2}}\pfrac{\Upot}{\Tz}\pfrac{\Tz^{-1}}{\Tz^{-1}}=\frac{\kb}{\Tz^{-2}}\pfrac{\Upot}{\Tz}=\kb\Tz^2\pfrac{\Upot}{\Tz}\nalign
+    \eqs{\substack{\text{phän. Thermod.}\\\cref{eq:WarmekapazitatVkonst}}}&\kb\Tz^2\cv
+  \end{align*}
+  Gleichsetzen der beiden Ausdrücke liefert dann:
+  \begin{empheq}[box=\widefbox]{equation}
+    \obs{\Ez^2}-\obs{\Ez}^2=\kb\Tz^2\cv
+  \end{empheq}
+\end{sectionbox}  
+\begin{notebox}[Bemerkungen]
+  \begin{align}
+    \frac{\partial^2\ul[ulc2]{\Zz}}{\partial\betac^2}\eqs{\text{\rd{C.R.}}}\pfrac{}{\betac}\left(-\sum_{\idxr}\Ezr\e^{-\betac\Ezr}\right)\eqs{\text{\rd{C.R.}}}\sum_{\idxr}\Ezr^2\e^{-\betac\Ezr}\label{eq:kuH1}
+  \end{align}
+  \begin{align}
+    \frac{\partial\ul[ulc2]{\Zz}^{-1}}{\partial\betac}=\pfrac{}{\betac}\left(\sum_{\idxr}\Ezr\e^{-\betac\Ezr}\right)^{-1}\eqs{\text{\rd{C.R.}}}=-\Zz^{-2}\pfrac{\Zz}{\betac}\label{eq:kuH2}
+  \end{align}
+\end{notebox}
+\begin{notebox}[Nebenbemerkung]
+  \begin{numberlist}
+      \item Die Fluktuation der inneren Energie nimmt also mit steigender Temperatur zu, was enläuchtend ist.
+      \item $\obs{\Ez^2}-\obs{\Ez}^2$ kann mittels Computersimulationen bestimmt werden z.B. bei gefährlichen Stoffen.
+      \item $\cv$ kann aber auch Experimentel bestimmt werden.
+  \end{numberlist}
+\end{notebox}
+\begin{sectionbox}[Isotherm-isobares Ensemble]\nospacing
+  $(\Nz,\pz,\Tz)=$konstant$\Rightarrow \Vz$ darf flukturieren.
+  \begin{empheq}[box=\widefbox]{equation}
+    \obs{\Vz^2}-\obs{\Vz}^2=\kb\Tz^2V\bdla{\kappa}{\normalfont{Isotherme Kompressibilität}}
+  \end{empheq}
+\end{sectionbox}  
+\begin{sectionbox}[Grosskanonisches Ensemble]\nospacing
+  $(\muz,\Vz,\Tz)=$konstant$\Rightarrow \Nz$ darf flukturieren.
+  \begin{empheq}[box=\widefbox]{equation}
+    \obs{\Nz^2}-\obs{\Nz}^2=\kb\Tz^2N\bdla{\kappa}{\normalfont{Isotherme Kompressibilität}}\tula{\rho}{\normalfont{Teilchendichte}}
+  \end{empheq}
+\end{sectionbox}  
+\todo[inline]{Add Herleitungen}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../formularySPCS"
+%%% End:

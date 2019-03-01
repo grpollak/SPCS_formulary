@@ -1,0 +1,94 @@
+% Mikrokanonisches Ensemble
+% ------------------------------------------------------------------------------ 
+\subsection{Das Mikrokanonische Ensemble $(\Nz,\Vz,\Ez)$}
+\label{subsec:MikrokanonischeEnsemble}
+\begin{defnbox}\nospacing
+  \begin{defn}[\\Mikrokanonisches Zustandssumme \tc{black}{$\Zz=\Zz(\Nz,\Vz,\Ez)$}]\leavevmode\\
+    Anzahl der Mikrozustände $\psi$, eines isolierten Systems zu gegebenem $\Nz,\Vz$ und $\Ez$,
+    deren Energie $\Ez_{\idxr}$ in dem Intervall $[\Ez-\delta\Ez,\Ez]$ liegt.
+  \end{defn}
+\end{defnbox}
+\begin{notebox}[Bemerkung]
+  Für ein abgeschlossenes System ist die Energie zwar eine Erhaltungsgrösse\\
+  $\Rightarrow$ Die Energie $\Ezr$ (Eigenwerte der Lsg. der stationären Schrd. Gl.) der Mikrozustände müssen eig. mit $\Ez$ übereinstimmen.
+  Die Energie $\Ez$ kann jedoch nur mit einer endlichen Genauigkeit $\delta\Ez$
+  bestimmt werden ($\delta\Ez\ll\Ez$)\\
+  $\Rightarrow$ Zähle alle $\phi_{\idxr}$ im infinitesimal schmalen Intervall
+  $[\Ez-\delta\Ez,\Ez]$\\
+  \imp{Bemerkung}: $\Ezr\ll\overbrace{(\Ez-\Ezr)}^{\text{System (Bad)}}\approx\Ez$ $\Rightarrow$ $\uldotted[ulc4]{\Ezr\leq\Ez}$
+\end{notebox}
+\begin{emphbox}\nospacing
+  \begin{law}[Wahrscheinlichkeit eines Mikrozustandes]
+    Nach \cref{post:aPriori} folgt für die Wahrscheinlichkeit eines Mirkozustandes $\psi_{\idxr}$
+    \begin{equation}\label{eq:mikrokanonischeWahr}
+      \boxed{\pbr=
+        \begin{cases}
+          \frac{1}{\Zz(\Nz,\Vz,\Ez)} &\mbox{für}\qquad \Ez-\delta\Ez\leq\uldotted[ulc4]{\Ezr\le\Ez} \\
+          0 &\mbox{für}\qquad \text{sonst}
+        \end{cases}}
+      \end{equation}
+  \end{law}
+\end{emphbox}
+\begin{emphbox}\nospacing
+  \begin{law}[Diskrete Mikrokanonische Zustandsumme]
+    Aus \cref{axiom:probSum} folgt Quantenmechanisch:
+    \begin{equation}
+      \Zzm=\sum_{\Ez-\delta\Ez\le\Ezr\leq\Ez}1
+    \end{equation}
+  \end{law}
+\end{emphbox}
+\begin{emphbox}\nospacing
+  \begin{law}[Stetige Mikrokanonische Zustandsumme]
+    Nach der Molekülmechanik gilt:
+    \begin{align}
+      \Zzm=\int_{\Ez-\delta\Ez}^{\Ez}\rhoc\diff\Ez=\int_{\Ez-\delta\Ez}^{\Ez}\rhoc\diff^{3N}\vec{r}\diff^{3N}\vec{p}\nalign
+      \rhoc:\text{Zustandsdichte} \nonumber
+    \end{align}
+  \end{law}
+\end{emphbox}
+\begin{sectionbox}[Verknüpfung zur phänomenologischen\\ Thermodynamik (Systemtheorie)]\nospacing
+  \begin{numberlist}
+      \item
+  \begin{notebox}[Bemerkung]
+    Setzt abzählbare $\Ezr$ voraus $\rightarrow$ bedingt QM-Beschreibung.
+  \end{notebox}
+  \begin{equation}
+		\Upot\equiv\Ez\eqs{\cref{eq:ensembelDurchschnitt}}\sum_{\idxr=1}^{\Zzm}\pbr\Ezr\qquad(\text{mikrokanonisch})
+  \end{equation}
+    \item \imp{Entropie nach Boltzmann}: Mass für die Anzahl möglicher Konfigurationen/Zustände (engl. ``states''
+  $\Rightarrow$S) $\Leftrightarrow$ Mass für die Zustandssumme.
+  \end{numberlist}
+\end{sectionbox}
+\begin{notebox}[Beispiel]\nospacing
+  \imp{Gegeben}: System aus N Teilchen, von denen jedes in einem von X versch. Zuständen sein kann.\\
+  \imp{Frage}: Wieviel mögliche Konfigurationen/Zustände des Systems gibt es? \#mögl. Zustände$=X_1\cdot\tdla{X_2}{\normalfont{2-tes Teilchen}},\ldots,X_N=X^N$\\
+  \imp{Frage}: Was passiert wenn wir das Volumen der Box plötzlich vergrössern?
+  Jedes Teilchen kann nun in $2X$-Zuständen sein, da $V_{\mca+\mcb}=2V_{\mca}$. \\
+  \imp{Ansatz}: \hfil$\Spot=\kb\ln X^N$.
+  \begin{align*}
+    &\Delta\Spot=\Spot_{\text{fin.}}-\Spot_{\text{init.}}=\kb\ln\frac{2^N X^N}{X^N}=\kb\ln2^N \nalign
+    &\#\text{mogl. Zustd.}=2X_1\cdot 2X_2,\ldots,2X_N=(2X)^N
+  \end{align*}
+  $\Rightarrow$ Anzahl der möglichen Zustände/die Entropie nimmt zu\\
+  $\Rightarrow$ Entropie ``Mass für Unordnung''~ Anzahl möglicher Zustände.
+\end{notebox}
+\begin{sectionbox}[Statistische Entropie]\nospacing
+  \imp{Frage}: Wie verknüpfen wir nun die phänomenologische Entrpopie $\Spotp_{\text{Syst.}}=\frac{\diff\qp_{\text{rev.}}}{T}$ zur stat. Thermodynamik?\\
+  \imp{Problem}: Phänomenologisch weiss man das die entropie \rd{extensive} ist: $\Spot_{\mca+\mcb}=\Spot_{\mca}+\Spot_{\mcb}$\\
+  Für die Zustandssumme gilt allerdings, dass $\Zz=\Zz_1\cdot\Zz_2$.\\
+  \imp{Ansatz}: $S\sim\ln\Zz$ \imp{da} $\ln\left(\Zz_1\cdot\Zz_2\right)=\ln\Zz_1+\ln\Zz_2$\\
+  $\Rightarrow$ $\Spot,\Upot,\Hpot,\Apot,\Gpot$ sind also nach \cref{eq:ensembelDurchschnitt}, bei bekanntem $\Zz$ im mikrokanonischen
+  Ensembel berechenbar.
+\end{sectionbox}
+\begin{defnbox}\nospacing
+  \begin{defn}[\\Statistische Entropie \tc{black}{(mikrokanonisch)}]
+    \begin{equation}
+      \Spots=\bdla{\kb}{\normalfont{Proportionalitätskonstante}}\ln\Zzm
+    \end{equation}
+  \end{defn}
+\end{defnbox}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../formularySPCS"
+%%% End:

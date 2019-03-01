@@ -1,0 +1,214 @@
+\subsection{Einleitung}
+\label{subsec:Einleitung}
+\todo[inline]{Add picture of harm osz. p.902}
+\begin{axiombox}\nospacing
+  \begin{axiom}[First Probability Axiom]
+    The probability of an event is a non-negative real number.
+    \begin{align}
+      &\Pb(E)\in\R,\quad\Pb(E)\geq0,\qquad\forall E\in F\nalign
+      &F: \text{Event Space}\qquad E: \text{Event}\nonumber
+    \end{align}
+  \end{axiom}
+\end{axiombox}
+\begin{axiombox}\nospacing
+  \begin{axiom}[Second Probability Axiom]\label{axiom:probSum}\leavevmode
+  The sum of the probabilities of all events equals to one $\iff$ there is a
+  certainty that anything will happen:
+    \begin{align}
+     &\Pb(\Omega)=1&&\iff&&\sum_{\idxr}^{\infty}\pb_{\idxr}=1\label{eq:probSum}\nalign
+      &\Omega: \text{Sample Space}\qquad F\subseteq\Omega\nonumber
+    \end{align}
+  \end{axiom}
+\end{axiombox}
+\begin{axiombox}\nospacing
+  \begin{axiom}[Third Probability Axiom]
+    If two sets are disjoint, then the sum of either happening is the sum of their probabilities.
+    \begin{align}
+      \Pb \left(\bigcup\limits_{\idxi=1}^{\infty}E_{\idxi}\right)=\sum_{\idxi}^{\infty}\Pb(E_{\idxi})
+    \end{align}
+  \end{axiom}
+\end{axiombox}
+\begin{defnbox}\nospacing
+  \begin{defn}[Permutation $N!$]
+    Auf wieviele Arten lassen sich N unterscheidbare Objekte (e.g. Kugeln verschiedener Farbe) anordnen.
+    \begin{align}
+      \Pb(N)=N!
+    \end{align}
+  \end{defn}
+\end{defnbox}
+\begin{notebox}[Bemerkung]\nospacing
+  Für die erste Kugel gibt es n mögliche Anordnungen, für die Zweite dann noch (n-1) usw.
+\end{notebox}
+\begin{defnbox}\nospacing
+  \begin{defn}[Poly/Multinominalkoeffizient]
+    Gibt es unter N Objkten $n_1$ gleiche (e.g. 5 rote) sowie $n_2,\ldots,n_k$ gleiche so ist die Wahrscheinlichkeit/mögliche Anzahl an Anordnungen geringer.\\
+    Dies liegt daran das es uns gleich ist ob die 1. oder 5. rote Kugel neben einer Schwarzen liegt.
+    \begin{align}
+      \Pb\vect{N! \\ n_1!,\ldots,n_k}=\frac{N!}{n_1!\cdot\ldots\cdot n_k}\label{eq:MultinominalKoef}
+    \end{align}
+  \end{defn}
+\end{defnbox}
+\begin{defnbox}\nospacing
+  \begin{defn}[Mikrozustand]
+    Ist ein eindeutig spezifizierter Zustand des Systems. \\
+    z.B. die spezifische Anordnung von Energie auf einen Oszillator.
+  \end{defn}
+\end{defnbox}
+\begin{defnbox}\nospacing
+  \begin{defn}[Besetzungszahlen $\mca_{\idxi}$]
+    Anzahl $\mca_{\idxi}$ der Einheiten die den $\idxi$-ten (mikro-)Zustand besetzen.
+  \end{defn}
+\end{defnbox}
+\begin{defnbox}\nospacing
+  \begin{defn}[Konfiguaration \tc{black}{$\{\mca_0,\mca_1,\ldots,\mca_{\idxn}\}$}]
+    Ist die Angabe der Besetungszahlen $\mca_0,\mca_1,\ldots$ aller Mikrozustände eines Systems in der Form $\{\mca_0,\mca_1,\ldots,\mca_{\idxn}\}$.\\
+    Entspricht damit der Momentanen Anordnung der gesamten, dem System zu verfügung stehenden Energie $\Ez_{\text{tot}}$ über die verfügbaren Zustände des Systems.
+  \end{defn}
+\end{defnbox}
+\begin{notebox}[Bemerkung]\nospacing
+  \begin{numberlist}
+      \item Dabei entspricht $\mca_0$ der Anzahl an Moleküle die den Zustand $\Ez_0$ besetzen, usw.
+    \item Die Konfiguration änder sich ständig, da sich die Besetungszahlen der Niveaus ändern.
+  \end{numberlist}
+\end{notebox}
+\begin{defnbox}\nospacing
+  \begin{defn}[Makrozustand]
+    Spezifiziert die makroskopischen Eigenschaften, wie etwa Druck od. Temperatur eines Systems.\\
+    Die makroskopischen Eigenschaften ergeben sich dabei aus den gemittelten Werten, der Eigenschaften der Mikrozustände.
+    \begin{align*}
+      \text{\rdb{Makrozustand}}=\{\bdla{\pb_{\idxk}}{\normalfont{Wahr. für Mikrozust. }\idxk}\}=(\tula{\pb_1}{\normalfont{Wahr. für Mikrozust. 1}},\ldots,\pb_N) 
+    \end{align*}
+  \end{defn}
+\end{defnbox}
+\begin{sectionbox}[Idee]\nospacing
+  Wir Interessieren uns eig. nur für die die makroskopischen Eigenschaften des System und nicht für die exakten Mikrozustände.
+\end{sectionbox}
+\begin{defnbox}\nospacing
+  \begin{defn}[Ensemble]
+    Betrachte eine grosse Anzahl von Systemen gleicher makroskopischer Eigenschaften ($\corresponds$Kopien).
+  \end{defn}
+\end{defnbox}
+\begin{sectionbox}[Ensemble Durchschnitt\tc{black}{/}Scharmittel]\nospacing
+    Der Wert einer makroskopischen Observable $\obs{X}$ lässt sich aus einer Summe berechnen.\\
+    Dabei multipliziert man die Wahrscheinlichkeiten $\pb_{\idxi}$, $\idxi\in\{1,\ldots,N\}$ der N Mikrozustände mit dem Wert der
+    Observablen $X_{\idxi}$ der entsprechenden Mikrozustände.\\
+    $\Rightarrow$ der Makrozustand kann also durch ein \rd{statistisches Ensemble} representiert werden.
+\end{sectionbox}
+\begin{defnbox}\nospacing
+  \begin{defn}[Ensemble Durchschnitt\tc{black}{/}Scharmittel]
+    \begin{align}
+      \obs{X}=\sum_{\idxi}^{\tura{N}{\normalfont{Anzahl an Mikrozuständen}}}\pb_{\idxi}X_{\idxi}\label{eq:ensembelDurchschnitt}
+    \end{align}
+  \end{defn}
+\end{defnbox}
+\begin{defnbox}\nospacing
+  \begin{defn}[Zeitmittel]
+    \begin{align}
+      \overline{X(t)}=\lim_{t\to\infty}\frac{1}{t}\int_{0}^t X(\tau)\diff\tau
+    \end{align}
+  \end{defn}
+\end{defnbox}
+\begin{notebox}[Bemerkung]\nospacing
+      Nach einer unendlich langen Zeit werden alle möglichen Mikrozustände durchlaufen.
+\end{notebox}
+\begin{lawbox}\nospacing
+  \begin{law}[Erdogenhypothese]
+    Für $\lim\limits_{t\to\infty}$ gilt:
+    \begin{align}
+      \overline{X(t)}=\obs{X}\label{eq:ergodenHypothese}
+    \end{align}
+  \end{law}
+\end{lawbox}
+\begin{sectionbox}[Schlussfolgerung]\nospacing
+  \begin{numberlist}
+      \item man kann die Entwicklung über einen langen Zeitraum verfolgen und über diese Zeit mitteln, also den Zeitmittelwert bilden, oder.\\
+    Ein Würfel wird unter den gleichen Bedingungen n-mal geworfen.
+      \item man kann alle möglichen Zustände betrkachten und über diese mitteln, also das sogenannte Scharmittel (Ensemble-Mittel) bilden.\\
+    n-Gleichartige Würfel werden einmal geworfen.
+  \end{numberlist}
+\end{sectionbox}
+\begin{notebox}[Bemerkungen]\nospacing
+  \begin{numberlist}
+      \item Gilt nur für Systeme im Gleichgewicht.
+      \item Nachteil 1 des Zeitmittel: benötigt Anfanfsbedingung.
+      \item Nachteil 2 des Zeitmittel: Eine Trajektorie (Bahnkurve) im Phasenraum besucht jeden Mikrozustand (Punkt) nur selten.
+  \end{numberlist}
+\end{notebox}
+\begin{notebox}[Fragen]\nospacing
+  \begin{circlelist}
+      \item Welche Energiekonfiguration ist am\\ Wahrscheinlichsten?\label{circl:WahrEngKonf}
+      \item Sind alle Mikrozustände gleich wichtig?\label{circl:Mikro}
+      \item Wie Approximiert man die Mikrozustände?
+  \end{circlelist}
+\end{notebox}
+\todo[inline]{Fix items label}
+\begin{defnbox}\nospacing
+  \begin{defn}[\cref{circl:Mikro} Gleichgewicht]\leavevmode \\
+    Sind Makrozustände maximaler Entropie in denen bestimmte makroskopische Observablen (in abhg. des Ensembles) konstante Werte annehmen.
+  \end{defn}
+\end{defnbox}
+\begin{notebox}[Bemerkung]
+  Wie Wahrscheinlich ein Mikrozustand ist, wird von den äusseren Bedingungen abähngen, dem dass System unterworfen ist.
+\end{notebox}
+\begin{postbox}\nospacing
+  \begin{post}[Gleicher a priori Wahrscheinlichkeiten]\label{post:aPriori}
+    Für ein \rd{isoliertes} System \cref{defn:abgSys} im Gleichgewicht sind alle Mikrozustände eines
+    \rd{Ensembles} gleichwahrscheinlich.
+    \begin{align*}
+      \boxed{\pb_{\idxi}=\text{const}}
+    \end{align*}
+    $\Rightarrow$ die Art des Ensembles hängt von der Art der konstanten Observablen $\obs{X}$ ab.
+  \end{post}
+\end{postbox}
+\begin{defnbox}\nospacing
+  \begin{defn}[Gewicht]\label{defn:Gewicht}\nospacing
+    Ist die Anzahl der Realisierungsmöglichkeiten einer gegebenen Konifguration $\{\mca_0,\mca_1,\ldots,\mca_{\idxn}\}$ in einem System von $\Nz$ Teilchen.\\
+    Damit Entspricht das Gewicht einer gegebenen Energiekonfiguration also der Anzahl an Mikrozuständei.
+    \begin{align}
+      \Wg\eqs{\cref{eq:MultinominalKoef}}\vect{N \\ \mca_0,\mca_1,\ldots,\mca_{\idxn}}=\frac{\Nz!}{\mca_0!\cdot\mca_1!\cdot\ldots\cdot\mca_{\idxn}!}=\frac{\Nz!}{\prod_{\idxi}\mca_{\idxi}!}
+    \end{align}
+    $\Nz$: Anzahl der Einheiten, über die die Energie verteilt wird.
+  \end{defn}
+\end{defnbox}
+\begin{corbox}\nospacing
+  \begin{cor}[Diskrete Gleichverteilung\\ (Laplace Experiment)]\label{cor:Gleichverteilung}
+   Nach \cref{post:aPriori} folgt für die Wahrscheinlichkeitsverteilung die Gleichverteilung:
+   \begin{align}
+     \Pb(\mca[A])=\frac{\abs{\mca[A]}}{\abs{\Omega}}=\frac{\text{Anzahl günstiger Fälle}}{\text{Anzahl möglicher Fälle}}
+   \end{align}
+  \end{cor}  
+\end{corbox}
+\begin{defnbox}\nospacing
+  \begin{defn}[Wahrscheinlichkeit einer\\Konfiguration \tc{black}{$\idxi:=\{\mca_0,\mca_1,\ldots,\mca_{\idxn}\}$}]\nospacing
+    Ist nach \cref{cor:Gleichverteilung} gleich:
+    \begin{align}
+      \Pb_{\idxi}=\frac{\Wg_{\idxi}}{\Wg_1+\cdots+\Wg_{\Nz}}=\frac{\Wg_{\idxi}}{\sum_{\idxj}^N\Wg_{\idxj}}
+    \end{align}
+  \end{defn}
+\end{defnbox}
+\begin{defnbox}\nospacing
+  \begin{defn}[\cref{circl:WahrEngKonf} Dominante Konfiguration]\nospacing
+    Ist die Konfiguration $\idxj:=\{\mca_0,\mca_1,\ldots,\mca_{\idxn}\}$ mit dem Grössten Gewicht $\Wg_j=\max\limits_{\idxi}\Wg_{\idxi}$ und damit diejenige mit der grössten Wahrscheinlichkeit:
+    \begin{align}
+      \Pb_{\idxj}=\max_{\idxi}\frac{\Wg_{\idxi}}{\Wg_1+\cdots+\Wg_{\Nz}}=\max_{\idxi}\frac{\Wg_{\idxi}}{\sum_{\idxk}^N\Wg_{\idxk}}\label{eq:domKonfig}
+    \end{align}
+  \end{defn}
+\end{defnbox}
+\begin{notebox}[Bemerkungen]\nospacing
+  \begin{numberlist}
+      \item $\Wg=1 \Longleftrightarrow$ es gibt nur eine einzige Möglichkeit diese Konfiguration zu realisieren/die Energien auf die Mikrozustände aufzuteilen
+    $\Rightarrow$ sehr unwahrscheinlich.
+      \item Wenn sich das System aus N teilchen vergrössert, so sinkt zwar die \rd{absolute Wahrscheinlichkeit} der einzelnen Konfigurationen.
+    Dies liegt daran das die Gewichte der Konfigurationen grösser werden.\\
+    $\Rightarrow$ Zähler in \cref{eq:domKonfig} wächst im vergleich zum Nenner Stärker.\\
+    Allerdings sinkt die Wahrscheinlichekeit der Dominanten Konfiguration langsamer im vergleich zu den Anderen.\\
+    $\Rightarrow$ die \rd{relative
+      Wahrscheinlichkeit}/das Gewicht nimmt also im Vergleich zu den anderen Konfigurationen zu.\\
+    \imp{Resultat}: für sehr grösse Systeme/im Limit $N\to\infty$ wird also nur noch die Dominante Konfiguration zu beobachten sein.
+  \end{numberlist}
+\end{notebox}
+\todo[inline]{Add Erdogenhypothese, Zeit, Schaarmittel, Diskret und Stetig}
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../formularySPCS"
+%%% End:

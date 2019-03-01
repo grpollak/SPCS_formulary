@@ -1,0 +1,27 @@
+\Subsection{Zustandsumme/Partizipationsfunktion}
+\begin{defnbox}\nospacing
+  \begin{defn}[Zustandssumme]\leavevmode \\
+    \begin{numberlist}
+        \item Ist ein Mass für die Zahl von Zuständen, die für ein System bei gegebener
+    Temperatur thermisch erreichbar sind.
+      \item Ist die Summe der Wahrscheinlichkeitsterme über alle Energieniveaus.
+    \end{numberlist}
+  \end{defn}
+\end{defnbox}
+\begin{notebox}[Eigenschaften]\nospacing
+  \begin{numberlist}
+    \item
+      \begin{align*}
+        \sum_{\idxr}^{n}\pb_{\idxr}=\sum_{\idxr}^{n}\frac{\e^{-\betac\Ez_{\idxr}}}{\Zz(\Nz,\Vz,\Tz)}=\frac{\Zz(\Nz,\Vz,\Tz)}{\Zz(\Nz,\Vz,\Tz)}=1
+      \end{align*}
+        \item Für $\Ez_0=0$ folgt für $\lim\limits_{\Tz\to0}\Zz=1$ $\Rightarrow$ alle Teilchen sind im Grundzustand und der Anteil der Teilchen im
+      Angeregten Zustand ist Null.
+        \item Für $\Ez_0=0$ folgt für $\lim\limits_{\Tz\to\infty}\Zz=\ul{\infty}$ $\Rightarrow$ jeder Wahrscheinlichkeitsterm der Zustandssummer ist $\e^{-\infty}=1$
+      $\Rightarrow$ Zustandssumme ist gleich der Zahl der Molekülzustände (in Makroskopischen Systemen also $\ul{\infty}$) $\iff$ alle Zustände sind erreichbar.
+      Angeregten Zustand ist Null.
+  \end{numberlist}
+\end{notebox}
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../formularySPCS"
+%%% End:

@@ -1,0 +1,69 @@
+%% Creator: Inkscape inkscape 0.91, www.inkscape.org
+%% PDF/EPS/PS + LaTeX output extension by Johan Engelen, 2010
+%% Accompanies image file 'LeapFrog.pdf' (pdf, eps, ps)
+%%
+%% To include the image in your LaTeX document, write
+%%   \input{<filename>.pdf_tex}
+%%  instead of
+%%   \includegraphics{<filename>.pdf}
+%% To scale the image, write
+%%   \def\svgwidth{<desired width>}
+%%   \input{<filename>.pdf_tex}
+%%  instead of
+%%   \includegraphics[width=<desired width>]{<filename>.pdf}
+%%
+%% Images with a different path to the parent latex file can
+%% be accessed with the `import' package (which may need to be
+%% installed) using
+%%   \usepackage{import}
+%% in the preamble, and then including the image with
+%%   \import{<path to file>}{<filename>.pdf_tex}
+%% Alternatively, one can specify
+%%   \graphicspath{{<path to file>/}}
+%% 
+%% For more information, please see info/svg-inkscape on CTAN:
+%%   http://tug.ctan.org/tex-archive/info/svg-inkscape
+%%
+\begingroup%
+  \makeatletter%
+  \providecommand\color[2][]{%
+    \errmessage{(Inkscape) Color is used for the text in Inkscape, but the package 'color.sty' is not loaded}%
+    \renewcommand\color[2][]{}%
+  }%
+  \providecommand\transparent[1]{%
+    \errmessage{(Inkscape) Transparency is used (non-zero) for the text in Inkscape, but the package 'transparent.sty' is not loaded}%
+    \renewcommand\transparent[1]{}%
+  }%
+  \providecommand\rotatebox[2]{#2}%
+  \ifx\svgwidth\undefined%
+    \setlength{\unitlength}{577.51882959bp}%
+    \ifx\svgscale\undefined%
+      \relax%
+    \else%
+      \setlength{\unitlength}{\unitlength * \real{\svgscale}}%
+    \fi%
+  \else%
+    \setlength{\unitlength}{\svgwidth}%
+  \fi%
+  \global\let\svgwidth\undefined%
+  \global\let\svgscale\undefined%
+  \makeatother%
+  \begin{picture}(1,0.25278585)%
+    \put(0,0){\includegraphics[width=\unitlength,page=1]{LeapFrog.pdf}}%
+    \put(0.13237647,0.00585895){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{$t$}}}%
+    \put(0.20754452,0.02165795){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{$t+\frac{1}{2}\Delta t$}}}%
+    \put(0.41197956,0.00250826){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{$t+\Delta t$}}}%
+    \put(0.54895582,0.02097269){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{$t+\frac{3}{2}\Delta t$}}}%
+    \put(0.71017917,0.00270556){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{$t+2\Delta t$}}}%
+    \put(0.87628848,0.02605572){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{$t+\frac{5}{2}\Delta t$}}}%
+    \put(0.94361084,0.13264941){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{$t$}}}%
+    \put(-0.0673465,0.02661678){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{$t-\frac{1}{2}\Delta t$}}}%
+    \put(0.15481725,0.23699902){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{$\tc{blue}{r(t)}$}}}%
+    \put(0.4083981,0.23699902){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{$\tc{blue}{r(t+\Delta t)}$}}}%
+    \put(0.71022661,0.23699902){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{$\tc{blue}{r(t+2\Delta t)}$}}}%
+    \put(-0.06349346,0.17320815){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{$\tc{red}{v(t-\frac{1}{2}\Delta t)}$}}}%
+    \put(0.20346866,0.16551732){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{$\tc{red}{v(t-\frac{1}{2}\Delta t)}$}}}%
+    \put(0.5148344,0.16720042){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{$\tc{red}{v(t-\frac{3}{2}\Delta t)}$}}}%
+    \put(0.85384763,0.17347084){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{$\tc{red}{v(t-\frac{5}{2}\Delta t)}$}}}%
+  \end{picture}%
+\endgroup%

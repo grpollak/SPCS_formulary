@@ -1,0 +1,48 @@
+\begin{defnbox}\nospacing
+  \begin{defn}[\\Euler-Mac Lauri-Summenformel]
+    \begin{align}
+      \sum_{\idxi=m}^{n}f(\idxi)=&\int_{m}^n f(x)\diff xi+\frac{f(n)+f(m)}{2}\label{eq:EulerMac}\nalign
+      &+\sum_{\idxj=1}^{k}\frac{B_{2\idxj}}{(2\idxj)!}(f(n)^{2\idxj-1}-f(m)^{2\idxj-1})+R_{2\idxk}(n,m)\nonumber
+    \end{align}
+    \begin{align*}
+      B_j: \text{ Bernoulli-Zahlen}&&R_{2\idxj}: \text{ effektives Restglied}
+    \end{align*}
+  \end{defn}
+\end{defnbox}
+\begin{defnbox}\nospacing
+  \begin{defn}[Stirling-Formel]
+    \begin{align}
+      \ln N!=N\ln N-N\label{eq:Stirling}
+    \end{align}
+  \end{defn}
+\end{defnbox}
+\begin{proofbox}\nospacing
+   \begin{proof}
+     \begin{align*}
+       \ln N!=&\ln (N\cdot(N-1)\cdots1)=\sum_{\idxm=1}^{N}\ln\idxm\nalign
+                \eqs{\cref{eq:EulerMac}}&\int_{1}^{N}\ln x\diff x+\frac{\ln N+\ln 1}{2}+\ldots\approx\int_{1}^{N}\ln x\diff x\nalign
+                                          \eqs{\hphantom{\cref{eq:EulerMac}}}&N\ln N-N+1\approx N\ln N-N
+     \end{align*}
+   \end{proof} 
+\end{proofbox}
+\begin{lawbox}
+  \begin{law}[Differentiale]
+    \begin{align}
+      \frac{\diff}{\diff x}x\ln x\eqs{\rd{\text{P.R.}}}=1\cdot\ln x+\frac{1}{x}x=\ln x+1\label{eq:xlnx}
+    \end{align}
+  \end{law}
+\end{lawbox}
+\begin{lawbox}\nospacing
+  \begin{law}[Integrale]
+    \begin{align}
+      \int 1\cdot\ln x\diff x\eqs{\rd{\text{P.I.}}}x\ln x-\int \frac{1}{x}x\diff x=x\ln x-x+C
+    \end{align}
+    \begin{align}
+    \int_{0}^{\infty}\e^{-\mca x^2}\diff x=\frac{1}{2}\sqrt{\frac{\pi}{\mca}}\label{eq:exa2}
+    \end{align}
+  \end{law}
+\end{lawbox}
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../formularySPCS"
+%%% End:

@@ -1,0 +1,155 @@
+% ==============================================================================
+% Copyright (c) 2017 [Georg R. Pollak]  
+% ==============================================================================
+% ------------------------------------------------------------------------------
+
+  % Permission is hereby granted, free of charge, to any person obtaining a copy
+  % of this software and associated documentation files (the "Software"), to deal
+  % in the Software without restriction, including without limitation the rights
+  % to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+  % copies of the Software, and to permit persons to whom the Software is
+  % furnished to do so, subject to the following conditions:
+
+  % The above copyright notice, the creator of the formuary package G.R. Pollak
+  % and this permission notice shall be included in all copies or substantial portions of the Software.
+
+% ==============================================================================
+% End
+% ==============================================================================
+% ------------------------------------------------------------------------------
+
+% Document class
+% ------------------------------------------------------------------------------
+\documentclass[fourColumns]{formularyETH/formularyETH}
+% formuaryETH packages
+% ------------------------------------------------------------------------------
+\usepackage{formularyETH/formularyETH_GeneralPackages}
+\usepackage{formularyETH/formularyETH_underline}
+\usepackage{formularyETH/extern/formularyETH_scientific}
+\usepackage{formularyETH/extern/formularyETH_tikz}
+\usepackage{formularyETH/extern/formularyETH_algorithms}
+% Other very usefull packages
+% ------------------------------------------------------------------------------
+\usepackage{formularyETH/extern/formularyETH_todo}
+\usepackage{formularyMacros}
+\usepackage[colorinlistoftodos]{todonotes} 
+\usepackage{caption}
+\usepackage{wrapfig}
+\usepackage{subcaption}
+\usepackage{tabularx}
+\usepackage{empheq}
+\usepackage[free-standing-units=true]{siunitx}
+\usepackage{blindtext}
+% Attention package physics defines \pb as well => conflict that onlys tells
+% bracket as error
+%\tcbuselibrary{minted}
+% ==============================================================================
+% Documents Definitions title, date, ...
+% ==============================================================================
+
+  \title{Titel}
+  % Graphicpaths important when including pdf_tikz pictures e.g. with inkscape
+  % ------------------------------------------------------------------------------ 
+  \graphicspath{
+          {figures/}
+          {figures/statPhysik/}
+          {figures/zustandssummen/}
+          {figures/MM/}
+          {figures/MD/}
+          {figures/SMD/}
+          }
+% ==============================================================================
+% Document begin
+% ==============================================================================
+\begin{document}
+%\tableofcontents
+% Chapter 1
+% ------------------------------------------------------------------------------ 
+\todo[inline]{Add Geometrische Reihe}
+\section{Newton Mechanik}
+	\input{src/newtonMechanik.tex}
+	\label{sec:newtonMechanik}
+\section{Lagrange Mechanik}
+\label{sec:LagrangeMechanik}
+  \subsection{Lagrangegleichungen 1. Art}
+  \label{subsec:Lagrangegleichungen1Art}
+  \input{src/lagrange1.tex}
+  \subsection{Lagrangegleichungen 2. Art}
+  \label{subsec:Lagrangegleichungen2Art}
+  \input{src/lagrange2.tex}
+  \subsection{Hamiltonsches Prinzip}
+  \label{subsec:hamiltonPrinciple}
+  \input{src/hamiltonPrinciple.tex}
+  \subsection{Hamilton Formulation}
+  \label{subsec:hamiltonFormulation}
+  \input{src/hamiltonFormulation.tex}
+  \subsection{Lagrange Multiplikator Methode}
+  \label{subsec:LagrangeMultiplikator}
+  \input{src/LMM.tex}
+  %\input{src/LagrangeMultiplikatorMethode.tex}
+\newpage
+% Thermodynamik
+% ------------------------------------------------------------------------------ 
+\section{Phänomenologische Thermodynamik}
+\input{src/phThermodynamik.tex}
+\newpage
+% Statistische Thermodynamik
+% ------------------------------------------------------------------------------ 
+\section{Statistische Thermodynamik}
+\label{sec:STT}
+\input{src/statThermodynamik.tex}
+	\vfill\columnbreak
+\input{src/Boltzmann.tex}
+\input{src/MaxwellBoltzmann.tex}
+\input{src/partizipationsfunktion.tex}
+\input{src/mikrokanonischesEnsemble.tex}
+	\vfill\columnbreak
+\input{src/kanonischesEnsemble.tex}
+	\vfill\columnbreak
+\input{src/allgemeineEntropie.tex}
+\input{src/grosskanonischeEnsemble.tex}
+\newpage
+\section{Statistische Thermod. für Gase}
+\label{sec:statgase}
+\input{src/molekulareZustandssumme.tex}
+% Molekülmechanik
+% ------------------------------------------------------------------------------ 
+\newpage
+\section{Molekühl Mechanik (MM)}
+\label{sec:MM}
+\input{src/mm.tex}
+% Molekül Dynamik
+% ------------------------------------------------------------------------------ 
+% ======================================================================
+\section{Molekül Dynamik (MD)}
+\label{sec:MD}
+\input{src/MD.tex}
+% Stochastische MD
+% ------------------------------------------------------------------------------ 
+\newpage
+\section{Stochastische Molekül Dynamik}
+\input{src/SMD.tex}
+% Systemeigenschaften
+% ------------------------------------------------------------------------------ 
+\section{Typen von Systemeigenschaften}
+\input{src/SE.tex}
+% Abschluss
+% ------------------------------------------------------------------------------ 
+\section{Abschluss}
+\input{src/abschluss.tex}
+\newpage
+\section{Mathematischer Anhang}
+\input{src/mathe.tex}
+
+% Todo
+% ======================================================================
+% \input{src/General_TODO.tex}
+  
+% ==============================================================================
+% Document end
+% ==============================================================================
+\end{document}
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:

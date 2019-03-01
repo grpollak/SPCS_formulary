@@ -1,0 +1,120 @@
+\begin{defnbox}
+  \begin{defn}[Symmetrie]
+    Invarianz eines Systems unter einer Transformationsoperation.\\
+  \end{defn}
+\end{defnbox}
+\begin{defnbox}
+  \begin{defn}[Symmetrietransformation]
+    Transformation die den Zustand
+    eines physikalischen Systems nicht ändert.
+  \end{defn}
+\end{defnbox}
+\begin{defnbox}\nospacing
+  \begin{defn}[Erhaltungsgrösse]
+    Physikalische Grösse $Q$ die zeitlich konstant ist.
+    \begin{align*}
+      &\frac{\diff}{\diff t}Q=0 &\Leftrightarrow&& Q=\text{consty}
+    \end{align*}
+  \end{defn}
+\end{defnbox}
+\begin{defnbox}\nospacing
+  \begin{defn}[Zyklische Variable]
+    Variable von der die Lagrangefunktion nicht abhängig ist.
+  \end{defn}
+\end{defnbox}
+\subsection{Noether Theorem}
+\label{subsec:Noether_Theorem}
+\begin{theorembox}\nospacing
+   \begin{theorem}[Noether Theorem]\label{theorem:Noether}
+    Zu jeder kontinuierlichen Symmetrie eines physikalischen Systems gehört eine Erhaltungsgröße. 
+    \begin{align}
+      \LT(\rd{T}(\vec{q}_{\idxi}))=\LT(\vec{q}_{\idxi})&\longrightarrow&&\text{Erhaltungsgrösse}
+    \end{align}
+    \begin{align*}
+      &\text{Zeittranslations-Invarianz}&\longrightarrow&&&\text{Energieerhaltung}\nalign
+      &\text{Translations-Invarianz}&\longrightarrow&&&\text{Impulserhaltung}\nalign
+      &\text{Dreh-Invarianz}&\longrightarrow&&&\text{Drehimpulserhaltung}\nalign
+      &\text{Spezielle Symmetrie}&\longrightarrow&&&\text{Spez. Erhaltungsgrössen}
+    \end{align*}
+   \end{theorem} 
+\end{theorembox}
+\subsection{Hamilton Formalismus}
+\label{subsec:Hamilton_Formalismus}
+\begin{defnbox}\nospacing
+  \begin{defn}[Hamiltonfunktion]
+    \begin{align}
+      H=\vec{T}+\vec{W}\bdla{=}{\normalfont{Kart. Koord}}
+      \sum_{\idxi=1}^N\frac{\vec{p}_{\idxi}^2}{2m_{\idxi}}+U(\vec{r}_1,\ldots,\vec{r}_N)=H(\vec{p},\vec{r})
+    \end{align}
+    Die Hamiltonfunktion kann auch in abhängigkeit der Lagrange Funktion \cref{eq:LagrangeFkt} formuliert werden.
+    \begin{align}
+      H=\sum_{\idxi=1}^f\vec{p}_{\idxi}\dot{\vec{q}}_{\idxi}-\LT(\vec{q},\dot{\vec{q}},t)
+    \end{align}
+  \end{defn}
+\end{defnbox}
+\begin{notebox}[Bemerkungen]
+  \begin{numberlist}
+      \item Die $2f$ Variablen $\vec{q}=\vec{q}_1,\ldots,\vec{q}_f$ und $\vec{p}=\vec{p}_1,\ldots,\vec{p}_f$ heissen
+    \rd{kanonische Variablen} des Set.
+      \item Die Hamilton Funktion beschreibt die Gesamtenergie falls:
+    \begin{enumerate}[noitemsep,nolistsep]
+        \item Die Zwangsbed. nicht explilzit von der Zeit abhängen.
+        \item Die potentielle Energie unabhängig von der Geschwindikeit ist, also nur vom Zustand abhängt.
+    \end{enumerate}
+    \[\Rightarrow\qquad H(\pv(t),\qv(t))=H(\pv(0),\qv(0))=E\]
+  \end{numberlist}
+  \begin{proofbox}\nospacing
+		  \begin{proof}
+        \begin{align*}
+          \difrac{H}{t}&=\sum_{\idxi=1}^N\left(\pfrac{H}{\qvi}\qdvi+\pfrac{H}{\pvi}\pdvi\right)\nalign
+          &=\sum_{\idxi=1}^N\left(\pfrac{H}{\qvi}\pfrac{H}{\pvi}+\pfrac{H}{\pvi}\pfrac{H}{\qvi}\right)=0
+        \end{align*}
+      \end{proof}
+  \end{proofbox}
+\end{notebox}
+\begin{proofbox}\nospacing
+  \begin{proof} using \cref{theorem:Noether} $\LT(t+\delta t)=\LT(t)$
+    \begin{align*}
+      \rd{0}&\rd{=}\pfrac{\LT}{t}\delta t=\left(\pfrac{\LT}{t}-\pfrac{\LT}{\qvi}\qdvi-\pfrac{\LT}{\ddot{\qv}_{\idxi}}\right)\delta t\nalign
+      &\stackrel{\text{\cref{eq:LagrangeFkt}}}{=}\left(\pfrac{\LT}{t}-\left[\difft\pfrac{\LT}{\qdvi}\qdvi-\pfrac{\LT}{\qdvi}\difft\qdvi\right]\right)\delta t\nalign
+      &\stackrel{\text{\rd{P.R.}}}{=}\difft\underbrace{\left(\LT-\pfrac{\LT}{\qdvi}\qdvi\right)}_{=:-\vec{H}}\delta
+        t\Rightarrow\vec{H}=\pfrac{\LT}{\qdvi}\qdvi-\LT=\text{const}
+    \end{align*}
+  \end{proof}
+\end{proofbox}
+\begin{defnbox}\nospacing
+  \begin{defn}[Hamilton Bewegungsgleichungen]
+    \begin{align}
+      &\dot{\vec{q}}_{\idxi}=\frac{\partial H}{\partial p_{\idxi}}&&
+      \dot{\vec{p}}_{\idxi}=-\frac{\partial H}{\partial q_{\idxi}}
+    \end{align}
+  \end{defn}
+\end{defnbox}
+\begin{notebox}[Bemerkung]
+  \begin{numberlist}
+      \item Reduktion von f Dgl.s 2. Ordnung [\cref{eq:EulerLagrangeGl}] zu $2\cdot$f gekoppelten Dgls 1. Ordnung
+      \item Ermöglicht viele schlaue transformationen.
+      \item Wieder unabhängig vom Inertialsystem.
+  \end{numberlist}
+\end{notebox}
+\begin{proofbox}\nospacing
+  \begin{proof}
+    \begin{align*}
+      \diff\LT&=\pfrac{\LT}{\dot{\vec{q}}_{\idxi}}\diff\qdvi+\pfrac{\LT}{\dot{\vec{q}}_{\idxi}}\diff\qvi+\pfrac{\LT}{t}\diff
+                t\nalign 
+      &\stackrel{\text{\cref{eq:EulerLagrangeGl}}}{=}\pvi\diff\qdvi+\pdvi\diff\qvi+\pfrac{\LT}{t}\diff t
+      &\text{mit}&&\pdv=\difft\frac{\diff\LT}{\diff\qdvi}
+    \end{align*}
+    \begin{align*}
+      \diff H&=\diff\pvi\qdvi+\pvi\diff\qdvi-\textcolor{Fuchsia}{\pvi\diff\qdvi-\pdvi\diff\qvi-\pfrac{\LT}{t}\diff
+               t}\nalign
+               &=\diff\pvi\qdvi-\pdvi\diff\qvi-\pfrac{\LT}{t}\diff t\nalign
+                 \Rightarrow\text{\imp{E.g.}:}\quad&\left.\pfrac{H}{t}\right\rvert_{\diff \pv=\diff \qv=0}=-\pfrac{\LT}{t}\stackrel{\vec{K}=\vec{T}(\qv,\qdv)}{=}\pfrac{\vec{W}}{t}
+    \end{align*}
+  \end{proof}
+\end{proofbox}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../formularySPCS"
+%%% End:

@@ -1,0 +1,582 @@
+\begin{defnbox}\nospacing
+  \begin{defn}[Zustandsvariablen]
+    Grössen die den Zustand eines Systems eindeutig festlegen.
+    \[f\stackrel{\text{z.B.}}{=}(E,V,N),(T,V,N),(T,P,N),(S,V,N),\ldots\]
+    $\Rightarrow$ Zustandsgrössen müssen wegunabhängig sein $\oint\diff f=0$.
+  \end{defn}
+\end{defnbox}
+\begin{defnbox}
+  \begin{defn}[Zustands-funktionen/grössen]
+    Sind grössen die alleine durch \rd{Zustandsvariablen} eindeutig bestimmt werden und damit nur vom momentan Zustand abhängen.\\
+    \imp{Zustandsgrössen}: p,T,V,n,S,$\underbrace{\text{U},\text{H},\text{A},\text{G}}_{\mathclap{\text{\rd{Thermod. Potentiale}}}},m$
+  \end{defn}
+\end{defnbox}
+\begin{defnbox}
+  \begin{defn}[Prozessgrössen]
+    Sind wegabhängige Grössen und sind damit keine Zustandsgrössen.\\
+    \imp{Prozessgrössen}: $\Delta W$ ,$\Delta Q$,\ldots
+  \end{defn}
+\end{defnbox}
+\begin{sectionbox}[Thermodynamische Schreibweise]\nospacing
+  \begin{numberlist}
+      \item
+    Wert$=\Spot\stackrel{\text{e.g.}}{=}\Spot(\Tz,\Vz)\stackrel{\text{e.g.}}{=}\Spot(\Ez,\Vz)$\\
+    \imp{Wichtig}: $\Spot(\Ez,\Vz)$ und $\Spot(\Tz,\Vz)$ sind verschiedene
+    Funktionen d.h.\\
+    $\Spot=\Spot(\Ez,\Vz)=f(\Ez,\Vz)=\Spot(\Tz,\Vz)=g(\Tz,\Vz)$.
+      \item Partielle Ableitung
+        \begin{align*}
+          \frac{\partial \Spot(\Ez,\Vz)}{\partial \Ez}:=\left(\frac{\partial \Spot}{\partial \Ez}\right)_{\Vz}
+        \end{align*}
+      \item Totales Differential von Zustandsfunktionen $f$
+        \begin{align*}
+          &\diff f=\pfrac{f(x,y)}{x}\diff x+\pfrac{f(x,y)}{y}\diff y\nalign
+          &=\left(\pfrac{f}{x}\right)_y\diff x+\left(\pfrac{f}{y}\right)_x\diff y=:\mca(x,y)\diff x+\mcb(x,y)\diff y
+        \end{align*}
+        Aus der zweimaligen Differenzierbarkeit von $f(x,y)$ und dem \rd{Satz von Schwarz} folgt:
+        \begin{notebox}
+          \begin{align*}
+            \frac{\partial^2f(x,y)}{\partial x\partial y}=\frac{\partial^2f(x,y)}{\partial y\partial x}&&\Leftrightarrow&&
+          \left(\pfrac{\mca}{y}\right)_x=\left(\pfrac{\mcb}{x}\right)_y\nalign
+          \underbrace{\mca(x,y)\diff x+\mcb(x,y)\diff y}_{\text{vollstd. Differnzial}}&&\Leftrightarrow&&
+           \left(\pfrac{\mca}{y}\right)_x=\left(\pfrac{\mcb}{x}\right)_y             
+          \end{align*}
+        \end{notebox}
+  \end{numberlist}
+\end{sectionbox}
+\begin{defnbox}
+  \begin{defn}[Phase]
+    Ist ein Stoff (=\rd{reine Phase}) oder Stoffgemisch
+    (=\rd{Mischphase}) in dem es keine Trennflächen zwischen
+    makroskopischen Teilen des System gibt, an denen sich
+    Eigenschaften und Zusammensetzung voneinander
+    unterscheiden$\Rightarrow$räumlich konst. Eigenschaften.
+  \end{defn}
+\end{defnbox}
+\begin{defnbox}\nospacing
+  \begin{defn}[Homogenes System]
+    System das nur aus einer Phase besteht.
+  \end{defn}
+\end{defnbox}
+\begin{defnbox}
+  \begin{defn}[Heterogenes System]
+    System das aus mehrern Phasen besteht.
+  \end{defn}
+\end{defnbox}
+\begin{defnbox}
+  \begin{defn}[Offenes System]
+    Stoffaustausch über die Grenzen des Systems ist möglich.
+  \end{defn}
+\end{defnbox}
+\begin{defnbox}
+  \begin{defn}[Geschlossenes System]
+    Stoffaustausch über die Grenzen des Systems ist nicht möglich.
+  \end{defn}
+\end{defnbox}
+\begin{defnbox}
+  \begin{defn}[Abgeschlossenes/Isoliertes System]\label{defn:abgSys}
+    System das weder Materie (=geschlossenes System) noch Energie mit seiner Umgebung austauschen kann.
+  \end{defn}
+\end{defnbox}
+\begin{defnbox}\nospacing
+  \begin{defn}[Extensive Grössen]\nospacing
+    Sind propartional zur Grösse des Systems, also zu den Stoffmengen des Systems.\\
+    \imp{Geg.}: $\mca+\mcb=$ homogenes System und $f$ eine Zustandsgrösse.
+    \begin{align*}
+      &f=f_{\mca}+f_{\mcb}&\Longleftrightarrow&&f&\qquad \text{\rd{extensiv}}
+    \end{align*}
+    \imp{E.g.}: $m, \Vz, \Gpot, n, \Upot, \Spot,\ldots$
+  \end{defn}
+\end{defnbox}
+\begin{defnbox}
+\begin{defn}[Intensive Grössen]\nospacing
+  Bleiben bei Änderung der Systemrösse, unter sonst gleichen Bedingungen konstant.
+  \begin{align*}
+    &f=f_{\mca}=f_{\mcb}&\Longleftrightarrow&&f&\qquad \text{\rd{intensiv}}
+  \end{align*}
+  \imp{E.g.}: T, P, Energiedichte,\ldots
+\end{defn}
+\end{defnbox}
+\begin{notebox}[Bemerkung]\nospacing
+\begin{numberlist}
+    \item Mit Ausnahme des Volumens werden extensive Grössen i.d.R. klein geschrieben.
+    \item Extensive Grössen können in intensive Grössen umgewandelt werden.
+  \begin{align}
+    f_{\text{\rd{int.}}}=\frac{f_{\text{\rd{ext.}}}}{N_{\text{Sys.}}}\label{eq:extensiveTointensive}
+  \end{align}
+\end{numberlist}
+\end{notebox}
+\subsection{Thermodynamische Zustandsgleichungen}
+  \label{subsec:Thermodynamische_Zustandsgleichungen}
+\begin{sectionbox}\nospacing
+  Setzen die Zustandsgrössen $\pz,\Vz,\Tz,\nz$ zueinander in Beziehung.
+\end{sectionbox}
+\begin{lawbox}\nospacing
+  \begin{law}[Ideales Gasgesetz]
+    \begin{align}
+      \pz=\frac{\nz\Rc\T}{\Vz}
+    \end{align}
+  \end{law}
+\end{lawbox}
+\begin{notebox}[Annahmen]
+  \begin{numberlist}
+      \item Gasteilchen werden als starre Kügelchen angesehen ($\corresponds$ nicht verformbar).
+      \item \imp{Keine W.W. zwischen Teilchen}: da die Bewegunsenergie der Teilche viel grösser ist als die
+    zwischenmolekulare Kräfte (=elektr. W.W.).
+      \item \imp{Betrachtung der Teilchen als Punktmassen}: da der Abstand der Teilchen gegenüber ihrem Abstand
+    zueinander und dem zu verfügung stehendem Volumen sehr klein ist.
+      \item Die Zusammenstöße der Teilchen miteinander und mit der Wand sollen vollkommen elastisch sein, d.h. es geht dabei keinerlei Energie verloren. 
+  \end{numberlist}
+\end{notebox}
+\begin{notebox}[Gültigkeitsbereich]
+  \begin{numberlist}
+      \item Für hohe Temperaturen $\rd{\Tz\uparrow}$ und kleine Drücke $\rd{\pz\downarrow}$, da hierdurch das Volumen
+    gross wird.
+      \item Vorallem für Wasserstoff und Edelgase, aufgrund des kleinen Radius und der ``unverformbarkeit''.
+  \end{numberlist}
+\end{notebox}
+\begin{lawbox}\nospacing
+  \begin{law}[Van der Waals Gleichung]
+    \begin{align}
+      &\pz=-\frac{\mca}{\nz^2}+\frac{\Rc\Tz}{\nz-\mcb}&\text{mit}&& \mca,\mcb\quad \text{Stoffabhängige Parameter}
+    \end{align}
+  \end{law}
+\end{lawbox}
+\begin{notebox}[Verbesserung]
+  Beachtet Eigenvolumen der Teilchen und V.d.W. Wechselwirkungen realer Gase.
+\end{notebox}
+% Kalorisch. Zustandsgleichungen
+% ------------------------------------------------------------------------------ 
+\subsection{Kalorische Zustands-/Energiegleichungen}
+\label{subsec:Kalorische_Zustandsgleichungen/Energiegleichungen}
+\begin{defnbox}
+  \begin{defn}[Thermodynamische Potentiale]
+    Sind Zustandsgrössen \imp{mit der dimension Energie}, die das Verhalten thermodynamischer Systeme im Gleichgewicht
+    vollständig beschreiben.\\
+    \imp{Diese sind}: $\Spot,\Upot,\Hpot,\Apot,\Gpot$ und das grosskanonische Ensemble $\Opot$.
+  \end{defn}
+\end{defnbox}
+\begin{sectionbox}\nospacing
+  \imp{Problem}: beschreibung des inneren energetischen Zustands/\rd{thermodynamische potential} eines Systems ist
+  allein durch die \textcolor{section}{thermodynamischen Zustandsgleichungen} nicht möglich.\\
+  $\Rightarrow$ Kalorische Zustandsgleichungen:
+  \begin{align}
+    &\boxed{\Upot=\Upot(\Tz,\Vz)}&&\boxed{\Hpot=\Hpot(\Tz,\pz)}
+  \end{align}
+\end{sectionbox}
+\begin{sectionbox}[\subsubsection{Innere/Interne Energie $\Upot$}]\nospacing
+    Innere Energie eines Systems ist bestimmt durch:
+    \begin{numberlist}
+      \item  $E_{\text{kin}}$ der Teilchen.
+      \item  $E_{\text{pot}}$ der Systembestandteile.
+      \item  $E_{\text{vib}}$ und $E_{\text{rot}}$ der Teilchen.
+      \item Die Energie der chemischen Bindung der Teilchen.
+    \end{numberlist}
+\end{sectionbox}
+\begin{lawbox}\nospacing
+  \begin{law}[1. Hauptsatz der Thermodynamik \romanNumber{1}]
+    Die innere Energie $\Upot$ eines \rd{isolierten} Systems ist konstant.
+  \end{law}
+\end{lawbox}
+\begin{lawbox}\nospacing
+  \begin{law}[1. Hauptsatz der Thermodynamik \romanNumber{2}]
+    Bei einem System $\Upot_{\text{Sys}}$, dass mit seiner Umgebung $\Upot_{\text{Umg}}$ in Kontakt steht, muss die
+    Gesamtenergie $\Upot_{\text{Tot}}$ erhalten bleiben.
+    \[\Updownarrow\]
+    \begin{align}
+      &\Delta\Upot_{\text{Tot}}=\Delta\Upot_{\text{Sys}}+\Delta\Upot_{\text{Umg}}=0
+      &\Delta\Upot_{\text{Sys}}=-\Delta\Upot_{\text{Umg}}
+    \end{align}
+  \end{law}
+\end{lawbox}
+\begin{defnbox}\nospacing
+  \begin{defn}[Wärmekapazität \tc{black}{$\Vz=$\normalfont{const}}]
+    \begin{align}
+      \diff\qp\stackrel{\Vz=\text{const}}{=}\uldotted{\left(\pfrac{\Upot}{\Tz}\right)_{\Vz}\diff\Tz}&&\cv:=\left(\pfrac{\Upot}{\Tz}\right)_{\Vz}\label{eq:WarmekapazitatVkonst}
+    \end{align}
+    $\cv$ beschreibt also das Verhältnis von zugeführter Wärme vs Temperaturänderung bei konstantem Druck:
+    \begin{align}
+      \cv=\frac{\diff\qp}{\diff\Tz}&&\text{ oder }&& \diff\qp=\cv\diff\Tz
+    \end{align}
+  \end{defn}
+\end{defnbox}
+\begin{notebox}[\rd{Molare Wärmekapazität}]\nospacing
+        \begin{align}
+          \cvm=\cv/\m
+        \end{align}
+\end{notebox}
+\begin{notebox}[\rdb{Spezifische Wärmekapazität}]\nospacing
+        \begin{align}
+          \cvm=\cv/\nz
+        \end{align}
+\end{notebox}
+\begin{lawbox}\nospacing
+  \begin{law}[1. Hauptsatz der Thermodynamik \romanNumber{3}]
+    In einem \rd{geschlossenen} System, in dem keine chemische Reaktionen oder Phasenübergänge stattfinden
+    besteht die Änderung der inneren Energie aus einer Änderung der Wärme $\qp$, Arbeit $\Wp$ oder kombination von beidem.
+    \[\Updownarrow\]
+    \begin{flalign}
+      \diff\Upot&=\tura{\diff\qp}{\normalfont{Heat added \rd{to} the system}}+
+      \bdra{\diff\Wp}{\normalfont{Work done \rd{on} Syst.}}
+      \qquad=\qquad\diff\qp-\tura{\diff\Wp}{\normalfont{Work done \rd{by} Syst.}}&
+    \end{flalign}
+    \begin{flalign*}
+      &\text{Mit}& \Wp&=\Wp_{\text{Vol}}+\Wp_{\text{Elekt}}=-\pz\diff\Vz+\Wp_{\text{Elekt}}&\nalign
+      &\text{Tot. Differential}&\diff\Upot&=\uldotted{\left(\pfrac{\Upot}{\Tz}\right)_{\Vz}\diff\Tz}+\left(\pfrac{\Upot}{\Vz}\right)_{\Tz}\diff\Vz\nalign
+      &&&=\diff\qp-\pz\diff\V\nalign
+      &&&\eqs{\normalfont{\cref{eq:Entropie}}}\Tz\diff\Spot-\pz\diff\Vz\nalign
+      &&&=\left(\pfrac{\Upot}{\Spot}\right)_{\Vz}\diff\Spot+\left(\pfrac{\Upot}{\Vz}\right)_{\Tz}\diff\Vz
+    \end{flalign*}
+  \end{law}
+\end{lawbox}
+\begin{defnbox}\nospacing
+  \begin{defn}[Fundamentalgleichung]
+    Für eine \rd{rev} Zustandsänderung ($\diff\qp_{\text{rev.}}=\Tz\diff\diff\Spot$) in einem \rd{geschlossenen} System gitl:
+    \begin{align}
+      \diff\Upot=\Tz\diff\Spot-\pz\diff\Vz
+    \end{align}
+  \end{defn}
+\end{defnbox}
+\begin{sectionbox}[\subsubsection{Wärmekapazität \tc{black}{$\Vz=$\normalfont{const}}}]\nospacing
+  Betrachten wir die Änderung der inneren Energie $\Upot$ bei konstantem Volumen $\partial\Upot/\partial\Vz=0$, so fällt
+  uns auf dass keine Volulmenarbeit verichtet wird:\\ $-\pz\diff\Vz=0$ da $\diff\Vz=0$ $\Rightarrow W=0$. 
+  \begin{empheq}[box=\fbox]{align*}
+    \Rightarrow \diff\Upot=\diff\qp&&\imp{\text{für}}&& \Vz=\text{const}\imp{\text{ und }} \Wp_{\text{elek}}=0
+  \end{empheq} 
+  Vergleichen wir nun mit dem totalen differential von $\Upot$, so folgt wieder \cref{eq:WarmekapazitatVkonst}
+\end{sectionbox}
+\subsubsection{Verschiedene Arten von Prozessen}
+\label{subsec:Verschiedene_Arten_von_Prozessen}
+\begin{defnbox}
+  \begin{defn}[Isothermer Prozess]\nospacing
+    \begin{equation}
+      \Tz=\text{const}
+    \end{equation}
+  \end{defn}
+\end{defnbox}
+\begin{defnbox}
+  \begin{defn}[Isochorer Prozess]\nospacing
+    \begin{align}
+      &\Vz=\text{const}
+    \end{align}
+  \end{defn}
+\end{defnbox}
+\begin{defnbox}
+  \begin{defn}[Isobarer Prozess]\nospacing
+    \begin{align}
+      &\pz=\text{const}
+    \end{align}
+  \end{defn}
+\end{defnbox}
+\begin{defnbox}
+  \begin{defn}[Adiabatischer Prozess]\nospacing
+    \begin{equation}
+      \qp=\text{const}
+    \end{equation}
+  \end{defn}
+\end{defnbox}
+\begin{notebox}[Verschiedene Arten von Arbeit]\nospacing
+  \begin{numberlist}
+      \item Expansion gegen konst. Druck=Isobarer Prozess:
+        \begin{equation*}
+        W=-\pz_{\text{ext}}\int_{\Vz_{\text{E}}}^{\Vz_{\text{A}}}\diff\Vz=-\pz_{\text{ext}}(\Vz_{\text{E}}-\Vz_{\text{A}})
+        \end{equation*}
+      \item Reversible isotherme Expansion:
+        \begin{align*}
+          W&=-\int_{\Vz_{\text{E}}}^{\Vz_{\text{A}}}\pz(\Vz,\Tz)\diff\Vz\stackrel{\text{i.d.G.}}{=}-\nz\Rc\Tz\int_{\Vz_{\text{E}}}^{\Vz_{\text{A}}}\frac{\diff \Vz}{\Vz}\nalign
+          &=-\nz\Rc\Tz\ln\frac{\Vz_{\text{E}}}{\Vz_{\text{A}}}
+        \end{align*}
+          \item Isochore Expansion und freie Expansion ins Vakuum $\pz_{\text{ext}}=0$
+        \begin{align*}
+          \pz_{\text{ext}}=0&\Rightarrow&\Wp=0
+        \end{align*}
+  \end{numberlist}
+\end{notebox}
+\begin{sectionbox}[\subsubsection{Enthalpie $\Hpot$}]\nospacing
+  Die meisten Reaktionen im Labor laufen in offenen Gefässen ab, sie laufen also nicht bei constantem Volumen sondern
+  unter konstanem Druck ab.\\
+  Wir suchen daher eine neues Zustandsfunktionen die für konstanten Druck besonders einfach wird.
+\end{sectionbox}
+\begin{defnbox}\nospacing
+  \begin{defn}[Entahlpie]
+    \begin{align}
+      \Hpot:=\Upot+\pz\cdot\Vz &&\text{und}&&\diff\Hpot&=\diff\qp+\Vz\diff\pz\nalign
+      &&&&&=\Tz\diff\Spot+\Vz\diff\pz\nonumber
+    \end{align}
+    \begin{align*}
+      &\text{Totales Diff.}&&\diff\Hpot=\uldotted[ulc2]{\left(\pfrac{\Hpot}{\Tz}\right)_{\pz}\diff\Tz}+\left(\pfrac{\Hpot}{\pz}\right)_{\Tz}\diff\pz\nalign
+      &&&\hphantom{\diff\Hpot}=\left(\pfrac{\Hpot}{\Spot}\right)_{\pz}\diff\Spot+\left(\pfrac{\Hpot}{\pz}\right)_{\Tz}\diff\pz\nalign
+      &\pz=\text{const}&&\diff\Hpot=\diff\qp\qquad\text{für}\qquad\Wp_{\text{elek.}}=0
+    \end{align*}
+  \end{defn}
+\end{defnbox}
+\begin{notebox}[Bemerkungen]
+  \begin{numberlist}
+      \item $\Hpot$ ist eine Zustandskuntion da sie aus Zustandsfunktionen zusammengestzt ist.
+      \item $\diff\Hpot=\diff\Upot+\diff(\pz\Vz)=\diff\qp-\pz\diff\Vz+\pz\diff\Vz+\diff\pz\Vz$
+  \end{numberlist}
+\end{notebox}
+\begin{sectionbox}[\subsubsection{Wärmekapazität\tc{black}{$\pz=$\normalfont{const}}}]\nospacing
+  Betrachten wir die Änderung der Enthalpie $\Hpot$ bei konstantem Druck $\partial\Hpot/\partial\pz=0$, so fällt
+  uns auf dass : $-\Vz\diff\pz=0$.
+  \begin{empheq}[box=\fbox]{align*}
+    \Rightarrow \diff\Hpot=\diff\qp&&\imp{\text{für}}&& \pz=\text{const}\imp{\text{ und }} \Wp_{\text{elek}}=0
+  \end{empheq} 
+  Vergleichen wir nun mit dem totalen differential von $\Hpot$, so folgt:
+\end{sectionbox}
+\begin{defnbox}\nospacing
+  \begin{defn}[Wärmekapazität \tc{black}{$\pz=$\normalfont{const}}]
+    \begin{align}
+      \diff\qp\stackrel{\pz=\text{const}}{=}\uldotted[ulc2]{\left(\pfrac{\Hpot}{\Tz}\right)_{\pz}\diff\Tz}&&\cp:=\left(\pfrac{\Hpot}{\Tz}\right)_{\pz}
+    \end{align}
+    $\cp$ beschreibt also das Verhältnis von zugeführter Wärme vs Temperaturänderung bei konstantem Druck:
+    \begin{align}
+      \cp=\frac{\diff\qp}{\diff\Tz}&&\text{ oder }&& \diff\qp=\cp\diff\Tz
+    \end{align}
+  \end{defn}
+\end{defnbox}
+\subsection{Spontanität von Prozessen}
+\begin{defnbox}\nospacing
+  \begin{defn}[Reversibler Prozess]
+    \begin{numberlist}
+        \item Sind \rd{reibungslos}, da Reibung Wärme produziert.
+        \item \rd{Quasi Statisch} $=$ Prozess befindet sich immer so gut wie im Glg, als im Quasigleichgewicht.
+    \end{numberlist}
+  \end{defn}
+\end{defnbox}
+\begin{notebox}[Bemerkung]
+  In der Makrowelt gibt es keine wirklichen reversiblen Prozesse.
+\end{notebox}
+\begin{lawbox}\nospacing
+  \begin{law}[2. Hauptsatz der Thermodynamik]\label{defn:2Hauptsatz}
+    Es gibt keine Zustandsänderung, deren einziges Ergebnis die Übertragung von Wärme $\qp$ von von einem Körper
+    niederer Temperatur auf einen Körper höherer ist. 
+    \[\Updownarrow\]
+    \begin{align}
+      \diff\Spot_{\text{Syst.}}>0\qquad&\text{für \rd{spontane} Prozesse in \rd{abgeschlossenen}}& \nonumber\nalign
+      &\text{Systemen}&
+    \end{align}
+  \end{law}
+\end{lawbox}
+\begin{proofbox}
+  \begin{proof}
+    Für abgeschlossene Systeme \cref{defn:abgSys} gilt $\diff\qp=0$.\\
+    Mit der Clausiussche Ungleichung \cref{defn:Cugl} folgt dann sofort der 2. HS.
+  \end{proof}
+    \end{proofbox}
+\begin{defnbox}\nospacing
+  \begin{defn}[Entropie]
+    Da Wärme eine Prozessgrösse ist definieren wir eine neue Zustandsfunktion, die den 2. Hauptsatz der Thermodynamik
+    \cref{defn:2Hauptsatz} mathematisch beschreibt:
+    \begin{align}
+      \diff\Spot_{\text{Syst.}}=\frac{\diff\qp_{\text{rev.}}}{T}\label{eq:Entropie}
+    \end{align}
+  \end{defn}
+\end{defnbox}
+\begin{sectionbox}[\subsubsection{Clausiussche Ungleichung}\label{subsubsec:Clausische Ungleichung}]\nospacing
+  \ul[ulc4]{Unter \rd{reversiblen} Prozessbedingunen wird mehr Arbeit}\\
+  \ul[ulc4]{verrichtet als unter \rd{irreversiblen}.}\\
+  Dies ist, da Arbeit eine Prozessgrösse ist und in der Form von Wärme verloren geht. \ul[ulc3]{Da die innere Energie eine
+  Zustandsfunktion ist gilt}:
+  \begin{align*}
+    &&\diff\Upot=\diff\qp+\diff\Wp\tc{ulc3}{=}\diff\qp_{\text{rev.}}+\diff\Wp_{\text{rev.}}\nalign
+    \Rightarrow&&\diff\qp_{\text{rev.}}-\diff\qp=\diff\Wp-\diff\Wp_{\text{rev.}}\tc{ulc4}{\geq}0\nalign
+                  \Rightarrow&&\diff\qp_{\text{rev.}}\geq\diff\qp\Rightarrow \frac{\diff\qp_{\text{rev.}}}{\Tz}\geq\frac{\diff\qp}{\Tz}
+  \end{align*}
+\end{sectionbox}
+\begin{defnbox}\nospacing
+  \begin{defn}[Clausiussche Ungleichung]\label{defn:Cugl}
+    \begin{align}
+        \diff\Spot\geq\frac{\ul{\diff\qp}}{\Tz}
+    \end{align}
+  \end{defn}
+\end{defnbox}
+\begin{sectionbox}[Umgebungsentropie]\nospacing
+  Die Umgebung entspricht einem Resevoir konstanten Volumens
+  $\Rightarrow\Delta _{\text{Umg.}}\stackrel{\Vz=\text{const}}=\Delta\qp_{\text{Umg.}}$\\
+  Da die innere Energie eine Zustandsgrösse ist (=Wegunabhängig), hängt sie nicht davon ab ob ein Prozess reversible
+  od. irreversible abläuft:
+  \begin{align}
+    \Delta\Spot_{\text{Umg.}}=\frac{\diff\qp_{\text{Umg.}}}{\Tz}
+  \end{align}
+\end{sectionbox}
+\begin{notebox}[Bemerkungen]
+  \begin{numberlist}
+      \item Arbeit erfodert eine geordnete Teilchenbewegung.
+      \item Um Wämrme von einem System niederer Temperatur $\Tz_1$ zu einem System höherer Temperatur $\Tz_2$
+    zuzuführen, müssen wir Arbeit am System verrichten.\\
+    Dies erfordert zwar Ordnung und damit eig. eine verminderung der Entropie des Systems, allerdings bleibt die
+    Entropie für das ges. System=Syst.+Umgb. für reversible Prozesse konstant.\\
+    Für irreversible Prozesse geht arbeit in Form von Reibungswärme verloren $\Rightarrow\diff\Spot>0$.
+  \end{numberlist}
+\end{notebox}
+\begin{lawbox}\nospacing
+  \begin{law}[3. Hauptsatz der Thermodynamik\tc{black}{/}Nernst Theorem]\label{defn:2Hauptsatz}
+    Es ist nicht möglich ein System bis zum absoluten Nullpunkt abzukühlen.
+  \end{law}
+\end{lawbox}
+\begin{sectionbox}[\subsubsection{Weitere Thermodynamische Potentiale}\label{subsubsec:ThPotentiale}]\nospacing
+  Betrachten wir die Clausiussche Ungleichung bei bei konstantem Volumen
+  $\diff\qp_{\Vz}\stackrel{V=\text{const}}{=}\ul{\diff\Upot}$ bzw. konstantem Druck $\diff\qp_{\pz}\stackrel{p=\text{const}}{=}\ul{\diff\Hpot}$
+  so folgt mit \cref{defn:Cugl}:
+  \begin{align}
+    \ul{\diff\Upot}-\Tz\diff\Spot\leq0 &&\text{für}&&\Vz=\text{const}\label{eq:cl1}\nalign
+    \ul{\diff\Hpot}-\Tz\diff\Spot\leq0 &&\text{für}&&\pz=\text{const}\label{eq:cl2}
+  \end{align}
+\end{sectionbox}  
+\begin{defnbox}\nospacing
+  \begin{defn}[Freie/Helmoltz Energie]
+    \begin{align}
+      \Fpot:&=\Upot-\Tz\Spot
+    \end{align}
+    \begin{align*}
+      &\text{Tot. Differential}&\diff\Fpot:&=\diff\Upot-\diff(\Tz\Spot)\nalign
+      &&&=-\pz\diff\Vz-\Spot\diff\Tz\nalign
+      &&&=\left(\pfrac{\Upot}{\Vz}\right)_{\Tz}\diff\Vz+\left(\pfrac{\Upot}{\Tz}\right)_{\Vz}\diff\Tz
+    \end{align*}
+  \end{defn}
+\end{defnbox}
+\begin{defnbox}\nospacing
+  \begin{defn}[Freie Enthalpie/Gibbs Energie]
+    \begin{align}
+      \Gpot:&=\Hpot-\Tz\Spot
+    \end{align}
+    \begin{align*}
+      &\text{Tot. Differential}&\Gpot:&=\diff\Hpot-\diff(\Tz\Spot)\nalign
+      &&&=\Vz\diff\pz-\Spot\diff\Tz\nalign
+      &&&=\left(\pfrac{\Gpot}{\pz}\right)_{\Tz}\diff\pz+\left(\pfrac{\Gpot}{\Tz}\right)_{\pz}\diff\Tz
+    \end{align*}
+  \end{defn}
+\end{defnbox}
+\begin{sectionbox}[Spontanität von Prozessen]\nospacing
+  Mit \cref{eq:cl1,eq:cl2} folgt für die Spontanität von Prozessen
+  \begin{align}
+    \diff\Fpot(\Tz,\Vz)\leq0&&\text{für}&&\Vz=\text{const}\nalign
+    \diff\Gpot(\Tz,\pz)\leq0&&\text{für}&&\pz=\text{const}
+  \end{align}
+\end{sectionbox}
+\begin{notebox}[\rdb{Exothermer Prozess} $\Delta\Hpot>0$]
+  Wärme wird an Umgebung abgegeben.
+\end{notebox}
+\begin{notebox}[\rdb{Endothermer Prozess} $\Delta\Hpot<0$]
+  Wärme wird von Umgebung aufgenommen.
+\end{notebox}
+\begin{notebox}[\rdb{Exergonischer Prozess} $\Delta\Upot>0$]
+  Prozess läuft freiwillig ab.
+\end{notebox}
+\begin{notebox}[\rdb{Endergoner Prozess} $\Delta\Upot<0$]
+  Prozess läuft nicht freiwillig ab.
+\end{notebox}
+\begin{notebox}[Bemerkung]\nospacing
+  \begin{align*}
+    \diff\Fpot&=\diff\qp_{\text{rev.}}-\pz\diff\Vz-\Tz\diff\Spot-\diff\Tz\Spot\nalign
+                \Rightarrow&\diff\Fpot=-\pz\diff\Vz-\Spot\diff\Tz
+  \end{align*}
+  \begin{align*}
+    \diff\Gpot&=\Tz\diff\Spot+\Vz\diff\pz-\Tz\diff\Spot-\diff\Tz\Spot\nalign
+                \Rightarrow&\diff\Gpot=\Vz\diff\pz-\Spot\diff\Tz
+  \end{align*}
+\end{notebox}
+\begin{sectionbox}[Relationen]\nospacing
+  Aus den totalen Differentialen der einzlnen Potentiale lassen die folgenden Beziehungen ablesen:
+  \begin{align}
+      \left(\pfrac{\Upot}{\Spot}\right)_{\Vz}&=\Tz&&&\left(\pfrac{\Upot}{\Vz}\right)_{\Spot}&=-\pz\label{eq:r1}\nalign
+      \left(\pfrac{\Fpot}{\Tz}\right)_{\Vz}&=-\Spot&&&\left(\pfrac{\Fpot}{\pz}\right)_{\Spot}&=-\pz\label{eq:r2}\nalign
+      \left(\pfrac{\Hpot}{\Spot}\right)_{\pz}&=\Tz&&&\left(\pfrac{\Hpot}{\pz}\right)_{\Spot}&=\Vz\label{eq:r3}\nalign
+      \left(\pfrac{\Gpot}{\Tz}\right)_{\pz}&=-\Spot&&&\left(\pfrac{\Gpot}{\pz}\right)_{\Tz}&=\Vz\label{eq:r4}
+  \end{align}
+\end{sectionbox}
+\begin{sectionbox}[Maxwell Relationen]\nospacing
+  Mittels des Satzes von Schwartz und \cref{eq:r1,eq:r2,eq:r3,eq:r4} lassen sich die so genannten Maxwell Relationen Herleiten z.B. angewendet auf die innere Energie:
+  \begin{align*}
+    \left[\frac{\partial}{\partial\Vz}\left(\pfrac{\Upot}{\Spot}\right)_{\Vz}\right]_{\Spot}&=\left[\frac{\partial}{\partial\Spot}\left(\pfrac{\Upot}{\Vz}\right)_{\Spot}\right]_{\Vz}\nalign
+    \left[\frac{\partial}{\partial\Vz}\Tz\right]_{\Spot}&=\left[\frac{\partial}{\partial\Spot}(-\pz)\right]_{\Vz}
+  \end{align*}
+\end{sectionbox}
+\begin{lawbox}\nospacing
+  \begin{law}[Maxwell-Relationen]
+  \begin{align}
+    \left(\pfrac{\Tz}{\Vz}\right)_{\Spot}=-&\left(\pfrac{\pz}{\Spot}\right)_{\Vz}\nalign
+    \left(\pfrac{\Tz}{\pz}\right)_{\Spot}=&\left(\pfrac{\Vz}{\Spot}\right)_{\pz}\nalign
+    \left(\pfrac{\Spot}{\Vz}\right)_{\Tz}=&\left(\pfrac{\pz}{\Tz}\right)_{\Vz}=\frac{\betac}{\kappa}\nalign
+    -\left(\pfrac{\Spot}{\pz}\right)_{\Tz}=&\left(\pfrac{\Vz}{\Tz}\right)_{\pz}=\Vz\betac
+  \end{align}
+  \end{law}
+\end{lawbox}
+\subsection{Das Chemische potential}
+\begin{sectionbox}[Einleiung]\nospacing
+ Bis jetzt haben wir die Änderung der thermodynamischen Potential nur für
+ Systeme mit konstanten Stoffmengn betrachtet. Da chemische Reaktionen aber Reaktanten (=Reaktionspatner) verbrauchen und Produkte erzeugen erfordet es jedoch,
+ dass wir die Definitionen der Potentiale Anpassen.
+ \begin{align*}
+   &\text{z.B.}&\diff\Gpot=&\left(\pfrac{\Gpot}{\pz}\right)_{\Tz,n_1,n_2,\ldots}\diff\pz+\left(\pfrac{\Gpot}{\Tz}\right)_{\pz,n_1,n_2,\ldots}\diff\Tz\nalign
+               &&&+\sum_{\idxi}^N\left(\pfrac{\Gpot}{n_{\idxi}}\right)_{\Tz,\pz,n_{\idxj\neq\idxi}}
+ \end{align*}
+\end{sectionbox}
+\begin{defnbox}\nospacing
+  \begin{defn}[Partielle Molare Grössen $Y_{\idxi}$]
+    Die partielle molare Grösse $Y_{\idxi}$ einer Mischkomponente $\idxi$ ist definiert als die Änderung von $Y$ bei zugabe von 1mol der Komponente $\idxi$,
+    bei konstanten anderen Grössen.
+    \begin{align*}
+      &\text{\imp{Sei}}:& Y=Y(x_1,x_1,\vec{n})&&Y_{\idxi}=\left(\pfrac{Y}{n_{\idxi}}\right)_{x_1,x_2,n_{\idxj\neq\idxi}}
+    \end{align*}
+  \end{defn}
+\end{defnbox}
+\begin{defnbox}\nospacing
+  \begin{defn}[Chemisches Potential]$\idxj\neq\idxi$
+    \begin{align}
+      \mupot=\left(\pfrac{\Upot}{n_{\idxi}}\right)_{\Spot,\Vz,n_{\idxj}}&&
+      \mupot=\left(\pfrac{\Hpot}{n_{\idxi}}\right)_{\Spot,\pz,n_{\idxj}}\nalign
+      \mupot=\left(\pfrac{\Fpot}{n_{\idxi}}\right)_{\Vz,\Tz,n_{\idxj}}&&
+      \mupot=\left(\pfrac{\Gpot}{n_{\idxi}}\right)_{\pz,\Tz,n_{\idxj}}&&
+    \end{align}
+  \end{defn}
+\end{defnbox}
+\begin{defnbox}\nospacing
+  \begin{defn}[Thermodynamischen Potentiale]
+    \begin{align}
+      \Upot&=\Tz\diff\Spot-\pz\diff\Vz+\mu\diff\Nz\nalign
+      \Fpot&=-\Spot\diff\Tz-\pz\diff\Vz+\mu\diff\Nz\nalign
+      \Hpot&=\Tz\diff\Spot+\Vz\diff\pz+\mu\diff\Nz\nalign
+      \Gpot&=-\Spot\diff\Tz+\Vz\diff\pz+\mu\diff\Nz\label{eq:chemPotG}
+    \end{align}
+  \end{defn}
+\end{defnbox}
+\begin{sectionbox}[Duhem-Gibbs-Relation]\nospacing
+  Das chemische Potential hat eine besonders einfache Beziehung zur freien Entahlpie $\Gpot=\Gpot(\Tz,\pz,\Nz)$:
+  Als extensive Grösse lässt sich $\Gpot$ schreiben als:
+  \begin{align*}
+    \Gpot(\Tz,\pz,\Nz)\eqs{\cref{eq:extensiveTointensive}}\nz\Gpot_m(\Tz,\pz,\Nz)
+  \end{align*}
+  Mit $\Gpot=\nz\mupot$ folgt dann für das totale Differential:
+  \begin{align*}
+    \diff\Gpot=\sum_{\idxi}\nz_{\idxi}\diff\mupot_{\idxi}+\sum_{\idxi}\mupot_{\idxi}\diff\nz_{\idxi}\eqs{\mathclap{\cref{eq:chemPotG}}}-\Spot\diff\Tz+\Vz\diff\pz+\sum_{\idxi}\mupot_{\idxi}\diff\nz_{\idxi}
+  \end{align*}
+\end{sectionbox}
+\begin{defnbox}\nospacing
+  \begin{defn}[Duhem-Gibss-Relation]
+    \begin{align}
+      \sum_{\idxi}\nz_{\idxi}\diff\mupot_{\idxi}=-\Spot\diff\Tz+\Vz\diff\pz\label{eq:DuhemGibbs}
+    \end{align}
+  \end{defn}
+\end{defnbox}
+\begin{sectionbox}[Grosskanonisches Potential]\nospacing
+  \begin{align*}
+              &&\Omega&=\Fpot-\nz\mu=\Upot-\Tz\Spot-\nz\mupot\nalign
+              &&\diff\Omega&=-\Spot\diff\Tz-\pz\diff\Vz-\nz\diff\mupot\nalign
+    \Rightarrow&&\Omega&=\Omega(\Tz,\Vz,\mupot)
+  \end{align*}
+\end{sectionbox}
+\begin{notebox}[Bemerkungen]\nospacing
+  \begin{numberlist}
+      \item Aus \cref{eq:DuhemGibbs} folgt das $\Tz$ und $\pz$ die natürlichen Variablen des chemischen Potentials sind:
+    \begin{align*}
+      \mupot=\mupot(\Tz,\pz)
+    \end{align*}
+      \item Im Glg. ist das chem. Pot. jedes einzelnen Stoffes der Ganzen Mischung Gleich.
+  \end{numberlist}
+\end{notebox}
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../formularySPCS"
+%%% End:

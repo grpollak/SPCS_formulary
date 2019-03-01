@@ -1,0 +1,449 @@
+\begin{sectionbox}[Ziel]\nospacing
+  Bisher haben wir idealisierte Systeme betrachtet \cref{defn:idealSys}.\\
+  Nun wollen wir jedoch Wechselwirkungen ($\corresponds$ pot. Energie) zwischen Teilchen zulassen.
+  Hierbei müssen wir zwischen der Quantemechanik und der klassischen Molekülmechanik unterscheiden.
+\end{sectionbox}
+\begin{sectionbox}[Problem]\nospacing
+  \boxed{\text{Zustands\rd{summe}}}\tc{ulc1}{$\longrightarrow$}\boxed{\text{TD-Funktionen}} Verbindung mit der QM nur möglich, da
+  wir diskrete, abzählbare Energiezustände/Eigenwerte haben $\Rightarrow$ nur lösbar für einfache Modelsysteme.\\
+  \imp{Problem}: In der klassische Mechanik für molekulare Objekte (\tc{section}{MM}) sind die Energien allerdings \rd{kontinuirlich}
+  und damit nicht abzählbare $\Rightarrow$ \rd{Summe} über Zustände nicht einfach berechenbar.
+  \begin{align*}
+    \rdb{\text{Pot. Energie}}: \Wpot=
+      \begin{cases}
+        \tura{\text{QM}}{\normalfont{Zustandsenergie diskret durchnum.}}: \text{Bekannt für Elementarteilchen.}\\
+        \bdra{\text{MM}}{\normalfont{Zustandsenergie kontinuirlich}}: \text{leicht berechenbar.}\\
+      \end{cases}
+  \end{align*}
+\end{sectionbox}
+\begin{sectionbox}[Vorgehensweise]\nospacing
+ \begin{circlelist}
+     \item Finde einen analytischen Ausdruck oder eine ``vernünftige'' Approximation für die pot. Energie $\Wpot$ in eine klassischen
+   mech. Beschreibung.
+     \item Bestimme $\Zz$ und draus TD-Funktionen.
+ \end{circlelist}
+\end{sectionbox}
+\begin{princpbox}
+  \begin{princip}[Korrespondenzprinzip]\nospacing \leavevmode\\
+    Für makroskopische Systeme muss die q.m. Beschreibung in die klassische Mechanik übergehen.
+    \begin{align*}
+      \lim_{\Nz\to\infty}\sum_{\nqz}\left(\text{Disk. q.m. Energie}\right)_{\nqz}&&\Longleftrightarrow&&\text{kont. Energie} 
+    \end{align*}
+  \end{princip}
+\end{princpbox}
+\subsection{Berechnung von $\Wpot=0$}
+\begin{sectionbox}[\subsubsection{Translation ($\corresponds$ Teilchen im 3D Kasten)}]\nospacing
+  \imp{Betrachte} System aus $\Nz$ Teilchen \imp{ohne} W.W. ($\Wpot=0$).
+  \begin{align*}
+    &\text{\rd{Klassisch}:}& \Hamkl&=\Ez_{\text{kin.}}=\sum_{\idxi}^{N}\frac{\pvec_{\idxi}^2}{2m}+0&&\nalign
+    &\text{\rd{QM}:}& \Ham&=\Ez_{kin.}(\nqz_x^{(\idxi)},\nqz_y^{(\idxi)},\nqz_z^{(\idxi)})+0\nalign
+                     &&&=\sum_{\idxi}^{N}\frac{\pi^2\hpr^2}{2mL^2}\left(\nqz_x^{(\idxi)}+\nqz_y^{(\idxi)}+\nqz_z^{(\idxi)}\right)&\forall\idxi
+  \end{align*}
+\end{sectionbox}
+\begin{sectionbox}[$\Zz_{\text{tr.}}$ Quantenmechanisch]\nospacing
+  \begin{align*}
+    \Zz_{\text{tr.}}^{\text{QM}}(\Nz,\Vz,\Tz)=\frac{\zz^{\Nz}_{\text{tr}}}{\Nz!}=\prod_{\idxi}^{\Nz}\frac{1}{\Nz!}\sum_{\nqz_x^{(\idxi)},\nqz_y^{(\idxi)},\nqz_z^{(\idxi)}}\e^{-\frac{1}{\kb\Tz}\Ez_{\text{kin.}}^{\text{QM}}}
+  \end{align*}
+  Da L eine Makroskopische Grösse ist, kann man die Summe im Limes durch ein Integral erstezen:
+  \begin{align*}
+    \sum_{\nqz_x}\e^{-\betac\frac{\pi^2\hpr^2}{2mL^2}\nqz_x^2}\xrightarrow[\text{\rd{K.P.}}]{\lim\limits_{\Nz\to\infty}\nqz_x\to x}
+    \int_{0}^{\infty}\e^{-\betac\frac{\pi^2\hpr^2}{2mL^2}x^2}\diff x
+  \end{align*}
+  \begin{align*}
+     &\text{Mit }\int_{0}^{\infty}\e^{-\betac\frac{\pi^2\hpr^2}{2mL^2}x^2}\diff x\turla{=}{\cref{eq:exa2}}\frac{1}{2}\left(\frac{2 mL^2}{\betac\pi\hpr^2}\right)^{\frac{1}{2}}=\left(\frac{2 mL^2}{4\betac\pi\hpr^2}\right)^{\frac{1}{2}}
+  \end{align*}
+  \begin{align*}
+    \zztrans=\zztrans_{x}\cdot\zztrans_{y}\cdot\zztrans_{z}=\left(\frac{2 mL^2}{4\betac\pi\hpr^2}\right)^{\frac{1}{2}+\frac{1}{2}+\frac{1}{2}}
+  \end{align*}
+  \begin{align}
+    \boxed{\zztrans=\left(\frac{mL^2}{2\betac\pi\hpr^2}\right)^{\frac{3}{2}}=L^3\cdot\left(\frac{m}{2\betac\pi\hpr^2}\right)^{\frac{3}{2}}
+    =\ul[ulc2]{V\cdot\left(\frac{m}{2\betac\pi\hpr^2}\right)^{\frac{3}{2}}}}
+  \end{align}
+\end{sectionbox}
+\begin{sectionbox}[$\Zz_{\text{tr.}}$ KLassisch]\nospacing
+  \begin{align*}
+    &\text{\imp{Ansatz}: }&\e^{-\betac\Hamkl_{\text{kl.}}}=\exp\left[-\betac \left(\frac{\pimp_x^2+\pimp_y^2+\pimp_x^2}{2m}\right)\right]
+  \end{align*}
+  \begin{align*}
+    &\zztrans_{\text{kl.}}=\mcc\underbrace{\left(\int_{-\infty}^{\infty}\diff^{3\Nz}r\right)}_{\Vz^{\Nz}}\cdot\int_{-\infty}^{\infty}\e^{-\betac \left(\frac{\pimp_x^{(i)2}+\pimp_y^{(i)2}+\pimp_z^{(i)2}}{2m}\right)}\diff^{3N}\pimp\nalign
+                         &=\mcc\underbrace{\left(\int_{-\infty}^{\infty}\diff^{3\Nz}r\right)}_{\Vz^{\Nz}}\cdot\int_{-\infty}^{\infty}\exp\left[-\betac \left(\frac{\pimp_x^{2}+\pimp_y^{2}+\pimp_z^{2}}{2m}\right)\right]^{\Nz}\diff^{3N}\pimp\nalign
+    &\eqs{\cref{eq:exa2}}\ul{\mcc\Vz^{\Nz}\left[2\pi m\kb\Tz\right]^{\frac{3\Nz}{2}}}
+  \end{align*}
+  \begin{align*}
+    \ul{\zztrans_{\text{kl.}}}\eqs{\text{\rd{K.P.}}}\ul[ulc2]{\zztrans_{\text{QM}}}&&\Rightarrow&&\mcc=\frac{1}{\Nz!}\frac{1}{\hp^{3\Nz}}
+  \end{align*}
+  \begin{align}
+    \boxed{\zztrans_{\text{kontin.}}=\frac{\Vz^{\Nz}}{\Nz!\hp^{3\Nz}}\left[2\pi m\kb\Tz\right]^{\frac{3\Nz}{2}}}
+  \end{align}
+\end{sectionbox}
+\begin{sectionbox}[\subsubsection{Rotation ($\corresponds$ starrer Rotator)}]\nospacing
+  \begin{flalign*}
+    &\text{\imp{Wiederhohlung}: }&\zzrot&=\sum_{\Jqz}^{\infty}\left[(2\Jqz+1)\e^{-\betac\Ez_{\text{rot}}^{\Jqz}}\right]\nalign
+    &&\Ez_{\text{rot}}^{\Jqz}&=\Jqz(\Jqz+1)\frac{\hpr^2}{2I}
+  \end{flalign*}
+  \imp{Annahme}: für ein makroskopisches System kann die Summe als kontinuierlich betrachtet werden.\\
+  Mit Hilfe der Substitution $u:=\Jqz(\Jqz+1)=\Jqz^2+\Jqz$ folgt dann:\\
+  \[\Rightarrow \frac{\diff u}{\diff \Jqz}=2\Jqz+1 \Rightarrow \diff\Jqz=\frac{\diff u}{2\Jqz+1}\]
+  \begin{align*}
+    \zzrot_{\text{kontin.}}&\approx\int_{0}^{\infty}(2\Jqz+1)\e^{-\frac{\betac\hpr^2\Jqz(\Jqz+1)}{2I}}\diff\Jqz=\int_{0}^{\infty}\e^{-\frac{\betac\hpr^2 u)}{2I}}\diff u\nalign
+    &\eqs{\cref{eq:exa2}}\left.\left[-\frac{2I}{\betac\hpr^2}\e^{-\frac{\beta\hpr^2u}{2I}}\right]\right\rvert_{0}^{\infty}=\left(0-\left(-\frac{2I}{\betac\hpr^2}\right)\right)
+  \end{align*}
+  \begin{align}
+    \boxed{\zzrot_{\text{kontin.}}=\frac{2I}{\betac\hpr^2}}
+  \end{align}
+\end{sectionbox}
+  \todo[inline]{Add right tikz Picture}
+% \begin{sectionbox}[Recap]\nospacing
+%    \begin{tikzpicture}[node distance=1cm,
+%       every node/.style={fill=sectionbox, font=\sffamily}]
+%     \node (TD)[rectangle, draw]          {Jede TD-Funktion};
+%     \node (Zzt)[rectangle, draw, below of=TD]          {$\Zz$};
+%     \node (Zz)[rectangle, draw, below of=Zzt]          {$\Zz=\frac{\zz^N}{N!}$};
+%     \node (zz)[rectangle, draw, below of=Zz]             {$\zz_{\text{m}}=\zztrans\cdot\zzrot\cdot\zzvib\cdot\zzelek$};
+%     % Draw edges
+%     \draw [ulc1,->] (TD) -- node {berechenbar durch} (Zzt);
+%     \draw [ulc2,->] (Zzt) -- node {Zerlegung} (Zz);
+%     \draw [ulc3,->] (Zz) -- node {Zerlegung} (zz);
+%   \end{tikzpicture}
+%\end{sectionbox}
+\subsection{Berechnung von $\Wpot\neq0$}
+\begin{sectionbox}\nospacing
+  Für $\Wpot\neq0$ ergibt sich für die kanonische Zustands\rd{funktion}:
+  \begin{align*}
+    &\Zzk=\frac{1}{\Nz!\hp^{3\Nz}}\int_{-\infty}^{\infty}\int_{-\infty}^{\infty}\e^{-\betac\Ham(\vec{r}^{\Nz},\vec{p}^{\Nz})}\diff^{3\Nz}\vec{r}\diff^{3\Nz}\vec{p}
+  \end{align*}
+  \begin{align*}
+    \Ham(\vec{r}^{\Nz},\vec{p}^{\Nz})=\Ez_{\text{kin}}(\vec{p}^{\Nz})+\Wpot(\vec{r}^{\Nz})
+  \end{align*}
+  \begin{flalign*}
+  &\text{\imp{Mit}}&&\text{Ortskoordinaten: }&\vec{r}^{\Nz}=(r_1,\ldots,r_{\Nz})\nalign
+          &&&\text{Impulskoordinaten: }& \vec{p}^{\Nz}=(p_1,\ldots,p_{\Nz})
+  \end{flalign*}
+  \imp{Frage}: wie kann/soll man $\Wpot(\vec{r}^{\Nz})$ wählen?\\
+\end{sectionbox}
+\begin{sectionbox}[\imp{Ansatz}: Zerlegung+Parameterisierung]
+  \begin{numberlist}
+      \item \tc{section}{Zerlegung}: Abhängig davon was man beschreiben möchte: Atome, Atomgruppen $\corresponds$ ``\rd{united Atom}''
+      (z.B. Methylgruppen) = \rd{Coarse grained}.\\
+      $\Rightarrow$ bestimmt durch ``Teilchen im System''
+      \item \textcolor{section}{Parameterisierung}: Empirisch oder aus $\Ez_{\text{el.}}$.
+  \end{numberlist}
+\end{sectionbox}
+\begin{sectionbox}\nospacing
+  \imp{Idee}: Moleküle werden durch Stäbe, Kugeln, Scheiben,\ldots representiert.\\
+  \imp{Frage}: was sind die Freiheitsgrade dieser Entitäten?
+  \begin{align*}
+    \Wpot=\text{Bindende W.W.}+\text{Nicht bindende W.W.}
+  \end{align*}
+\end{sectionbox}
+\begin{sectionbox}[\subsubsection{Bindende/Intramolekulare W.W.}]\nospacing
+  \begin{figure}[H]	
+    \centering{\vspace{-1em}\hspace{-1cm}
+      \def\svgwidth{140pt}
+      \resizebox{0.8\linewidth}{!}{\input{figures/MM/intereWW.pdf_tex}}
+    }
+  \end{figure}
+  \vspace{-1em}
+  Für diese intramolekularen Freiheitsgrade ist es üblich folgende Beiträge für $\Wpot$ zu definieren:
+\end{sectionbox}
+\begin{sectionbox}[Streckschwingung (harm. Parabelpotential)]\nospacing
+  \begin{align*}
+    &\Wpot^{\text{Bond}}(\vec{r}^N)=\sum_{\idxi}\frac{1}{2}k_{\idxi}^{\text{bond}}\left[b_{\idxi}(\rvec^N)-b_{\idxi}^{\circ}\right]& \forall\idxi\in\text{Bonds}
+  \end{align*}
+  \begin{flalign*}
+        &\text{\imp{Mit}:} &&k_{\idxi}^{\text{bond}}: &&\text{Kraftkonstante}\nalign
+        &&&b_{\idxi}(\rvec^N): &&\text{Abstand von zwei Atomen zu denen eine}\nalign
+        &&&&&\text{chem. Bindung postuliert wird}\nalign
+        &&&b_{\idxi}^{\circ}:&&\text{Glg. Bindungslänge der $\idxi$-ten Bindung}\nalign
+        &&&&&\Longleftrightarrow\text{Minimums $\Ez_{el.}$}
+  \end{flalign*}
+\end{sectionbox}
+\begin{sectionbox}[Biegeschwingung (harm. Parabelpotential)]\nospacing
+  \begin{align*}
+    &\Wpot^{\text{angle}}(\vec{r}^N)=\sum_{\idxj}\frac{1}{2}k_{\idxj}^{\text{angle}}\left[\theta_{\idxj}(\rvec^N)-\theta_{\idxj}^{\circ}\right]& \forall\idxj\in\text{Angle}
+  \end{align*}
+  \begin{flalign*}
+        &\text{\imp{Mit}:} &&k_{\idxj}^{\text{angle}}: &&\text{Kraftkonstante}\nalign
+        &&&\theta_{\idxj}(\rvec^N): &&\text{Bindungswinkel von zwei Atomen zu}\nalign
+        &&&&&\text{denen eine chem. Bind. postuliert wird}\nalign
+        &&&\theta_{\idxj}^{\circ}:&&\text{Glg. Bindungswinkel der $\idxj$-ten Bindung}\nalign
+        &&&&&\Longleftrightarrow\text{Minimums $\Ez_{el.}$}
+  \end{flalign*}
+\end{sectionbox}
+\begin{sectionbox}[Torsion]\nospacing
+  \begin{align*}
+    &\Wpot^{\text{torsion}}(\vec{r}^N)=\sum_{\idxk}\frac{1}{2}k_{\idxk}^{\text{torsion}}\left\{1+\cos[m_{\idxk}\Phi_{\idxk}(\rvec)-\delta_{\idxk}]\right\}\nalign
+    &\forall\idxk\in\text{Diederwinkel}\qquad\text{\imp{Mit}:}\quad \Phi_{\idxk} \text{Diederwinkel}
+  \end{align*}
+\end{sectionbox}
+\begin{notebox}[Fitparameter]\nospacing
+  \begin{align*}
+    k_{\idxi}^{\text{bond}},k_{\idxi}^{\text{bond}},m_{\idxk},\delta_{\idxk}
+  \end{align*}
+\end{notebox}
+\begin{sectionbox}[\subsubsection{Nicht bindende Wechselwirkungen}]\nospacing
+  \begin{figure}[H]	
+    \centering{
+      \def\svgwidth{140pt}
+      \resizebox{0.7\linewidth}{!}{\input{figures/MM/vdw.pdf_tex}}
+    }
+    \vspace{-1em}
+  \end{figure}
+  Für diese intermolekularen Freiheitsgrade ist es üblich folgende Beiträge für $\Wpot$ zu definieren:
+\end{sectionbox}
+\begin{sectionbox}[Coulomb W.W.]\nospacing
+  \begin{align*}
+    &\Wpot^{\text{Coulomb}}(\vec{r}^N)=\frac{1}{4\pi\epsilon_{0}\epsilon_{r}}\sum_{\substack{\text{Paare}\\\idxi<\idxj}}\frac{q_{\idxi}q_{\idxj}}{\rvec_{\idxi\idxj}}
+  \end{align*}
+\end{sectionbox}
+\begin{sectionbox}[Van der Waals W.W. (\rd{6-12-/Lenard-Jones Potential})]\nospacing
+  \begin{align*}
+    &\Wpot^{\text{VdW}}(\vec{r}^N)=\sum_{\substack{\text{Paare}\\\idxi<\idxj}}4\epsilon_{\idxi\idxj}\left[\left(\frac{\sigma_{\idxi\idxj}}{\rvec{\idxi\idxj}}\right)^{12}-\left(\frac{\sigma_{\idxi\idxj}}{\rvec{\idxi\idxj}}\right)^6\right]
+  \end{align*}
+  \begin{flalign*}
+        &\text{\imp{Mit}:} &&\epsilon_{\idxi\idxj}: &&\text{Potentialtopftiefe}\nalign
+        &&&\text{$\left(\frac{\sigma_{\idxi\idxj}}{\rvec{\idxi\idxj}}\right)^{12}$}: &&\text{Abstossend \& kurzreichweitige Energie}\nalign
+        &&&&&\text{$\Rightarrow$ Dominiert bei kurzer Reichweite}\nalign
+        &&&\text{$\left(\frac{\sigma_{\idxi\idxj}}{\rvec{\idxi\idxj}}\right)^{6}:$}&&\text{Anziehend \& langreichweitige Energie}\nalign
+        &&&&&\text{$\Rightarrow$ Dominiert bei langer Reichweite}
+  \end{flalign*}
+  \begin{figure}[H]
+    \centering
+    \begin{subfigure}{.45\columnwidth}
+      \centering{
+        \def\svgwidth{100pt}
+        \resizebox{\linewidth}{!}{\input{figures/MM/potTopf.pdf_tex}}
+      }
+      \vspace{-1.5em}
+      \caption{}
+      \label{fig:}
+    \end{subfigure}%
+    \hfil
+    \begin{subfigure}{.45\columnwidth}
+      \centering{
+        \def\svgwidth{100pt}
+        \resizebox{\linewidth}{!}{\input{figures/MM/LenardJonesPotential.pdf_tex}}
+      }
+      \vspace{-1.5em}
+      \caption{}
+      \label{fig:}
+    \end{subfigure}
+  \end{figure}
+\end{sectionbox}
+\begin{sectionbox}[$R_{\text{min}}$]\nospacing
+  \begin{align*}
+    \vec{F}(\vec{r})&=-\nabla\Wpot(\rvec)=\frac{\diff}{\diff\vec{r}}4\epsilon\left[\rd{-}\sigma^{12}\rvec^{-12}\rd{+}\sigma^6\rvec^{-6}\right]\nalign
+    &=4\epsilon\left[12\sigma^{12}\rvec^{-13}-6\sigma^6\rvec^{-7}\right]\eqs{!}0\iff \rvec^6=2\sigma^6
+  \end{align*}
+  \begin{align}
+    R_{\text{min}}=\sqrt[6]{2}\sigma
+  \end{align}
+\end{sectionbox}
+\begin{notebox}[Fitparameter]\nospacing
+  \begin{align*}
+    q_{\idxi},q_{\idxj},\epsilon_{\idxi\idxj},\sigma_{\idxi\idxj}
+  \end{align*}
+\end{notebox}
+\begin{notebox}[Nebenbemerkung]\nospacing
+  \begin{numberlist}
+    \item \rd{Paarpotentialnäherung}: Mehrkörperwechselwirkung wurde vernachlässigt.
+    \item Die Kräfte auf alle ``Teilchen'' des Systems erhählt man als Gradienten der pot. Energie
+      \begin{align*}
+        \vec{F}_{\idxi}=-\nabla_{\idxi}\Wpot(\rvec^N)=\vect{\pfrac{}{x_{\idxi}} & \pfrac{}{y_{\idxi}}& \pfrac{}{z_{\idxi}}}^{T}
+      \end{align*}
+  \end{numberlist}
+\end{notebox}
+\begin{notebox}[Kraft die von Atom j verursacht wird und auf Atom i wirkt]\nospacing
+  \begin{align*}
+    f_{x_{\idxi}}=&-\sum_{\substack{\idxi\\\idxi\neq\idxj}}^{N}\frac{\partial\Wpot(\rvec_{\idxi},\rvec_{\idxj})}{\partial\rvec_{\idxi\idxj}}\cdot\pfrac{r_{\idxi\idxj}}{x_{\idxi}}\nalign
+    \eqs{\text{Ein Nachbaratom}}=&-\frac{\partial\Wpot(\rvec_{\idxi},\rvec_{\idxj})}{\partial\rvec_{\idxi\idxj}}\cdot\pfrac{r_{\idxi\idxj}}{x_{\idxi}}
+  \end{align*}
+  \begin{align*}
+    \frac{\partial\Wpot(\rvec_{\idxi},\rvec_{\idxj})}{\partial\rvec_{\idxi\idxj}}=&
+    4\epsilon_{\idxi\idxj}\left[-12\left(\frac{\sigma_{\idxi\idxj}}{\rvec{\idxi\idxj}}\right)^{12}+6\left(\frac{\sigma_{\idxi\idxj}}{\rvec{\idxi\idxj}}\right)^6\right]\frac{1}{\rvec_{\idxi\idxj}}
+  \end{align*}
+  \begin{align*}
+  &\pfrac{r_{\idxi\idxj}}{x_{\idxi}}=\frac{\partial}{\partial x_{\idxi}}\left[(x_{\idxi}-x_{\idxj})^2+(y_{\idxi}-y_{\idxj})^2+(z_{\idxi}-z_{\idxj})^2\right]^{\frac{1}{2}}\nalign
+  &=\frac{1}{2}\left[(x_{\idxi}-x_{\idxj})^2+(y_{\idxi}-y_{\idxj})^2+(z_{\idxi}-z_{\idxj})^2\right]^{-\frac{1}{2}}2(x_{\idxi}-x_{\idxj})\nalign
+    &=\frac{x_{\idxi\idxj}}{\rvec_{\idxi\idxj}}
+  \end{align*}
+  \begin{align*}
+    f_{x_{\idxi}}=-4\epsilon_{\idxi\idxj}\left[-12\left(\frac{\sigma_{\idxi\idxj}}{\rvec{\idxi\idxj}}\right)^{12}+6\left(\frac{\sigma_{\idxi\idxj}}{\rvec{\idxi\idxj}}\right)^6\right]\frac{x_{\idxi\idxj}}{\rvec_{\idxi\idxj}^2}
+  \end{align*}
+\end{notebox}
+\begin{sectionbox}[Damit ergibt sich]\nospacing
+  \begin{align}
+    \Wpot=\Wpot^{\text{bond}}+\Wpot^{\text{angle}}+\Wpot^{\text{torision}}+\Wpot^{\text{Coul.}}+\Wpot^{\text{VdW}}
+  \end{align}
+\end{sectionbox}
+\begin{sectionbox}[\subsection{Berechnung der Zustandsfunktion}]\nospacing
+  Wir haben nun einen analytischen ausdruck für $\Wpot$ gefunden und können nun die komplette Zustands\rd{funktion} berechnen:
+  \begin{align*}
+    &\Zzk=\frac{1}{\Nz!\hp^{3\Nz}}\iint_{-\infty}^{\infty}\e^{-\betac\Ham(\vec{r}^{\Nz},\vec{p}^{\Nz})}\diff^{3\Nz}\vec{r}\diff^{3\Nz}\vec{p}
+  \end{align*}
+  \begin{align*}
+    \Ham(\vec{r}^{\Nz},\vec{p}^{\Nz})=\sum_{\idxi=1}^{N}\frac{\prescript{N}{}{\pvec}_{\idxi}^2}{2m_{\idxi}}+\Wpot(\vec{r}^{\Nz})
+  \end{align*}
+  \begin{alignat*}{3}
+    \Zzk&\eqs{\Wpot\neq0}&&\mcc[\frac{1}{\hp^{3N}N!}]\int_{-\infty}^{\infty}\exp\left(-\betac\sum_{\idxi=1}^{N}\frac{\prescript{N}{}{\pvec}_{\idxi}^2}{2m_{\idxi}}\right)\diff^{3N}\pimp\nalign
+    &&&\cdot\int_{-\infty}^{\infty}\e^{-\betac\Wpot(\rvec^N)}\diff^{3\Nz}r
+  \end{alignat*}
+  \begin{alignat*}{2}
+    &\eqs{\cref{eq:eIntegral}}&\mcc[\frac{1}{\hp^{3N}N!}]\prod_{\idxi}^N \left(2\pi\m_{\idxi}\kb\Tz\right)^{\frac{3}{2}}\cdot\int\limits_{-\infty}^{\infty}\e^{-\betac\Wpot(\rvec^N)}\diff^{3\Nz}r
+  \end{alignat*}
+  Mit der Annahnme gleicher Massen: $m_{\idxi}=m\quad\forall\idxi$ folgt:
+  \begin{align*}
+        &\eqs{\hphantom{\cref{eq:eIntegral}}}\underbrace{\frac{1}{N!}\left(2\pi\hp^{-2}\m\kb\Tz\right)^{\frac{3N}{2}}}_{\equiv\tc{ulc1}{f}}\cdot\underbrace{\int\limits_{-\infty}^{\infty}\e^{-\betac\Wpot(\rvec^N)}\diff^{3\Nz}r}_{\equiv\Qzk}
+  \end{align*}
+  Damit ergibt sich für Observablen $\Omega$:
+  \todo[inline]{Warum?}
+  \begin{alignat*}{2}
+    &\obs{\Omega}_{\Nz,\Vz,\Tz}&&=\frac{\iint_{-\infty}^{\infty}\Omega(\rvec^N)\e^{-\betac\Ham(\vec{r}^{\Nz},\vec{p}^{\Nz})}\diff^{3\Nz}\vec{r}\diff^{3\Nz}\vec{p}}{\Zzk}\nalign
+    &&&=\frac{\int_{-\infty}^{\infty}\Omega(\rvec^N)\cdot\e^{-\betac\Wpot(\rvec^N)}\diff^{3\Nz}r\cdot\cancel{\tc{ulc1}{f}(\pvec^N)}}{\int_{-\infty}^{\infty}\e^{-\betac\Wpot(\rvec^N)}\diff^{3\Nz}r\cdot\cancel{\tc{ulc1}{f}(\pvec^N)}}\nalign
+    &&&\equiv\int_{-\infty}^{\infty}\Omega(\rvec^N)\pbr(\rvec^N)\diff^{3\Nz}r
+  \end{alignat*}
+\end{sectionbox}
+\begin{defnbox}\nospacing
+  \begin{defn}[Konfigurationszustandssumme/integral]
+    \begin{align}
+      \Qzk=\int\limits_{-\infty}^{\infty}\e^{-\betac\Wpot(\rvec^N)}\diff^{3\Nz}r
+    \end{align}
+    \todo[inline]{Haben wir dann nicht ein Doppelintegral über $\Qzk$ wenn wir in $\pbr$ einsetzen?}
+    \begin{flalign}
+      &\text{\imp{Mit}}:&&\pbr(\rvec^N)=\frac{\e^{-\betac\Wpot(\rvec^N)}}{\Qzk}&\nalign
+      &\text{und}:&&\obs{\Omega}_{\Nz,\Vz,\Tz}=\int\limits_{-\infty}^{\infty}\Omega(\rvec^N)\pbr(\rvec^N)\diff^{3\Nz}r
+    \end{flalign}
+  \end{defn}
+\end{defnbox}
+\begin{sectionbox}[\subsubsection{Berechnung von $\Qzk$}]\nospacing
+  \imp{Problem}: Analytische Lösung i.d.R. nicht möglich.\\
+  $\Rightarrow$ Nummerische Integration.\\
+  \imp{Problem}: Bei 10 Gitterpunkten pro Freiheitsgrad  ergeben sich $10^{3\idxN}$ Punkte an denen der Integrand zu berechnen ist.
+  Mit $\idxN=10^{24}$ Teilchen schon nicht mehr möglich.
+\end{sectionbox}
+
+	\vfill\columnbreak
+\subsection{Stochastische Lösungen/Samplingsmethoden}
+\begin{sectionbox}[\subsubsection{Random Sampeling}]\nospacing
+  \begin{align*}
+    \Qzk&=\int_{\rvec_{\mca}}^{\rvec_{\mcb}}\e^{-\betac\Wpot(\rvec^N)}\diff\rvec^N\qquad \rvec=(r_x,r_y,r_z)\nalign
+    &=\obs{\e^{-\betac\Wpot(\rvec^N)}}\underbrace{\prod_{\idxi}^{3N}(\rvec_{\idxi,\mcb}-\rvec_{\idxi,\mca})}_{\text{Volumen der Domain}}\nalign
+    &\approx\frac{1}{n_{\pb}}\sum_{\idxj=1}^{n_{\pb}}\prod_{\idxi=1}^{3N}(\rvec_{\idxi,\mcb}-\rvec_{\idxi,\mca})\cdot\e^{-\betac\Wpot(\rvec_{\idxi}^N)}
+  \end{align*}
+  \begin{wrapfigure}{l}{0.4\linewidth}	
+    \centering{
+      \vspace{-1em}
+      \inkscape[80pt]{figures/MM/randomnSampeling.pdf_tex}
+    }
+  \end{wrapfigure}
+  \begin{flalign*}
+    &\hspace{-2em}\approx\frac{1}{n_{\pb}}\sum_{\idxj=1}^{n_{\pb}}\prod_{\idxi=1}^{3N}(\rvec_{\idxi,\mcb}-\rvec_{\idxi,\mca})\cdot\e^{-\betac\Wpot(\rvec_{\idxi}^N)}
+  \end{flalign*}
+  \begin{flalign*}
+    &n_{\pb}:&& \text{Anzahl der gewählten}&\nalign
+    &&&\text{Konfigurationen}&
+  \end{flalign*}
+\end{sectionbox}
+\todo[inline]{Check index of $\Wpot: \idxi$ oder $\idxj$ und wie kommt man auf die Formel?}
+\begin{notebox}[Note]
+  \begin{numberlist}
+      \item Die $n_{\pb}$ Konfigurationen im Intervall $[\rvec_{\mca}^N,\rvec_{\mcb}^N]$ werden zufäfllig gewählt.
+      \item Alle $\rvec_{\idxi}^N$ haben diesielbe Wahrscheinlichkeit.
+      \item Sehr ineffizient, da $n_{\pb}$ sehr gross sein muss.
+  \end{numberlist}
+\end{notebox}
+\begin{sectionbox}[\subsubsection{Importance Sampeling}]\nospacing
+  \imp{Idee}: beprobe/sample nicht zufällig sondern wähle die $\{\rvec_{\idxi}^N\}$ anhand einer Wahrscheinlichkeitsverteilung, so dass der \rd{Boltzmann Faktor} $\e^{-\betac\Wpot(\rvec_{\idxi}^N)}$ gross wird.
+\end{sectionbox}
+\begin{sectionbox}[\subsubsection{Metropolis-Monte-Carlo Algorithm}\normalfont{(Variante des Importance Sampling})]\nospacing
+  \imp{Grundidee}:
+  \begin{circlelist}
+    \item Zufällige Auswahl an Konfigurationen $r_{\idxi}^N$.
+    \item Übernehme oder verwerfe die Konfigurationen $r_{\idxi}^N$ auf Grund der Boltzmann Verteilung.
+    \item Berechne $\obs{\Omega}_{\Nz,\Vz,\Tz}$ aus den akzeptierten $r_{\idxi}^N$.
+  \end{circlelist}
+\end{sectionbox}
+\begin{sectionbox}[Konkrete Implementation]\nospacing
+  \imp{Voraussetzung}: grosse Anzahl an Schritten.
+  \begin{circlelist}
+    \item Generiere eine neue Konfiguration: $\rvec_{\idxi+1}^N=\rvec_{\idxi}^N+\Delta\rvec^N$\\
+     $\Delta\rvec^N$: gibt verschiedene Möglichkeiten dies zu wählen.
+    \item Berechne die Änderung der Energie\\\ctr{$\Delta\Wpot=W(\rvec_{\idxi+1}^N)-W(\rvec_{\idxi}^N)$}
+    \item Akzeptiere $\rvec_{\idxi+1}^N$ auf Grund der Boltzmann-Verteilung falls:
+    \begin{numberlist}
+        \item $\Delta\Wpot\leq0$ (pot. Energie nimmt ab)\hfil\imp{oder}
+        \item $\Delta\Wpot>0$\hfil \imp{und} \hfil$\e^{-\frac{\Delta\Wpot}{\kb\Tz}}>\epsilon$\\
+          \imp{Mit}\hfil der Zufallszahl: $\epsilon\in[0,1]$
+    \end{numberlist}
+    ansonsten verwerfe $\rvec_{\idxi+1}^N$.
+    \item Repeat.
+  \end{circlelist}
+  \begin{figure}[H]	
+    \centering{
+      \def\svgwidth{160pt}
+      \resizebox{0.7\linewidth}{!}{\input{figures/MM/MMC.pdf_tex}}
+    }
+  \end{figure}
+\end{sectionbox}
+\begin{notebox}[Parameter des MC-Algorithmus]
+  \begin{numberlist}
+      \item Anzahl der Schritte.
+      \item $\Delta\rvec^n$.
+  \end{numberlist}
+\end{notebox}
+\begin{notebox}[Effizienz der Beprobung]\nospacing
+  \begin{numberlist}
+      \item Schrittgrösse $\Delta\rvec$ sehr/zu gross $\Rightarrow$ $\Delta\Wpot$ gross:
+      \begin{align*}
+        \Rightarrow \e^{-\frac{\Delta\Wpot}{\kb\Tz}}\approx0&&\Rightarrow&&\e^{-\frac{\Delta\Wpot}{\kb\Tz}}\stackrel{\text{i.d.R.}}{\ngtr}\epsilon
+      \end{align*}
+      $\Rightarrow$ verwerfen für $\Delta\Wpot>0$ so gut wie immer.
+        \item Schrittgrösse $\Delta\rvec$ zu klein:\\
+      Limitierte Beprobung, suchen nur kleinen Teil des Raumes ab.
+  \end{numberlist}
+  $\Rightarrow$ Effizienz hängt von der Balance zwischen der Schrittgröse und der Akkzeptanz/Verwerfungsrate ab.
+\end{notebox}
+\begin{notebox}[Nebenbemerkung]
+  Wir benutzen hier die Boltzmann-Gewichtung und beproben das kanonische Ensemble.\\
+  $\Rightarrow$ falls man einen anderes Ensemble beproben will muss man sich überlegen wie man dies am besten macht.
+\end{notebox}
+\begin{sectionbox}[\subsubsection{Replica Exchange Simulation/Parallel tempering}]\nospacing
+  \begin{flalign*}
+    &\imp{\text{Recall}:}&\nalign
+    &&\hspace{-1cm}\Zz_{\text{klassisch}}(\Nz,\Vz,\Tz)\sim\Qzk=\int_{-\infty}^{\infty}\e^{-\betac\Wpot(\rvec^N)}\diff^{3\Nz}r
+  \end{flalign*}
+  \imp{Problem}: MD-Simulationen erfordern häufig \rd{ergodisches} Peproben von (Energie)konfigurationsräume mit vielen Minima und Barrieren
+  zwischen Minima. Diese sind bei Raumtemperatur nur schwer zu durchequeren $\Rightarrow$ Die Ergebnisse der MD-Simulationen sind oft durch die Wahl der Startbedingunen (inital conditions) beschränkt.\\
+  \imp{Frage}: können wir dieses Problem der limitierten Beprobung beheben?\\
+  \imp{Idee}: Es geht uns draum das Integral zu sampeln, wie wir auf das Ergebnis kommen/die $\rvec_{\idxi}^N$ wählen ist nicht so relevant.\\
+  $\Rightarrow$ simuliere simultan viele unabhängige Kopien von Ensembles/Systemen e.g. $\idxk$ und $\idxk'$ und vertausche die entsprechenden
+  Konfigurationen $\rvec_{\idxk}^N$ mit $\rvec_{\idxk'}^N$ von Zeit zu Zeit.
+  Typischerweise werden die Kopien so gewählt, dass das eine Extrem der Kopien das System ist das wir beproben wollen und das andere Extrem
+  ein System ist in dem die Barrieren leichter überwunden werden können.\\
+  Kopien können dabei simuliert werden für:
+  \begin{numberlist}
+    \item Verschiedene Thermodynamische Randbedingungen (z.B. Temperatur).
+    \item Verschiedene Hamilton-Funktionen (z.B. verschiedene Kraftfelder).
+  \end{numberlist}
+\end{sectionbox}
+\begin{sectionbox}[Vorgehen]\nospacing
+  In bestimmten Intervallen werden nun die Konfigurationen/Koordinaten $\rvec_{\idxk}^N$ und $\rvec_{\idxk'}^N$ zweier Kopien $\idxk$ und
+  $\idxk'$ mit einer Wahrscheinlichkeit $\pb$ ausgetauscht.
+  \begin{align}
+    \pb(\idxk\leftrightarrow\idxk')=\min\left(1,\e^{\mcc[\Delta]}\right):=\begin{cases}
+        1 &\text{für } \mcc[\Delta]\leq0\\
+        \e^{\mcc[\Delta]} &\text{für } \mcc[\Delta]>0
+      \end{cases}
+  \end{align}
+  \begin{flalign*}
+    &\rd{\text{Temperatur}}:&\mcc[\Delta]_{\Tz}\equiv\left[\frac{1}{\kb\Tz_{\idxk}}-\frac{1}{\kb\Tz_{\idxk'}}\right]\left[\Hamkl(\rvec_{\idxk'}^N)-\Hamkl(\rvec_{\idxk}^N)\right]
+  \end{flalign*}
+  \begin{flalign*}
+    &\rd{\text{Verschiedene Kraftfelder}}:\mcc[\Delta]_{\Wpot}\equiv\nalign
+    &\frac{\left[\Hamkl(\rvec_{\idxk'}^N,\Wpot_{\idxk})-\Hamkl(\rvec_{\idxk}^N,\Wpot_{\idxk})\right]-\left[\Hamkl(\rvec_{\idxk'}^N,\Wpot_{\idxk'})-\Hamkl(\rvec_{\idxk}^N,\Wpot_{\idxk'})\right]}{\kb\Tz}
+  \end{flalign*}
+\end{sectionbox}
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../formularySPCS"
+%%% End:

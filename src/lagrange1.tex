@@ -1,0 +1,79 @@
+\begin{sectionbox} \nospacing
+ Verallgemeinerung der Newtonschen Axiome zur Lösung von Problemen mit Zwangsbedingungen $\gz$.
+ \begin{align}\label{eq:lagr1}
+   m\ddot{\vec{r}}&=\vec{F}+\Zw & \text{\rd{Zwangskraft}:}\qquad \Zw
+ \end{align}
+\end{sectionbox}
+  \todo[inline]{Fix unwanted stretching in Headers}
+\begin{defnbox}\nospacing
+  \begin{defn}[\\\hbox{Holonome/Integrable Zwangsbedinungen}]
+    Sind Zwangsbedingungen die als Gleichungen zwischen den
+    Ortsvariablen $\vec{r}_i$ des Systems und der Zeit in flogender Form formuliert werden können:
+    \begin{align*}
+      \gz_{\alphac}(\rv_1,\rv_2,\ldots,\rv_N,t)&=0 &\alphac=1,\ldots,R &&(R\text{-Zw.Bed.})
+    \end{align*}
+  \end{defn}
+\end{defnbox}
+\begin{defnbox}\nospacing
+  \begin{defn}[\\\hbox{Anholonome Zwangsbedinungen}]
+    Sind Zwangsbedingungen die nicht als holonome Zwangsbedingungen geschrieben werden können
+    e.g. Ungleichungen oder:
+    \begin{align*}
+      \gz_{\alphac}(\rv_1,\rv_2,\ldots,\rv_N,\dot{\rv}_1,\dot{\rv}_2,\ldots,\dot{\rv}_N,t)&=0 &\alphac=1,\ldots,R 
+    \end{align*}
+  \end{defn}
+\end{defnbox}
+\begin{notebox}[Note: \normalfont{Zwangsbedingungen für ein Teilchen}]
+  \begin{numberlist}
+      \item Eine Zwangsbed. $\Rightarrow$ Einschränkung auf Fläche.
+      \item Zwei unab. Zwangsbed. $\Rightarrow$ Einschränkung auf Kurve.
+      \item Drei unab. Zwangsbed. $\Rightarrow$ alle drei Koordinaten $x,y,z$ sind festgelegt, keine Bewegung mehr erlaubt.
+  \end{numberlist}
+\end{notebox}
+\begin{notebox}[Note: \normalfont{Zwangsbedungen für mehrere Teilchen}]
+  \begin{numberlist}
+    \item Die mögliche Anzahl $R$ der Bedingungen ist durch $R\leq3N-1$ begrenzt.
+    \item Damit ist die Anzahl der Freiheitsgrade $f=3N-R$.
+  \end{numberlist}
+\end{notebox}
+\begin{defnbox}
+  \begin{defn}[Rheonome Zwangsbedingung]
+    Sind zeitabhängige Zwangsbedingungen im Gegensatz dazu sind \rdb{skleronome Zwangsbedingungen} zeitunabhängig.
+  \end{defn}
+\end{defnbox}
+\begin{sectionbox}[Zwangskräfte $\Zw$]\nospacing
+  \imp{Problem}: wir kennen nur die Zwangsbedingungen $\gz$ sind nach \cref{eq:lagr1} aber an den Zwangskräften $\Zw$ interessiert.\\
+  \imp{Idee}: Eine Einschränkung eines Teilchens durch eine holonome Zwb. $\gz$ beschränkt die Bewegung des Teilchens
+  auf eine Fläche ein. Dies bedeutet aber wiederum das sich das Teilchen frei auf der Fläche bewegen kann und dies
+  wiederum impliziert das die Kraft nur orthogonal wirken kann:
+  \begin{align*}
+		&\gz(\rv,t)=0 &\Longleftrightarrow&& \Zw\parallel\grad\gz(\rv,t) \\
+    &\Rightarrow\text{\imp{Ansatz}:}&&& \Zw(\rv,t)=\lambdac(t)\grad\gz(\rv,t)
+  \end{align*}
+\end{sectionbox}
+\begin{emphbox}[\rdb{Lagrangegleichungen 1. Art}]\nospacing
+  \begin{align}
+  &\ul{m_{\idxn}\ddot{\vec{x}}_{\idxn}=
+  \vec{F}_{\idxn}+\sum_{\alphac=1}^R\lambdac_{\alphac}\frac{\partial\gz_{\alphac}(x_1,\ldots,x_{3N},t)}{\partial x_{\idxn}}}\label{eq:Lagrange1} \\
+  &\ul[ulc2]{\gz_{\alphac}(x_1,\ldots,x_{3N},t)=0} \qquad \alphac=1,\ldots,R\quad \idxn=1,\ldots,3N \nonumber
+  \end{align}
+\end{emphbox}
+\begin{notebox}[Bemerkunge]
+  \begin{numberlist}
+      \item $\ul{3N}+\ul[ulc2]{R}$ Gleichungen für $3N+R$ unbekannte Funktionen $x_{\idxn}(t)$ und $\lambdac_{\alphac}(t)$.
+      \item $\ul{3N}$ dgl. 2. Ordnung.
+      \item $\ul[ulc2]{R}$ algb. Gleichungen.
+  \end{numberlist}
+\end{notebox}
+\begin{sectionbox}[Vorgehen]\nospacing
+  \begin{numberlist}
+    \item Formulierung der Zwangsbedingungen $\gz$ und Aufstellung der Lagrangegleichungen.
+    \item Elimination der $\lambdac_{\alphac}$.
+    \item Lösung der Bewegunngsgleichungen $\Rightarrow\vec{x}$ und bestimmung der Integrationskonstanten.
+    \item Bestimmung der Zwangskräften.
+  \end{numberlist}
+\end{sectionbox}
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../formularySPCS"
+%%% End:

@@ -1,0 +1,72 @@
+\subsection{Ein Allgemeiner Ausdruck für die Entropie $\Spot$}
+\begin{sectionbox}\nospacing
+  \begin{align*}
+    &\diff\Upots=\diff\left(\sum_{\idxr}\pbr\Ezr\right)\eqs{\text{\rd{P.R.}}}\ul{\sum_{\idxr}\Ezr\diff\pbr}
+      +\uldotted{\sum_{\idxr}\pbr\diff\Ezr}\nalign
+    &\text{\imp{Recall}}:\quad\diff\Upotp=\ul{\diff\Qpp_{\text{rev.}}}-\uldotted{\pz^{\text{phn.}}\diff\Vz}
+  \end{align*}
+  \begin{align}
+    -\pz^{\text{phn.}}\diff\Vz&&\Longleftrightarrow&&\sum_{\idxr}\pbr\diff\Ezr\label{eq:bezugZuDruck}
+    \diff\Qpp_{\text{rev.}}&&\Longleftrightarrow&&\sum_{\idxr}\Ezr\diff\pbr
+  \end{align}
+  \imp{Problem} wir besitzen keinen Ausdruck für $\Ezr \Rightarrow$ finde einen Ausdruck der Form $\Ezr=\Ezr\left(\pbr,\Zzk\right)$
+  \begin{align*}
+    \pbr=\frac{1}{\Zzk}\e^{-\betac\Ezr}&\Rightarrow\ln\pbr=-\betac\Ezr-\ln\Zzk\nalign
+    &\Rightarrow\ul[ulc2]{\Ezr=-\frac{1}{\betac}\left[\ln\pbr+\ln\Zzk\right]}
+  \end{align*}
+  \begin{alignat*}{2}
+    &\Rightarrow\Qpp_{\text{rev.}}&&=\sum_{\idxr}\ul[ulc2]{\Ezr}\diff\pbr=
+                                           -\frac{1}{\betac}\sum_{\idxr}\left[\ln\pbr+\ln\Zzk\right]\diff\pbr
+                                           \nalign
+                                           &&&=-\frac{1}{\betac}\ul[ulc4]{\sum_{\idxr}\ln\pbr\diff\pbr}-\underbrace{\uldotted[ulc3]{\frac{1}{\betac}\sum_{\idxr}\ln\Zzk\diff\pbr}}_{=0}
+  \end{alignat*}
+  \begin{flalign*}
+    \text{Bemerkung}&&\uldotted[ulc3]{\sum_{\idxr}\diff\pbr=0} &&\text{da}&& \sum_{\idxr}\pbr=1 &&
+  \end{flalign*}
+  \begin{flalign}
+    \text{Mit:}&&\uldashed[ulc5]{\frac{\diff}{\diff\pbr}\pbr\ln\pbr}&\eqs{\text{\rd{P.R.}}}\ln\pbr\cdot1+\frac{1}{\pbr}\cdot\pbr&&\nonumber\nalign
+    \Rightarrow&&\diff(\pbr\ln\pbr)&\eqs{\hphantom{P.R.}}\ln\pbr\diff\pbr+\diff\pbr&&\nonumber\nalign
+    \Rightarrow&&\diff\left(\sum_{\idxr}(\pbr\ln\pbr)\right)&\ul[ulc4]{\eqs{\hphantom{P.R.}}\sum_{\idxr}(\ln\pbr\diff\pbr)}+\tura{\uldotted[ulc3]{\sum_{\idxr}\diff\pbr}}{=0}&&\label{eq:dprTrick}
+  \end{flalign}
+\end{sectionbox}
+\begin{sectionbox}[Es folgt also]
+  \begin{flalign*}
+    \Rightarrow&&\diff\Qps_{\text{rev.}}&=-\frac{1}{\betac}\diff\left[\sum_{\idxr}\pbr\ln\pbr\right]&&\nalign
+    \Rightarrow&&\diff\Spots_{\text{rev.}}&=\frac{\diff\Qps_{\text{rec.}}}{\Tz}=-\frac{1}{\betac\Tz}\diff\left[\sum_{\idxr}\pbr\ln\pbr\right]&&\nalign
+    \Rightarrow&&\Spots_{\text{rev.}}(\Zzk)&=-\frac{1}{\betac\Tz}\sum_{\idxr}\pbr\ln\pbr+\text{const.}&&\nalign
+    &&\Spots(T=0\kelvin)&\eqs{\text{konvent.}}0\Rightarrow\text{const.}=0&&
+  \end{flalign*}
+\end{sectionbox}
+\begin{sectionbox}[Was ist mit $\betac$?]\nospacing
+  \imp{Idee}: Ausdruck für die Entrpie gilt allgemein $\Rightarrow$ wir können unser Wissen aus dem mikrokanonischen Ensemble
+  benutzen \cref{eq:mikrokanonischeWahr}.
+  \begin{align*}
+    \sum_{\idxr}\pbr\ln\pbr\eqs{\text{mikrok.}}\sum_{\idxr}^{\Zzm}\frac{1}{\Zzm}\ln\frac{1}{\Zzm}\nalign
+    =\frac{1}{\Zzm}\ln\frac{1}{\Zzm}\cdot\sum_{\idxr}^{\Zzm}1\nalign
+    =\Zzm\left[\frac{1}{\Zzm}\ln\frac{1}{\Zzm}\right]=\ul[ulc5]{-\ln\Zzm}
+  \end{align*}
+  \begin{align*}
+    \Spots_{\text{mik.}}\eqs{!}\Spots_{\text{allg.}}&&\tua{\iff}{$\mathclap{\text{\cref{defn:mirkokanonischeEntropie}}}$}&&\kb\ln\Zzm\eqs{!}\frac{1}{\betac\Tz}\ul[ulc5]{\ln\Zzm}
+  \end{align*}
+  \begin{align*}
+        \Rightarrow&&\boxed{\betac=\frac{1}{\kb\Tz}}&
+  \end{align*}
+\end{sectionbox}
+\begin{defnbox}\nospacing
+  \begin{defn}[Statistische Entropie \tc{black}{(allgemein)}]\label{defn:allgemeineEntropie}
+    \begin{align}
+      \Spots=-\frac{1}{\betac\Tz}\sum_{\idxr}\left(\pbr\ln\pbr\right)&\text{\imp{ mit }}\betac=\frac{1}{\kb\Tz}\label{eq:allgemeineEntropie}
+    \end{align}
+  \end{defn}
+\end{defnbox}
+\begin{defnbox}\nospacing
+  \begin{defn}[Boltzmann Konstante\tc{black}{/}Faktor]
+    \begin{align}
+        \betac=\frac{1}{\kb\Tz}
+    \end{align}
+  \end{defn}
+\end{defnbox}
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../formularySPCS"
+%%% End:

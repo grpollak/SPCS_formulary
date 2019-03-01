@@ -1,0 +1,132 @@
+\subsection{Das Grosskanonische Ensemble $(\muz,\Vz,\Tz)$}
+\label{subsec:DasGrosskanonischeEnsemble}
+\begin{princpbox}
+  \begin{princip}[Maximum Entropie Principle]
+    Die Wahrscheinlichkeitsverteilung, die den momentanen Zustand am
+    besten beschreibt ist diejenige, mit maximaler Entropie.
+  \end{princip}
+\end{princpbox}
+\begin{sectionbox}[Problem]\nospacing
+  \begin{wrapfigure}{r}{0.55\linewidth}	
+    \centering{
+      \inkscape[120pt]{figures/statPhysik/grosskanonischesEnsemble.pdf_tex}
+    }
+  \end{wrapfigure}
+ Für verschiedene Experimente ist es Vorteilhaft anstelle Teilchenzahl
+ $\Nz$, dass chemische Potential $\muz$ vorzugeben.\\
+ \imp{Frage}: wie finden wir nun einen Ausdruck für die Anzahl an Mikrozuständen?\\
+ \imp{Idee}: verallgemeinere das kanonische Ensemble durch Betrachtung
+ vieler kanonischer Ensemble zu varierender Teilchenzahl $\Nz$ im System und Nutze das \rd{maximum Entropy Principle} um die
+ Wahrscheinlichkeitsfunktion zu bestimmen.
+ \begin{equation*}
+   \Spots\eqs{\cref{defn:allgemeineEntropie}}-\kb\sum_{\idxr}\rd{\sum_{\Nz}}\left(\pb_{\idxr,\rd{N}}\ln\pb_{\idxr,\rd{N}}\right)
+ \end{equation*}
+ $\Rightarrow$ bestimmer $\{\pbrN\}$ so, dass $\Spots$ maximiert wird!\\
+ \imp{Problem}: Nebenbedingungen für das grosskanonische Ensemble müssen eingehalten werden.
+\end{sectionbox}
+\begin{sectionbox}[Nebenbedingungen]\nospacing
+  \begin{align*}
+    &\sum_{N}\sum_{\idxr}\pbrN\eqs{!}1\nalign
+    &\sum_{N}\sum_{\idxr}\pbrN\cdot\Ezr^{(N)}\eqs{!}\obs{\Ez}&(\Tz \text{ ist konstant})\nalign
+    &\sum_{N}\sum_{\idxr}\pbrN\cdot N\eqs{!}\obs{\Nz}&(\muz \text{ ist konstant})
+  \end{align*}
+\end{sectionbox}
+\todo[inline]{Add theorie of LMM somewhere}
+\begin{sectionbox}[Lagrange Multiplikator Methode]\nospacing
+  \begin{align*}
+    \LT\equiv\Spot-&\alphac\left(\sum_{\idxr,N}\pbrN-1\right)-\betac\left(\sum_{\idxr,N}\left[\pbrN\Ezr^{(N)}\right]-\obs{\Ez}\right)\nalign
+                     -&\gammac \left(\sum_{\idxr,N}\left[\pbrN N\right]-\obs{\Nz}\right)\qquad\text{\imp{Ziel: }} \delta\LT\eqs{!}0
+  \end{align*}
+  \text{Mit} $(\idxi,\idxM)\in\{(\idxr,N)\}$ und $\Ez_{\idxr}^{(\Nz)}:=\Ezr(\Vz,\Nz_{\idxr})$ folgt dann:
+  \begin{alignat*}{3}
+    \pfrac{\LT}{\pb_{\idxi,\idxM}}&\ltda{=}{\cref{eq:xlnx}}&&-\kb\overbrace{\pfrac{\pb_{\idxi,\idxM}\ln\pb_{\idxi,\idxM}}{\pb_{\idxi,\idxM}}}^{\ln\pb_{\idxi,\idxM}+1}
+    -\alphac-\betac\Ez_{\idxi}^{(\idxM)}-\gammac\idxM\eqs{!}0
+    \nalign
+    &=&&-\kb\ln\pb_{\idxi,\idxM}-\kb-\alphac-\betac\Ez_{\idxi}^{(\idxM)}-\gammac\idxM\eqs{!}0
+    \nalign
+    \Rightarrow0&=&&-\ln\pb_{\idxi,\idxM}-\underbrace{\left(1-\frac{\alphac}{\kb}\right)}_{:=\alphac'}-\underbrace{\left(\frac{\betac}{\kb}\right)}_{:=\betac'}\Ez_{\idxi}^{\idxM}-\underbrace{\left(\frac{\gammac}{\kb}\right)}_{:=\gammac'}\idxM
+    \nalign
+    \Rightarrow\pb_{\idxi,\idxM}&=&&\e^{-\alphac'-\betac'\Ez_{\idxi}^{(\idxM)}-\gammac'\idxM}
+  \end{alignat*} 
+  \imp{Frage}: Wie können wir diesen Ausdruck nun weiter vereinfachen?\\
+  \imp{Idee}: Benutze die Normierungsbedingung.
+  \begin{alignat}{3}
+    &&\sum_{N}\sum_{\idxr}\pbrN&=\ul{1}=\ul{\sum_{\idxr,N}e^{-\alphac'-\betac'\Ez_{\idxr}^{(N)}-\gammac'N}}\nonumber\nalign
+    \Rightarrow&&\pb_{\idxi,\idxM}&=\frac{\pb_{\idxi,\idxM}}{\ul{1}}=\frac{\cancel{\e^{-\alphac'}}\e^{-\betac'\Ez_{\idxi}^{(\idxM)}}\e^{-\gammac'\idxM}}{\sum_{\idxr,N}\cancel{e^{-\alphac'}}\uldotted{\e^{-\betac'\Ez_{\idxr}^{(N)}}}\e^{-\gammac'N}}\nonumber\nalign
+    &&&\eqs{\text{def.}}\frac{\e^{-\betac'\Ez_{\idxi}^{(\idxM)}}\e^{-\gammac'\idxM}}{\Zzg}\label{eq:grosskanonischeWahrscheinlichkeit}
+  \end{alignat}
+  Analog zum kanonischen Ensemble findet man $\betac'=\frac{1}{\kb\Tz}$ somit folgt:
+  \begin{align*}
+    \Zzg=\sum_{N}\underbrace{\uldotted{\Zzk}}_{\strut\mathclap{\text{kanonische Zustandsumme}}}\e^{-\gammac' N}
+  \end{align*}
+\end{sectionbox}
+\begin{sectionbox}[Bedeutung von $\gammac$]\nospacing
+  \begin{notebox}[Bemerkung]\nospacing
+    Siehe auch Herleitung \Cref{subsec:BezugDruck}.
+  \end{notebox}
+  \begin{align}
+    \diff\Upotp&=\ul[ulc2]{\Tz\diff\Spotp}-\ul{\pzp\diff\Vz}+\ul[ulc2]{\muzp\diff\Nz}\nalign
+    \diff\Upots&=\diff\left(\sum_{\idxr,N}\pbrN\Ezr^{(N)}\right)\nalign
+    &=\sum_{\idxr,N}\Ezr^{(N)}\diff\pbrN+\sum_{\idxr,N}\pbrN\diff\EzrN\nalign
+    &=\ul[ulc2]{\sum_{\idxr,N}\Ezr^{(N)}\diff\pbrN}+\textcolor{ulc1}{\underbrace{\color{black}\sum_{\idxr,N}\pbrN
+      \pfrac{\EzrN}{\Vz}\diff\Vz}_{\color{black}-\obs{\pz}\equiv-\pzs}}\nalign
+    \Rightarrow&\sum_{\idxr,N}\Ezr^{(N)}\diff\pbrN=\ul[ulc4]{\Tz\diff\Spotp}+\ul[ulc3]{\muzp\diff\Nz}\label{eq:gammaGrosskanonisch}
+  \end{align}
+  Mit der Hilfe von \cref{eq:grosskanonischeWahrscheinlichkeit} erhalten wir einen Ausdruck für $\EzrN$:
+  \begin{align*}
+    &\pbrN=\frac{1}{\Zzg}\exp \left[-\frac{\EzrN}{\kb\Tz}-\gammac'N\right]\nalign
+      \Rightarrow&\EzrN=-\kb\Tz\left\{\ln\pbrN+\ln\Zzg+\gammac'N\right\}
+  \end{align*}
+  Einsetzen in \cref{eq:gammaGrosskanonisch} liefert:
+  \begin{align*}
+    \sum_{\idxr,N}\Ezr^{(N)}\diff\pbrN&=-\kb\Tz\left\{\sum_{\idxr,N}\left[(\ln\pbrN)\diff\pbrN\right]\right.\nalign
+  &\hspace{-4em}\left.+\ln\Zzg\overbrace{\sum_{\idxr,N}\diff\pbrN}^{\mathclap{=0,\text{da}\sum\pbrN=1}}+\gammac'\underbrace{\sum_{\idxr,N}N\diff\pbrN}_{\mathclap{\diff\obs{N}\equiv\diff N}}\right\}\nalign
+    &\hspace{-4em}\eqs{\substack{\cref{eq:dprTrick}\\ \cref{eq:allgemeineEntropie}}}\ul[ulc4]{-\kb\Tz\rd{\diff}\left(\sum_{\idxr,N}\pbrN\ln\pbrN\right)}-\ul[ulc3]{\kb\Tz\gammac'\diff\Nz}
+  \end{align*}
+\end{sectionbox}
+\begin{sectionbox}
+\begin{align*}
+    \Rightarrow   \gammac'=-\frac{\muz}{\kb\Tz}\text{ \imp{und} }
+      \diff\Spots=-\kb\Tz\diff \left(\sum_{\idxr,N}\pbrN\ln\pbrN\right)
+  \end{align*}
+\end{sectionbox}
+\begin{emphbox}\nospacing
+  \begin{law}[Grosskanonische Zustandssumme]\leavevmode\\
+    \begin{align}
+      \Zzg&=\sum_{\idxj}\e^{-\betac \left(\Ez_{\idxj}(\Vz,\Nz_{\idxj})-\muz\Nz_{\idxj}\right)}\nonumber\nalign
+      &=\sum_{\idxj}\Zzk\exp\left\{\frac{\muz}{\kb\Tz}N_{\idxj}\right\}\label{eq:Zzg}
+    \end{align}
+    \begin{align}
+      &\text{Mit: }&\pb_{\idxr}=\frac{1}{\Zzg}\e^{-\betac\left(\Ez_{\idxr}^{(\Nz)}-\muz\Nz_{\idxr}\right)}\label{eq:probGrosskanonisch}
+    \end{align}
+  \end{law}
+\end{emphbox}
+	\vfill\columnbreak
+\begin{sectionbox}[\subsubsection{Bezug zur Entropie}]\nospacing
+  \begin{align*}
+    &\text{Mit:}&\Spots\eqs{\text{def.\ref{defn:allgemeineEntropie}}}-\frac{1}{\betac\Tz}\sum_{\idxr}\left(\pbr\ln\pbr\right)
+  \end{align*}
+  und \cref{eq:Zzg} sowie \cref{eq:probGrosskanonisch} folgt:
+\end{sectionbox}
+\begin{sectionbox}\nospacing
+  \begin{align*}
+    \Spot^{\text{st.}}=&-\kb\sum_{\idxr}\frac{1}{\Zz}\e^{-\betac\left(\Ez_{\idxr}^{(\Nz)}-\muz\Nz_{\idxr}\right)}\ln \left[\frac{1}{\Zz}\e^{-\betac\left(\Ez_{\idxr}^{(\Nz)}-\muz\Nz_{\idxr}\right)}\right]
+  \end{align*}
+  \begin{align*}
+    =&-\kb\frac{1}{\Zz}\sum_{\idxr}\e^{-\betac\left(\Ez_{\idxr}^{(\Nz)}-\muz\Nz_{\idxr}\right)}\left[-\ln\Zz-\betac\left(\Ez_{\idxr}^{(\Nz)}-\muz\Nz_{\idxr}\right)\right]\nalign
+       =&\kb\frac{1}{\Zz}\underbrace{\sum_{\idxr}\e^{-\betac\left(\Ez_{\idxr}^{(\Nz)}-\muz\Nz_{\idxr}\right)}\ln\Zz}_{=\Zzg}\nalign
+          &+\kb\betac\underbrace{\sum_{\idxr}\frac{1}{\Zz}\e^{-\betac\left(\Ez_{\idxr}^{(\Nz)}-\muz\Nz_{\idxr}\right)}\Ezr}_{\eqs{\cref{eq:ensembelDurchschnitt}}\obs{E}}\nalign
+          &-\kb\betac\muz\underbrace{\sum_{\idxr}\frac{1}{\Zz}\e^{-\betac\left(\Ez_{\idxr}^{(\Nz)}-\muz\Nz_{\idxr}\right)}\Nz_{\idxr}}_{\eqs{\cref{eq:ensembelDurchschnitt}}\obs{N}}
+  \end{align*}
+\end{sectionbox}
+\begin{defnbox}\nospacing
+  \begin{defn}[\\Statistische Entropie \tc{black}{(gross kanonisch)}]\label{defn:EntropieKanonisch}
+    \begin{equation}
+      \Spots=\bdra{\kb}{\normalfont{Proportionalitätskonstante}}\ln\Zzm+\frac{\obs{\Ez}-\muz\obs{\Nz}}{\Tz}
+    \end{equation}
+  \end{defn}
+\end{defnbox}
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../formularySPCS"
+%%% End:
