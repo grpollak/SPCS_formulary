@@ -1,0 +1,3 @@
+[submodule "formularyETH"]
+	path = formularyETH
+	url = git@github.com:grpollak/formularyETH.git

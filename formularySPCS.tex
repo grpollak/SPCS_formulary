@@ -20,18 +20,24 @@
 
 % Document class
 % ------------------------------------------------------------------------------
-\documentclass[fourColumns]{formularyETH/formularyETH}
+\documentclass[
+    fourColumns,
+    landscape,
+]{formularyETH/formularyETH}
 % formuaryETH packages
 % ------------------------------------------------------------------------------
 \usepackage{formularyETH/formularyETH_GeneralPackages}
+\usepackage{formularyETH/formularyETH_theorems}
+\usepackage{formularyETH/formularyETH_items}
 \usepackage{formularyETH/formularyETH_underline}
 \usepackage{formularyETH/extern/formularyETH_scientific}
 \usepackage{formularyETH/extern/formularyETH_tikz}
+\usepackage{formularyETH/extern/formularyETH_coding}
 \usepackage{formularyETH/extern/formularyETH_algorithms}
+\usepackage{formularyMacros}
 % Other very usefull packages
 % ------------------------------------------------------------------------------
-\usepackage{formularyMacros}
-%\usepackage[colorinlistoftodos,prependcaption,textsize=tiny]{todonotes} 
+%\usepackage[colorinlistoftodos,prependcaption,textsize=tiny]{todonotes}
 \usepackage[colorinlistoftodos,prependcaption,textsize=tiny,disable]{todonotes} 
 \usepackage{caption}
 \usepackage{wrapfig}
@@ -65,7 +71,7 @@
 %\tableofcontents
 % Chapter 1
 % ------------------------------------------------------------------------------ 
-\todo[inline]{Add Geometrische Reihe}
+\section*{Statistical Physics\&Comp. Simulations}
 \section{Newton Mechanik}
 	\input{src/newtonMechanik.tex}
 	\label{sec:newtonMechanik}
